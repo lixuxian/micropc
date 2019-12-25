@@ -2,9 +2,9 @@
   "contractName": "LibSig",
   "abi": [
     {
-      "constant": true,
       "inputs": [
         {
+          "internalType": "bytes32",
           "name": "hash",
           "type": "bytes32"
         }
@@ -12,26 +12,28 @@
       "name": "prefixed",
       "outputs": [
         {
+          "internalType": "bytes32",
           "name": "",
           "type": "bytes32"
         }
       ],
-      "payable": false,
       "stateMutability": "pure",
       "type": "function"
     },
     {
-      "constant": true,
       "inputs": [
         {
+          "internalType": "address",
           "name": "addr",
           "type": "address"
         },
         {
+          "internalType": "bytes32",
           "name": "message",
           "type": "bytes32"
         },
         {
+          "internalType": "bytes",
           "name": "signature",
           "type": "bytes"
         }
@@ -39,24 +41,24 @@
       "name": "verify",
       "outputs": [
         {
+          "internalType": "bool",
           "name": "",
           "type": "bool"
         }
       ],
-      "payable": false,
       "stateMutability": "pure",
       "type": "function"
     }
   ],
-  "metadata": "{\"compiler\":{\"version\":\"0.5.8+commit.23d335f2\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"constant\":true,\"inputs\":[{\"name\":\"addr\",\"type\":\"address\"},{\"name\":\"message\",\"type\":\"bytes32\"},{\"name\":\"signature\",\"type\":\"bytes\"}],\"name\":\"verify\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"pure\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"hash\",\"type\":\"bytes32\"}],\"name\":\"prefixed\",\"outputs\":[{\"name\":\"\",\"type\":\"bytes32\"}],\"payable\":false,\"stateMutability\":\"pure\",\"type\":\"function\"}],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/Users/lixuxian/blockchain/micropc/contracts/ILibSig.sol\":\"LibSig\"},\"evmVersion\":\"petersburg\",\"libraries\":{},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/Users/lixuxian/blockchain/micropc/contracts/ILibSig.sol\":{\"keccak256\":\"0xc6230f6822721bd7f646e3daa8430a68c7cda1c1d179577ec48f726f708d88fd\",\"urls\":[\"bzzr://2f994ddbf3ddb771ac7ae0cb106dea4e67c4a71ec4e38db1922f770a83c53f1d\"]}},\"version\":1}",
-  "bytecode": "0x608060405234801561001057600080fd5b50610314806100206000396000f3fe608060405234801561001057600080fd5b50600436106100365760003560e01c80631a86b5501461003b5780631f27571314610138575b600080fd5b61011e6004803603606081101561005157600080fd5b81019080803573ffffffffffffffffffffffffffffffffffffffff169060200190929190803590602001909291908035906020019064010000000081111561009857600080fd5b8201836020820111156100aa57600080fd5b803590602001918460018302840111640100000000831117156100cc57600080fd5b91908080601f016020809104026020016040519081016040528093929190818152602001838380828437600081840152601f19601f82011690508083019250505050505050919291929050505061017a565b604051808215151515815260200191505060405180910390f35b6101646004803603602081101561014e57600080fd5b8101908080359060200190929190505050610290565b6040518082815260200191505060405180910390f35b6000604182511461018e5760009050610289565b600080600060608590506020810151935060408101519250606081015160001a9150601b8260ff1610156101c357601b820191505b601b8260ff16141580156101db5750601c8260ff1614155b156101ed576000945050505050610289565b8773ffffffffffffffffffffffffffffffffffffffff1660018884878760405160008152602001604052604051808581526020018460ff1660ff1681526020018381526020018281526020019450505050506020604051602081039080840390855afa158015610261573d6000803e3d6000fd5b5050506020604051035173ffffffffffffffffffffffffffffffffffffffff16149450505050505b9392505050565b60008160405160200180807f19457468657265756d205369676e6564204d6573736167653a0a333200000000815250601c0182815260200191505060405160208183030381529060405280519060200120905091905056fea165627a7a72305820a7d61f61b95b56ec93ea4c00a8598c181a2fc09580d3028a651c72877acb90e00029",
-  "deployedBytecode": "0x608060405234801561001057600080fd5b50600436106100365760003560e01c80631a86b5501461003b5780631f27571314610138575b600080fd5b61011e6004803603606081101561005157600080fd5b81019080803573ffffffffffffffffffffffffffffffffffffffff169060200190929190803590602001909291908035906020019064010000000081111561009857600080fd5b8201836020820111156100aa57600080fd5b803590602001918460018302840111640100000000831117156100cc57600080fd5b91908080601f016020809104026020016040519081016040528093929190818152602001838380828437600081840152601f19601f82011690508083019250505050505050919291929050505061017a565b604051808215151515815260200191505060405180910390f35b6101646004803603602081101561014e57600080fd5b8101908080359060200190929190505050610290565b6040518082815260200191505060405180910390f35b6000604182511461018e5760009050610289565b600080600060608590506020810151935060408101519250606081015160001a9150601b8260ff1610156101c357601b820191505b601b8260ff16141580156101db5750601c8260ff1614155b156101ed576000945050505050610289565b8773ffffffffffffffffffffffffffffffffffffffff1660018884878760405160008152602001604052604051808581526020018460ff1660ff1681526020018381526020018281526020019450505050506020604051602081039080840390855afa158015610261573d6000803e3d6000fd5b5050506020604051035173ffffffffffffffffffffffffffffffffffffffff16149450505050505b9392505050565b60008160405160200180807f19457468657265756d205369676e6564204d6573736167653a0a333200000000815250601c0182815260200191505060405160208183030381529060405280519060200120905091905056fea165627a7a72305820a7d61f61b95b56ec93ea4c00a8598c181a2fc09580d3028a651c72877acb90e00029",
-  "sourceMap": "34:809:0:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;34:809:0;;;;;;;",
-  "deployedSourceMap": "34:809:0:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;34:809:0;;;;;;;;;;;;;;;;;;;;;;;;245:596;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;245:596:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;21:11:-1;8;5:28;2:2;;;46:1;43;36:12;2:2;245:596:0;;35:9:-1;28:4;12:14;8:25;5:40;2:2;;;58:1;55;48:12;2:2;245:596:0;;;;;;100:9:-1;95:1;81:12;77:20;67:8;63:35;60:50;39:11;25:12;22:29;11:107;8:2;;;131:1;128;121:12;8:2;245:596:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;30:3:-1;22:6;14;1:33;99:1;93:3;85:6;81:16;74:27;137:4;133:9;126:4;121:3;117:14;113:30;106:37;;169:3;161:6;157:16;147:26;;245:596:0;;;;;;;;;;;;;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;56:183;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;56:183:0;;;;;;;;;;;;;;;;;:::i;:::-;;;;;;;;;;;;;;;;;;;245:596;360:4;404:2;384:9;:16;:22;380:54;;428:5;420:14;;;;380:54;445:9;464;483:7;501:16;520:9;501:28;;582:2;577:3;573:12;567:19;562:24;;619:2;614:3;610:12;604:19;599:24;;664:2;659:3;655:12;649:19;646:1;641:28;636:33;;697:2;693:1;:6;;;689:31;;;718:2;713:7;;;;689:31;740:2;735:1;:7;;;;:18;;;;;751:2;746:1;:7;;;;735:18;731:50;;;775:5;767:14;;;;;;;;731:50;830:4;799:35;;:27;809:7;818:1;821;824;799:27;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;8:9:-1;5:2;;;45:16;42:1;39;24:38;77:16;74:1;67:27;5:2;799:27:0;;;;;;;;:35;;;792:42;;;;;;245:596;;;;;;:::o;56:183::-;133:7;226:4;173:58;;;;;;;;;;;;;;;;;;;;;;49:4:-1;39:7;30;26:21;22:32;13:7;6:49;173:58:0;;;163:69;;;;;;156:76;;56:183;;;:::o",
+  "metadata": "{\"compiler\":{\"version\":\"0.6.0+commit.26b70077\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"hash\",\"type\":\"bytes32\"}],\"name\":\"prefixed\",\"outputs\":[{\"internalType\":\"bytes32\",\"name\":\"\",\"type\":\"bytes32\"}],\"stateMutability\":\"pure\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"addr\",\"type\":\"address\"},{\"internalType\":\"bytes32\",\"name\":\"message\",\"type\":\"bytes32\"},{\"internalType\":\"bytes\",\"name\":\"signature\",\"type\":\"bytes\"}],\"name\":\"verify\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"pure\",\"type\":\"function\"}],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/Users/xuxianli/work/blockchain/micropc/contracts/ILibSig.sol\":\"LibSig\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/Users/xuxianli/work/blockchain/micropc/contracts/ILibSig.sol\":{\"keccak256\":\"0xc6230f6822721bd7f646e3daa8430a68c7cda1c1d179577ec48f726f708d88fd\",\"urls\":[\"bzz-raw://6518d7fe334d9bab8b8e4e91cdf70efde30e39c0149493dafb76244724088b5f\",\"dweb:/ipfs/QmSHcFEdP9jy6uVJprrJctGbCVMwnCADTTxZSS4m9M7C2x\"]}},\"version\":1}",
+  "bytecode": "0x608060405234801561001057600080fd5b5061031e806100206000396000f3fe608060405234801561001057600080fd5b50600436106100365760003560e01c80631a86b5501461003b5780631f27571314610138575b600080fd5b61011e6004803603606081101561005157600080fd5b81019080803573ffffffffffffffffffffffffffffffffffffffff169060200190929190803590602001909291908035906020019064010000000081111561009857600080fd5b8201836020820111156100aa57600080fd5b803590602001918460018302840111640100000000831117156100cc57600080fd5b91908080601f016020809104026020016040519081016040528093929190818152602001838380828437600081840152601f19601f82011690508083019250505050505050919291929050505061017a565b604051808215151515815260200191505060405180910390f35b6101646004803603602081101561014e57600080fd5b8101908080359060200190929190505050610290565b6040518082815260200191505060405180910390f35b6000604182511461018e5760009050610289565b600080600060608590506020810151935060408101519250606081015160001a9150601b8260ff1610156101c357601b820191505b601b8260ff16141580156101db5750601c8260ff1614155b156101ed576000945050505050610289565b8773ffffffffffffffffffffffffffffffffffffffff1660018884878760405160008152602001604052604051808581526020018460ff1660ff1681526020018381526020018281526020019450505050506020604051602081039080840390855afa158015610261573d6000803e3d6000fd5b5050506020604051035173ffffffffffffffffffffffffffffffffffffffff16149450505050505b9392505050565b60008160405160200180807f19457468657265756d205369676e6564204d6573736167653a0a333200000000815250601c0182815260200191505060405160208183030381529060405280519060200120905091905056fea264697066735822122095b7258ee81d3084db524579003e6175c7cff276acd359c835fc2312f28385ab64736f6c63430006000033",
+  "deployedBytecode": "0x608060405234801561001057600080fd5b50600436106100365760003560e01c80631a86b5501461003b5780631f27571314610138575b600080fd5b61011e6004803603606081101561005157600080fd5b81019080803573ffffffffffffffffffffffffffffffffffffffff169060200190929190803590602001909291908035906020019064010000000081111561009857600080fd5b8201836020820111156100aa57600080fd5b803590602001918460018302840111640100000000831117156100cc57600080fd5b91908080601f016020809104026020016040519081016040528093929190818152602001838380828437600081840152601f19601f82011690508083019250505050505050919291929050505061017a565b604051808215151515815260200191505060405180910390f35b6101646004803603602081101561014e57600080fd5b8101908080359060200190929190505050610290565b6040518082815260200191505060405180910390f35b6000604182511461018e5760009050610289565b600080600060608590506020810151935060408101519250606081015160001a9150601b8260ff1610156101c357601b820191505b601b8260ff16141580156101db5750601c8260ff1614155b156101ed576000945050505050610289565b8773ffffffffffffffffffffffffffffffffffffffff1660018884878760405160008152602001604052604051808581526020018460ff1660ff1681526020018381526020018281526020019450505050506020604051602081039080840390855afa158015610261573d6000803e3d6000fd5b5050506020604051035173ffffffffffffffffffffffffffffffffffffffff16149450505050505b9392505050565b60008160405160200180807f19457468657265756d205369676e6564204d6573736167653a0a333200000000815250601c0182815260200191505060405160208183030381529060405280519060200120905091905056fea264697066735822122095b7258ee81d3084db524579003e6175c7cff276acd359c835fc2312f28385ab64736f6c63430006000033",
+  "sourceMap": "34:809:0:-:0;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;34:809:0;;;;;;;",
+  "deployedSourceMap": "34:809:0:-:0;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;34:809:0;;;;;;;;;;;;;;;;;;;;;;;;245:596;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;245:596:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;21:11:-1;8;5:28;2:2;;;46:1;43;36:12;2:2;245:596:0;;35:9:-1;28:4;12:14;8:25;5:40;2:2;;;58:1;55;48:12;2:2;245:596:0;;;;;;100:9:-1;95:1;81:12;77:20;67:8;63:35;60:50;39:11;25:12;22:29;11:107;8:2;;;131:1;128;121:12;8:2;245:596:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;30:3:-1;22:6;14;1:33;99:1;93:3;85:6;81:16;74:27;137:4;133:9;126:4;121:3;117:14;113:30;106:37;;169:3;161:6;157:16;147:26;;245:596:0;;;;;;;;;;;;;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;56:183;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;56:183:0;;;;;;;;;;;;;;;;;:::i;:::-;;;;;;;;;;;;;;;;;;;245:596;360:4;404:2;384:9;:16;:22;380:54;;428:5;420:14;;;;380:54;445:9;464;483:7;501:16;520:9;501:28;;582:2;577:3;573:12;567:19;562:24;;619:2;614:3;610:12;604:19;599:24;;664:2;659:3;655:12;649:19;646:1;641:28;636:33;;697:2;693:1;:6;;;689:31;;;718:2;713:7;;;;689:31;740:2;735:1;:7;;;;:18;;;;;751:2;746:1;:7;;;;735:18;731:50;;;775:5;767:14;;;;;;;;731:50;830:4;799:35;;:27;809:7;818:1;821;824;799:27;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;8:9:-1;5:2;;;45:16;42:1;39;24:38;77:16;74:1;67:27;5:2;799:27:0;;;;;;;;:35;;;792:42;;;;;;245:596;;;;;;:::o;56:183::-;133:7;226:4;173:58;;;;;;;;;;;;;;;;;;;;;;49:4:-1;39:7;30;26:21;22:32;13:7;6:49;173:58:0;;;163:69;;;;;;156:76;;56:183;;;:::o",
   "source": "pragma solidity >=0.4.24 <0.7.0;\n\ncontract LibSig {\n    function prefixed(bytes32 hash)\n        public\n        pure\n        returns (bytes32)\n    {\n        return keccak256(abi.encodePacked(\"\\x19Ethereum Signed Message:\\n32\", hash));\n    }\n\n    function verify(address addr, bytes32 message, bytes memory signature)\n        public\n        pure\n        returns(bool)\n    {\n        if (signature.length != 65)\n            return (false);\n\n        bytes32 r;\n        bytes32 s;\n        uint8 v;\n\n        bytes memory sig = signature;\n        assembly {\n            r := mload(add(sig, 32))\n            s := mload(add(sig, 64))\n            v := byte(0, mload(add(sig, 96)))\n        }\n\n        if (v < 27)\n            v += 27;\n\n        if (v != 27 && v != 28)\n            return (false);\n\n        return ecrecover(message, v, r, s) == addr;\n    }\n}",
-  "sourcePath": "/Users/lixuxian/blockchain/micropc/contracts/ILibSig.sol",
+  "sourcePath": "/Users/xuxianli/work/blockchain/micropc/contracts/ILibSig.sol",
   "ast": {
-    "absolutePath": "/Users/lixuxian/blockchain/micropc/contracts/ILibSig.sol",
+    "absolutePath": "/Users/xuxianli/work/blockchain/micropc/contracts/ILibSig.sol",
     "exportedSymbols": {
       "LibSig": [
         80
@@ -80,6 +82,7 @@
         "src": "0:32:0"
       },
       {
+        "abstract": false,
         "baseContracts": [],
         "contractDependencies": [],
         "contractKind": "contract",
@@ -154,7 +157,7 @@
                             "name": "abi",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 663,
+                            "referencedDeclaration": 784,
                             "src": "173:3:0",
                             "typeDescriptions": {
                               "typeIdentifier": "t_magic_abi",
@@ -184,6 +187,7 @@
                         "names": [],
                         "nodeType": "FunctionCall",
                         "src": "173:58:0",
+                        "tryCall": false,
                         "typeDescriptions": {
                           "typeIdentifier": "t_bytes_memory_ptr",
                           "typeString": "bytes memory"
@@ -201,7 +205,7 @@
                       "name": "keccak256",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 670,
+                      "referencedDeclaration": 791,
                       "src": "163:9:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_keccak256_pure$_t_bytes_memory_ptr_$returns$_t_bytes32_$",
@@ -217,6 +221,7 @@
                     "names": [],
                     "nodeType": "FunctionCall",
                     "src": "163:69:0",
+                    "tryCall": false,
                     "typeDescriptions": {
                       "typeIdentifier": "t_bytes32",
                       "typeString": "bytes32"
@@ -230,12 +235,14 @@
               ]
             },
             "documentation": null,
+            "functionSelector": "1f275713",
             "id": 17,
             "implemented": true,
             "kind": "function",
             "modifiers": [],
             "name": "prefixed",
             "nodeType": "FunctionDefinition",
+            "overrides": null,
             "parameters": {
               "id": 4,
               "nodeType": "ParameterList",
@@ -245,6 +252,7 @@
                   "id": 3,
                   "name": "hash",
                   "nodeType": "VariableDeclaration",
+                  "overrides": null,
                   "scope": 17,
                   "src": "74:12:0",
                   "stateVariable": false,
@@ -278,6 +286,7 @@
                   "id": 6,
                   "name": "",
                   "nodeType": "VariableDeclaration",
+                  "overrides": null,
                   "scope": 17,
                   "src": "133:7:0",
                   "stateVariable": false,
@@ -305,7 +314,7 @@
             "scope": 80,
             "src": "56:183:0",
             "stateMutability": "pure",
-            "superFunction": null,
+            "virtual": false,
             "visibility": "public"
           },
           {
@@ -437,6 +446,7 @@
                       "id": 37,
                       "name": "r",
                       "nodeType": "VariableDeclaration",
+                      "overrides": null,
                       "scope": 78,
                       "src": "445:9:0",
                       "stateVariable": false,
@@ -474,6 +484,7 @@
                       "id": 40,
                       "name": "s",
                       "nodeType": "VariableDeclaration",
+                      "overrides": null,
                       "scope": 78,
                       "src": "464:9:0",
                       "stateVariable": false,
@@ -511,6 +522,7 @@
                       "id": 43,
                       "name": "v",
                       "nodeType": "VariableDeclaration",
+                      "overrides": null,
                       "scope": 78,
                       "src": "483:7:0",
                       "stateVariable": false,
@@ -548,6 +560,7 @@
                       "id": 46,
                       "name": "sig",
                       "nodeType": "VariableDeclaration",
+                      "overrides": null,
                       "scope": 78,
                       "src": "501:16:0",
                       "stateVariable": false,
@@ -588,65 +601,211 @@
                   "src": "501:28:0"
                 },
                 {
+                  "AST": {
+                    "nodeType": "YulBlock",
+                    "src": "548:131:0",
+                    "statements": [
+                      {
+                        "nodeType": "YulAssignment",
+                        "src": "562:24:0",
+                        "value": {
+                          "arguments": [
+                            {
+                              "arguments": [
+                                {
+                                  "name": "sig",
+                                  "nodeType": "YulIdentifier",
+                                  "src": "577:3:0"
+                                },
+                                {
+                                  "kind": "number",
+                                  "nodeType": "YulLiteral",
+                                  "src": "582:2:0",
+                                  "type": "",
+                                  "value": "32"
+                                }
+                              ],
+                              "functionName": {
+                                "name": "add",
+                                "nodeType": "YulIdentifier",
+                                "src": "573:3:0"
+                              },
+                              "nodeType": "YulFunctionCall",
+                              "src": "573:12:0"
+                            }
+                          ],
+                          "functionName": {
+                            "name": "mload",
+                            "nodeType": "YulIdentifier",
+                            "src": "567:5:0"
+                          },
+                          "nodeType": "YulFunctionCall",
+                          "src": "567:19:0"
+                        },
+                        "variableNames": [
+                          {
+                            "name": "r",
+                            "nodeType": "YulIdentifier",
+                            "src": "562:1:0"
+                          }
+                        ]
+                      },
+                      {
+                        "nodeType": "YulAssignment",
+                        "src": "599:24:0",
+                        "value": {
+                          "arguments": [
+                            {
+                              "arguments": [
+                                {
+                                  "name": "sig",
+                                  "nodeType": "YulIdentifier",
+                                  "src": "614:3:0"
+                                },
+                                {
+                                  "kind": "number",
+                                  "nodeType": "YulLiteral",
+                                  "src": "619:2:0",
+                                  "type": "",
+                                  "value": "64"
+                                }
+                              ],
+                              "functionName": {
+                                "name": "add",
+                                "nodeType": "YulIdentifier",
+                                "src": "610:3:0"
+                              },
+                              "nodeType": "YulFunctionCall",
+                              "src": "610:12:0"
+                            }
+                          ],
+                          "functionName": {
+                            "name": "mload",
+                            "nodeType": "YulIdentifier",
+                            "src": "604:5:0"
+                          },
+                          "nodeType": "YulFunctionCall",
+                          "src": "604:19:0"
+                        },
+                        "variableNames": [
+                          {
+                            "name": "s",
+                            "nodeType": "YulIdentifier",
+                            "src": "599:1:0"
+                          }
+                        ]
+                      },
+                      {
+                        "nodeType": "YulAssignment",
+                        "src": "636:33:0",
+                        "value": {
+                          "arguments": [
+                            {
+                              "kind": "number",
+                              "nodeType": "YulLiteral",
+                              "src": "646:1:0",
+                              "type": "",
+                              "value": "0"
+                            },
+                            {
+                              "arguments": [
+                                {
+                                  "arguments": [
+                                    {
+                                      "name": "sig",
+                                      "nodeType": "YulIdentifier",
+                                      "src": "659:3:0"
+                                    },
+                                    {
+                                      "kind": "number",
+                                      "nodeType": "YulLiteral",
+                                      "src": "664:2:0",
+                                      "type": "",
+                                      "value": "96"
+                                    }
+                                  ],
+                                  "functionName": {
+                                    "name": "add",
+                                    "nodeType": "YulIdentifier",
+                                    "src": "655:3:0"
+                                  },
+                                  "nodeType": "YulFunctionCall",
+                                  "src": "655:12:0"
+                                }
+                              ],
+                              "functionName": {
+                                "name": "mload",
+                                "nodeType": "YulIdentifier",
+                                "src": "649:5:0"
+                              },
+                              "nodeType": "YulFunctionCall",
+                              "src": "649:19:0"
+                            }
+                          ],
+                          "functionName": {
+                            "name": "byte",
+                            "nodeType": "YulIdentifier",
+                            "src": "641:4:0"
+                          },
+                          "nodeType": "YulFunctionCall",
+                          "src": "641:28:0"
+                        },
+                        "variableNames": [
+                          {
+                            "name": "v",
+                            "nodeType": "YulIdentifier",
+                            "src": "636:1:0"
+                          }
+                        ]
+                      }
+                    ]
+                  },
                   "externalReferences": [
                     {
-                      "r": {
-                        "declaration": 37,
-                        "isOffset": false,
-                        "isSlot": false,
-                        "src": "562:1:0",
-                        "valueSize": 1
-                      }
+                      "declaration": 37,
+                      "isOffset": false,
+                      "isSlot": false,
+                      "src": "562:1:0",
+                      "valueSize": 1
                     },
                     {
-                      "sig": {
-                        "declaration": 46,
-                        "isOffset": false,
-                        "isSlot": false,
-                        "src": "577:3:0",
-                        "valueSize": 1
-                      }
+                      "declaration": 40,
+                      "isOffset": false,
+                      "isSlot": false,
+                      "src": "599:1:0",
+                      "valueSize": 1
                     },
                     {
-                      "s": {
-                        "declaration": 40,
-                        "isOffset": false,
-                        "isSlot": false,
-                        "src": "599:1:0",
-                        "valueSize": 1
-                      }
+                      "declaration": 46,
+                      "isOffset": false,
+                      "isSlot": false,
+                      "src": "577:3:0",
+                      "valueSize": 1
                     },
                     {
-                      "sig": {
-                        "declaration": 46,
-                        "isOffset": false,
-                        "isSlot": false,
-                        "src": "614:3:0",
-                        "valueSize": 1
-                      }
+                      "declaration": 46,
+                      "isOffset": false,
+                      "isSlot": false,
+                      "src": "614:3:0",
+                      "valueSize": 1
                     },
                     {
-                      "v": {
-                        "declaration": 43,
-                        "isOffset": false,
-                        "isSlot": false,
-                        "src": "636:1:0",
-                        "valueSize": 1
-                      }
+                      "declaration": 46,
+                      "isOffset": false,
+                      "isSlot": false,
+                      "src": "659:3:0",
+                      "valueSize": 1
                     },
                     {
-                      "sig": {
-                        "declaration": 46,
-                        "isOffset": false,
-                        "isSlot": false,
-                        "src": "659:3:0",
-                        "valueSize": 1
-                      }
+                      "declaration": 43,
+                      "isOffset": false,
+                      "isSlot": false,
+                      "src": "636:1:0",
+                      "valueSize": 1
                     }
                   ],
                   "id": 49,
                   "nodeType": "InlineAssembly",
-                  "operations": "{\n    r := mload(add(sig, 32))\n    s := mload(add(sig, 64))\n    v := byte(0, mload(add(sig, 96)))\n}",
                   "src": "539:140:0"
                 },
                 {
@@ -1013,7 +1172,7 @@
                         "name": "ecrecover",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 668,
+                        "referencedDeclaration": 789,
                         "src": "799:9:0",
                         "typeDescriptions": {
                           "typeIdentifier": "t_function_ecrecover_pure$_t_bytes32_$_t_uint8_$_t_bytes32_$_t_bytes32_$returns$_t_address_$",
@@ -1029,6 +1188,7 @@
                       "names": [],
                       "nodeType": "FunctionCall",
                       "src": "799:27:0",
+                      "tryCall": false,
                       "typeDescriptions": {
                         "typeIdentifier": "t_address",
                         "typeString": "address"
@@ -1063,12 +1223,14 @@
               ]
             },
             "documentation": null,
+            "functionSelector": "1a86b550",
             "id": 79,
             "implemented": true,
             "kind": "function",
             "modifiers": [],
             "name": "verify",
             "nodeType": "FunctionDefinition",
+            "overrides": null,
             "parameters": {
               "id": 24,
               "nodeType": "ParameterList",
@@ -1078,6 +1240,7 @@
                   "id": 19,
                   "name": "addr",
                   "nodeType": "VariableDeclaration",
+                  "overrides": null,
                   "scope": 79,
                   "src": "261:12:0",
                   "stateVariable": false,
@@ -1105,6 +1268,7 @@
                   "id": 21,
                   "name": "message",
                   "nodeType": "VariableDeclaration",
+                  "overrides": null,
                   "scope": 79,
                   "src": "275:15:0",
                   "stateVariable": false,
@@ -1131,6 +1295,7 @@
                   "id": 23,
                   "name": "signature",
                   "nodeType": "VariableDeclaration",
+                  "overrides": null,
                   "scope": 79,
                   "src": "292:22:0",
                   "stateVariable": false,
@@ -1164,6 +1329,7 @@
                   "id": 26,
                   "name": "",
                   "nodeType": "VariableDeclaration",
+                  "overrides": null,
                   "scope": 79,
                   "src": "360:4:0",
                   "stateVariable": false,
@@ -1191,7 +1357,7 @@
             "scope": 80,
             "src": "245:596:0",
             "stateMutability": "pure",
-            "superFunction": null,
+            "virtual": false,
             "visibility": "public"
           }
         ],
@@ -1202,7 +1368,7 @@
     "src": "0:843:0"
   },
   "legacyAST": {
-    "absolutePath": "/Users/lixuxian/blockchain/micropc/contracts/ILibSig.sol",
+    "absolutePath": "/Users/xuxianli/work/blockchain/micropc/contracts/ILibSig.sol",
     "exportedSymbols": {
       "LibSig": [
         80
@@ -1226,6 +1392,7 @@
         "src": "0:32:0"
       },
       {
+        "abstract": false,
         "baseContracts": [],
         "contractDependencies": [],
         "contractKind": "contract",
@@ -1300,7 +1467,7 @@
                             "name": "abi",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 663,
+                            "referencedDeclaration": 784,
                             "src": "173:3:0",
                             "typeDescriptions": {
                               "typeIdentifier": "t_magic_abi",
@@ -1330,6 +1497,7 @@
                         "names": [],
                         "nodeType": "FunctionCall",
                         "src": "173:58:0",
+                        "tryCall": false,
                         "typeDescriptions": {
                           "typeIdentifier": "t_bytes_memory_ptr",
                           "typeString": "bytes memory"
@@ -1347,7 +1515,7 @@
                       "name": "keccak256",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 670,
+                      "referencedDeclaration": 791,
                       "src": "163:9:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_keccak256_pure$_t_bytes_memory_ptr_$returns$_t_bytes32_$",
@@ -1363,6 +1531,7 @@
                     "names": [],
                     "nodeType": "FunctionCall",
                     "src": "163:69:0",
+                    "tryCall": false,
                     "typeDescriptions": {
                       "typeIdentifier": "t_bytes32",
                       "typeString": "bytes32"
@@ -1376,12 +1545,14 @@
               ]
             },
             "documentation": null,
+            "functionSelector": "1f275713",
             "id": 17,
             "implemented": true,
             "kind": "function",
             "modifiers": [],
             "name": "prefixed",
             "nodeType": "FunctionDefinition",
+            "overrides": null,
             "parameters": {
               "id": 4,
               "nodeType": "ParameterList",
@@ -1391,6 +1562,7 @@
                   "id": 3,
                   "name": "hash",
                   "nodeType": "VariableDeclaration",
+                  "overrides": null,
                   "scope": 17,
                   "src": "74:12:0",
                   "stateVariable": false,
@@ -1424,6 +1596,7 @@
                   "id": 6,
                   "name": "",
                   "nodeType": "VariableDeclaration",
+                  "overrides": null,
                   "scope": 17,
                   "src": "133:7:0",
                   "stateVariable": false,
@@ -1451,7 +1624,7 @@
             "scope": 80,
             "src": "56:183:0",
             "stateMutability": "pure",
-            "superFunction": null,
+            "virtual": false,
             "visibility": "public"
           },
           {
@@ -1583,6 +1756,7 @@
                       "id": 37,
                       "name": "r",
                       "nodeType": "VariableDeclaration",
+                      "overrides": null,
                       "scope": 78,
                       "src": "445:9:0",
                       "stateVariable": false,
@@ -1620,6 +1794,7 @@
                       "id": 40,
                       "name": "s",
                       "nodeType": "VariableDeclaration",
+                      "overrides": null,
                       "scope": 78,
                       "src": "464:9:0",
                       "stateVariable": false,
@@ -1657,6 +1832,7 @@
                       "id": 43,
                       "name": "v",
                       "nodeType": "VariableDeclaration",
+                      "overrides": null,
                       "scope": 78,
                       "src": "483:7:0",
                       "stateVariable": false,
@@ -1694,6 +1870,7 @@
                       "id": 46,
                       "name": "sig",
                       "nodeType": "VariableDeclaration",
+                      "overrides": null,
                       "scope": 78,
                       "src": "501:16:0",
                       "stateVariable": false,
@@ -1734,65 +1911,211 @@
                   "src": "501:28:0"
                 },
                 {
+                  "AST": {
+                    "nodeType": "YulBlock",
+                    "src": "548:131:0",
+                    "statements": [
+                      {
+                        "nodeType": "YulAssignment",
+                        "src": "562:24:0",
+                        "value": {
+                          "arguments": [
+                            {
+                              "arguments": [
+                                {
+                                  "name": "sig",
+                                  "nodeType": "YulIdentifier",
+                                  "src": "577:3:0"
+                                },
+                                {
+                                  "kind": "number",
+                                  "nodeType": "YulLiteral",
+                                  "src": "582:2:0",
+                                  "type": "",
+                                  "value": "32"
+                                }
+                              ],
+                              "functionName": {
+                                "name": "add",
+                                "nodeType": "YulIdentifier",
+                                "src": "573:3:0"
+                              },
+                              "nodeType": "YulFunctionCall",
+                              "src": "573:12:0"
+                            }
+                          ],
+                          "functionName": {
+                            "name": "mload",
+                            "nodeType": "YulIdentifier",
+                            "src": "567:5:0"
+                          },
+                          "nodeType": "YulFunctionCall",
+                          "src": "567:19:0"
+                        },
+                        "variableNames": [
+                          {
+                            "name": "r",
+                            "nodeType": "YulIdentifier",
+                            "src": "562:1:0"
+                          }
+                        ]
+                      },
+                      {
+                        "nodeType": "YulAssignment",
+                        "src": "599:24:0",
+                        "value": {
+                          "arguments": [
+                            {
+                              "arguments": [
+                                {
+                                  "name": "sig",
+                                  "nodeType": "YulIdentifier",
+                                  "src": "614:3:0"
+                                },
+                                {
+                                  "kind": "number",
+                                  "nodeType": "YulLiteral",
+                                  "src": "619:2:0",
+                                  "type": "",
+                                  "value": "64"
+                                }
+                              ],
+                              "functionName": {
+                                "name": "add",
+                                "nodeType": "YulIdentifier",
+                                "src": "610:3:0"
+                              },
+                              "nodeType": "YulFunctionCall",
+                              "src": "610:12:0"
+                            }
+                          ],
+                          "functionName": {
+                            "name": "mload",
+                            "nodeType": "YulIdentifier",
+                            "src": "604:5:0"
+                          },
+                          "nodeType": "YulFunctionCall",
+                          "src": "604:19:0"
+                        },
+                        "variableNames": [
+                          {
+                            "name": "s",
+                            "nodeType": "YulIdentifier",
+                            "src": "599:1:0"
+                          }
+                        ]
+                      },
+                      {
+                        "nodeType": "YulAssignment",
+                        "src": "636:33:0",
+                        "value": {
+                          "arguments": [
+                            {
+                              "kind": "number",
+                              "nodeType": "YulLiteral",
+                              "src": "646:1:0",
+                              "type": "",
+                              "value": "0"
+                            },
+                            {
+                              "arguments": [
+                                {
+                                  "arguments": [
+                                    {
+                                      "name": "sig",
+                                      "nodeType": "YulIdentifier",
+                                      "src": "659:3:0"
+                                    },
+                                    {
+                                      "kind": "number",
+                                      "nodeType": "YulLiteral",
+                                      "src": "664:2:0",
+                                      "type": "",
+                                      "value": "96"
+                                    }
+                                  ],
+                                  "functionName": {
+                                    "name": "add",
+                                    "nodeType": "YulIdentifier",
+                                    "src": "655:3:0"
+                                  },
+                                  "nodeType": "YulFunctionCall",
+                                  "src": "655:12:0"
+                                }
+                              ],
+                              "functionName": {
+                                "name": "mload",
+                                "nodeType": "YulIdentifier",
+                                "src": "649:5:0"
+                              },
+                              "nodeType": "YulFunctionCall",
+                              "src": "649:19:0"
+                            }
+                          ],
+                          "functionName": {
+                            "name": "byte",
+                            "nodeType": "YulIdentifier",
+                            "src": "641:4:0"
+                          },
+                          "nodeType": "YulFunctionCall",
+                          "src": "641:28:0"
+                        },
+                        "variableNames": [
+                          {
+                            "name": "v",
+                            "nodeType": "YulIdentifier",
+                            "src": "636:1:0"
+                          }
+                        ]
+                      }
+                    ]
+                  },
                   "externalReferences": [
                     {
-                      "r": {
-                        "declaration": 37,
-                        "isOffset": false,
-                        "isSlot": false,
-                        "src": "562:1:0",
-                        "valueSize": 1
-                      }
+                      "declaration": 37,
+                      "isOffset": false,
+                      "isSlot": false,
+                      "src": "562:1:0",
+                      "valueSize": 1
                     },
                     {
-                      "sig": {
-                        "declaration": 46,
-                        "isOffset": false,
-                        "isSlot": false,
-                        "src": "577:3:0",
-                        "valueSize": 1
-                      }
+                      "declaration": 40,
+                      "isOffset": false,
+                      "isSlot": false,
+                      "src": "599:1:0",
+                      "valueSize": 1
                     },
                     {
-                      "s": {
-                        "declaration": 40,
-                        "isOffset": false,
-                        "isSlot": false,
-                        "src": "599:1:0",
-                        "valueSize": 1
-                      }
+                      "declaration": 46,
+                      "isOffset": false,
+                      "isSlot": false,
+                      "src": "577:3:0",
+                      "valueSize": 1
                     },
                     {
-                      "sig": {
-                        "declaration": 46,
-                        "isOffset": false,
-                        "isSlot": false,
-                        "src": "614:3:0",
-                        "valueSize": 1
-                      }
+                      "declaration": 46,
+                      "isOffset": false,
+                      "isSlot": false,
+                      "src": "614:3:0",
+                      "valueSize": 1
                     },
                     {
-                      "v": {
-                        "declaration": 43,
-                        "isOffset": false,
-                        "isSlot": false,
-                        "src": "636:1:0",
-                        "valueSize": 1
-                      }
+                      "declaration": 46,
+                      "isOffset": false,
+                      "isSlot": false,
+                      "src": "659:3:0",
+                      "valueSize": 1
                     },
                     {
-                      "sig": {
-                        "declaration": 46,
-                        "isOffset": false,
-                        "isSlot": false,
-                        "src": "659:3:0",
-                        "valueSize": 1
-                      }
+                      "declaration": 43,
+                      "isOffset": false,
+                      "isSlot": false,
+                      "src": "636:1:0",
+                      "valueSize": 1
                     }
                   ],
                   "id": 49,
                   "nodeType": "InlineAssembly",
-                  "operations": "{\n    r := mload(add(sig, 32))\n    s := mload(add(sig, 64))\n    v := byte(0, mload(add(sig, 96)))\n}",
                   "src": "539:140:0"
                 },
                 {
@@ -2159,7 +2482,7 @@
                         "name": "ecrecover",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 668,
+                        "referencedDeclaration": 789,
                         "src": "799:9:0",
                         "typeDescriptions": {
                           "typeIdentifier": "t_function_ecrecover_pure$_t_bytes32_$_t_uint8_$_t_bytes32_$_t_bytes32_$returns$_t_address_$",
@@ -2175,6 +2498,7 @@
                       "names": [],
                       "nodeType": "FunctionCall",
                       "src": "799:27:0",
+                      "tryCall": false,
                       "typeDescriptions": {
                         "typeIdentifier": "t_address",
                         "typeString": "address"
@@ -2209,12 +2533,14 @@
               ]
             },
             "documentation": null,
+            "functionSelector": "1a86b550",
             "id": 79,
             "implemented": true,
             "kind": "function",
             "modifiers": [],
             "name": "verify",
             "nodeType": "FunctionDefinition",
+            "overrides": null,
             "parameters": {
               "id": 24,
               "nodeType": "ParameterList",
@@ -2224,6 +2550,7 @@
                   "id": 19,
                   "name": "addr",
                   "nodeType": "VariableDeclaration",
+                  "overrides": null,
                   "scope": 79,
                   "src": "261:12:0",
                   "stateVariable": false,
@@ -2251,6 +2578,7 @@
                   "id": 21,
                   "name": "message",
                   "nodeType": "VariableDeclaration",
+                  "overrides": null,
                   "scope": 79,
                   "src": "275:15:0",
                   "stateVariable": false,
@@ -2277,6 +2605,7 @@
                   "id": 23,
                   "name": "signature",
                   "nodeType": "VariableDeclaration",
+                  "overrides": null,
                   "scope": 79,
                   "src": "292:22:0",
                   "stateVariable": false,
@@ -2310,6 +2639,7 @@
                   "id": 26,
                   "name": "",
                   "nodeType": "VariableDeclaration",
+                  "overrides": null,
                   "scope": 79,
                   "src": "360:4:0",
                   "stateVariable": false,
@@ -2337,7 +2667,7 @@
             "scope": 80,
             "src": "245:596:0",
             "stateMutability": "pure",
-            "superFunction": null,
+            "virtual": false,
             "visibility": "public"
           }
         ],
@@ -2349,11 +2679,11 @@
   },
   "compiler": {
     "name": "solc",
-    "version": "0.5.8+commit.23d335f2.Emscripten.clang"
+    "version": "0.6.0+commit.26b70077.Emscripten.clang"
   },
   "networks": {},
-  "schemaVersion": "3.0.16",
-  "updatedAt": "2019-12-19T07:21:31.678Z",
+  "schemaVersion": "3.0.20",
+  "updatedAt": "2019-12-24T11:50:15.983Z",
   "devdoc": {
     "methods": {}
   },

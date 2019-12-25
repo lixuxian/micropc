@@ -5,12 +5,19 @@ import "./SimplePaymentChannel.sol";
 
 contract MultipartyChannel {
     event CreateMPCSuccess(uint256 id, address[] parties, uint256[] channels_id);
+    event UpdateMPCSuccess();
 
     struct MPC {
         uint256 id;
         address[] parties;
         uint256[] channels_id;
         uint256 version_num;
+    }
+
+    struct Transaction {
+        address src;
+        address dst;
+        uint256 weis;
     }
 
     LibSig libSig = new LibSig();
@@ -41,10 +48,20 @@ contract MultipartyChannel {
         return mpc.id;
     }
 
-    function updateMPC(uint256 mpc_id)
+    function updateMPC(uint256 mpc_id, Transaction[] calldata txs, string calldata msgstr, uint256 version, bytes[] calldata sigs)
         external
     {
-        // TODO
+        // verify sigs
+        require(mpc_id == mpc.id, "mpc id error");
+        for (uint i = 0; i < mpc.parties.length; i++) {
+            bytes32 msgHash = libSig.prefixed(keccak256(abi.encodePacked(msgstr, mpc.parties[i], version)));
+            require(libSig.verify(mpc.parties[i], msgHash, sigs[i]), "updateMPC verify sig failed!!!");
+        }
+        // execute txs
+        for (uint i = 0; i < txs.length; i++) {
+
+        }
+        emit UpdateMPCSuccess();
     }
 
     function closeMPC(uint256 mpc_id)

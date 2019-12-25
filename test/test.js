@@ -12,8 +12,8 @@ var spc_bytecode = fs.readFileSync("./build/contracts_SimplePaymentChannel_sol_S
 var mpc_contract_abi = JSON.parse(fs.readFileSync("./build/contracts_MultipartyChannel_sol_MultipartyChannel.abi"));  // 读取编译合约的abi文件。
 var spc_bytecode = fs.readFileSync("./build/contracts_MultipartyChannel_sol_MultipartyChannel.bin");  // 读取编译合约的二进制文件。
 
-const spc_address = '0xAF981801457Ce4A531a7664e9d51489E3B97DAC3';
-const mpc_address = '0x35DE0246D3D152ad20fb560Cb9C5E2Ded04B197F';
+const spc_address = '0xd500493C86664900F34CF9A6dEc23b86b5313688';
+const mpc_address = '0x95050CA71d80A4e39ee529812C4d73cC255333fE';
 
 const spc_contract = new web3.eth.Contract(spc_contract_abi, spc_address);
 const mpc_contract = new web3.eth.Contract(mpc_contract_abi, mpc_address);
@@ -105,10 +105,39 @@ async function createMPC(parties, channels_id) {
         gas: 1000000
     })
     .on('receipt', function(receipt){
-        console.log("createMPC recipt: ", receipt.events.CreateMPCSuccess.returnValues);
+        console.log("createMPC recipt: ", receipt.events);
     })
     .on('error', function(error) {     
         console.log("createMPC error: ", error);
+    });
+}
+
+async function updateMPC(mpc_id, parties, txs, version) {
+    var msgstr = JSON.stringify(txs);
+    var sigs = new Array();
+    for (id in parties) {
+        addr = parties[id];
+        const msgHash = await web3.utils.soliditySha3(
+            {t: 'string', v: msgstr},
+            {t: 'address', v: addr},
+            {t: 'uint256', v: version}
+        );
+        var sig = await generateSignatures(msgHash, addr);
+        sigs.push(sig);
+    }
+
+    mpc_contract.methods.updateMPC(mpc_id, txs, msgstr, version, sigs)
+    .send(
+        {
+            from: parties[0],
+            gas: 1000000
+        }
+    )
+    .on('receipt', function(receipt){
+        console.log("updateMPC recipt: ", receipt.events);
+    })
+    .on('error', function(error) {     
+        console.log("updateMPC error: ", error);
     });
 }
 
@@ -131,6 +160,24 @@ async function createMPC(parties, channels_id) {
     var parties = new Array(alice, bob, carol);
     var channels_id = new Array(ab_channel_id, bc_channel_id);
     await createMPC(parties, channels_id);
+
+    // update MPC
+    var weis = web3.utils.toWei('1', 'ether');
+    var txs = [
+        {
+            "src": alice,
+            "dst": bob,
+            "weis": weis
+        },
+        {
+            "src": bob,
+            "dst": carol,
+            "weis": weis
+        }
+    ]
+
+    await updateMPC(0, parties, txs, 1);
+
 
     // // // update the channel
     // var new_ab = '3';
