@@ -1,4 +1,5 @@
 pragma solidity >=0.4.24 <0.7.0;
+pragma experimental ABIEncoderV2;
 
 import "./ILibSig.sol";
 
@@ -39,6 +40,14 @@ contract SimplePaymentChannel {
         tpc_ab.bob_deposited = false;
 
         emit OpenRequest(alice, bob, ab, bb);
+    }
+
+    function getChannel(uint256 id)
+        external
+        view
+        returns (TPC memory)
+    {
+        return tpc_map[id];
     }
 
     function deposit(address alice, address bob)
@@ -86,10 +95,21 @@ contract SimplePaymentChannel {
         require(version > tpc_map[id].version_num, "version num litter than lastest one");
         require(libSig.verify(alice, msgHash, sigA) && libSig.verify(bob, msgHash, sigB), "verify failed!");
 
+        // updateBalanceInternal(id, new_ab, new_bb);
+
         tpc_map[id].alice_balance = new_ab;
         tpc_map[id].bob_balance = new_bb;
         tpc_map[id].version_num += 1;
+
         emit UpdateSuccess(id, alice, bob, new_ab, new_bb);
+    }
+
+    function updateBalanceInternal(uint256 id, uint256 new_ab, uint256 new_bb)
+        external
+    {
+        tpc_map[id].alice_balance = new_ab;
+        tpc_map[id].bob_balance = new_bb;
+        tpc_map[id].version_num += 1;
     }
 
     function closeChannel(uint256 id, address payable alice, address payable bob)
@@ -120,4 +140,11 @@ contract SimplePaymentChannel {
         }
     }
 
+    function getTPC(uint256 id)
+        external
+        view
+        returns (TPC memory)
+    {
+        return tpc_map[id];
+    }
 }

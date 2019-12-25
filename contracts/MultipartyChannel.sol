@@ -6,6 +6,7 @@ import "./SimplePaymentChannel.sol";
 contract MultipartyChannel {
     event CreateMPCSuccess(uint256 id, address[] parties, uint256[] channels_id);
     event UpdateMPCSuccess();
+    event TransactionError(Transaction t);
 
     struct MPC {
         uint256 id;
@@ -15,6 +16,7 @@ contract MultipartyChannel {
     }
 
     struct Transaction {
+        uint256 channel_id;
         address src;
         address dst;
         uint256 weis;
@@ -59,7 +61,19 @@ contract MultipartyChannel {
         }
         // execute txs
         for (uint i = 0; i < txs.length; i++) {
-
+            uint256 new_ab = 0;
+            uint256 new_bb = 0;
+            SimplePaymentChannel.TPC memory tpc = spc.getTPC(txs[i].channel_id);
+            if (txs[i].src == tpc.alice) {
+                new_ab = tpc.alice_balance - txs[i].weis;
+                new_bb = tpc.bob_balance + txs[i].weis;
+            } else if (txs[i].src == tpc.bob) {
+                new_ab = tpc.alice_balance + txs[i].weis;
+                new_bb = tpc.bob_balance - txs[i].weis;
+            } else {
+                emit TransactionError(txs[i]);
+            }
+            spc.updateBalanceInternal(txs[i].channel_id, new_ab, new_bb);
         }
         emit UpdateMPCSuccess();
     }
