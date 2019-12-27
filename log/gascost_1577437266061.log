@@ -1,0 +1,546 @@
+[2019-12-27T17:01:06.312] [INFO] gas - openChannel gasUsed:  54961
+[2019-12-27T17:01:06.363] [INFO] gas - alice deposit gasUsed:  52537
+[2019-12-27T17:01:06.454] [INFO] gas - bob deposit gasUsed:  154699
+[2019-12-27T17:01:06.508] [INFO] gas - openChannel gasUsed:  54961
+[2019-12-27T17:01:06.546] [INFO] gas - alice deposit gasUsed:  52537
+[2019-12-27T17:01:06.615] [INFO] gas - bob deposit gasUsed:  154699
+[2019-12-27T17:01:06.665] [INFO] gas - openChannel gasUsed:  54961
+[2019-12-27T17:01:06.703] [INFO] gas - alice deposit gasUsed:  52537
+[2019-12-27T17:01:06.767] [INFO] gas - bob deposit gasUsed:  154699
+[2019-12-27T17:01:06.820] [INFO] gas - openChannel gasUsed:  54961
+[2019-12-27T17:01:06.853] [INFO] gas - alice deposit gasUsed:  52537
+[2019-12-27T17:01:06.944] [INFO] gas - bob deposit gasUsed:  154699
+[2019-12-27T17:01:06.984] [INFO] gas - openChannel gasUsed:  54961
+[2019-12-27T17:01:07.017] [INFO] gas - alice deposit gasUsed:  52537
+[2019-12-27T17:01:07.070] [INFO] gas - bob deposit gasUsed:  154699
+[2019-12-27T17:01:07.106] [INFO] gas - openChannel gasUsed:  54961
+[2019-12-27T17:01:07.145] [INFO] gas - alice deposit gasUsed:  52537
+[2019-12-27T17:01:07.201] [INFO] gas - bob deposit gasUsed:  154699
+[2019-12-27T17:01:07.241] [INFO] gas - openChannel gasUsed:  54961
+[2019-12-27T17:01:07.297] [INFO] gas - alice deposit gasUsed:  52537
+[2019-12-27T17:01:07.352] [INFO] gas - bob deposit gasUsed:  154699
+[2019-12-27T17:01:07.398] [INFO] gas - openChannel gasUsed:  54961
+[2019-12-27T17:01:07.441] [INFO] gas - alice deposit gasUsed:  52537
+[2019-12-27T17:01:07.513] [INFO] gas - bob deposit gasUsed:  154699
+[2019-12-27T17:01:07.562] [INFO] gas - openChannel gasUsed:  54961
+[2019-12-27T17:01:07.604] [INFO] gas - alice deposit gasUsed:  52537
+[2019-12-27T17:01:07.656] [INFO] gas - bob deposit gasUsed:  154699
+[2019-12-27T17:01:07.723] [INFO] gas - openChannel gasUsed:  54961
+[2019-12-27T17:01:07.766] [INFO] gas - alice deposit gasUsed:  52537
+[2019-12-27T17:01:07.818] [INFO] gas - bob deposit gasUsed:  154699
+[2019-12-27T17:01:07.856] [INFO] gas - openChannel gasUsed:  54961
+[2019-12-27T17:01:07.895] [INFO] gas - alice deposit gasUsed:  52537
+[2019-12-27T17:01:07.947] [INFO] gas - bob deposit gasUsed:  154699
+[2019-12-27T17:01:07.987] [INFO] gas - openChannel gasUsed:  54961
+[2019-12-27T17:01:08.019] [INFO] gas - alice deposit gasUsed:  52537
+[2019-12-27T17:01:08.091] [INFO] gas - bob deposit gasUsed:  154699
+[2019-12-27T17:01:08.133] [INFO] gas - openChannel gasUsed:  54961
+[2019-12-27T17:01:08.166] [INFO] gas - alice deposit gasUsed:  52537
+[2019-12-27T17:01:08.218] [INFO] gas - bob deposit gasUsed:  154699
+[2019-12-27T17:01:08.254] [INFO] gas - openChannel gasUsed:  54961
+[2019-12-27T17:01:08.285] [INFO] gas - alice deposit gasUsed:  52537
+[2019-12-27T17:01:08.336] [INFO] gas - bob deposit gasUsed:  154699
+[2019-12-27T17:01:08.376] [INFO] gas - openChannel gasUsed:  54961
+[2019-12-27T17:01:08.408] [INFO] gas - alice deposit gasUsed:  52537
+[2019-12-27T17:01:08.460] [INFO] gas - bob deposit gasUsed:  154699
+[2019-12-27T17:01:08.503] [INFO] gas - openChannel gasUsed:  54961
+[2019-12-27T17:01:08.534] [INFO] gas - alice deposit gasUsed:  52537
+[2019-12-27T17:01:08.582] [INFO] gas - bob deposit gasUsed:  154699
+[2019-12-27T17:01:08.619] [INFO] gas - openChannel gasUsed:  54961
+[2019-12-27T17:01:08.651] [INFO] gas - alice deposit gasUsed:  52537
+[2019-12-27T17:01:08.703] [INFO] gas - bob deposit gasUsed:  154699
+[2019-12-27T17:01:08.743] [INFO] gas - openChannel gasUsed:  54961
+[2019-12-27T17:01:08.777] [INFO] gas - alice deposit gasUsed:  52537
+[2019-12-27T17:01:08.821] [INFO] gas - bob deposit gasUsed:  154699
+[2019-12-27T17:01:08.856] [INFO] gas - openChannel gasUsed:  54961
+[2019-12-27T17:01:08.915] [INFO] gas - alice deposit gasUsed:  52537
+[2019-12-27T17:01:08.965] [INFO] gas - bob deposit gasUsed:  154699
+[2019-12-27T17:01:09.001] [INFO] gas - openChannel gasUsed:  54961
+[2019-12-27T17:01:09.033] [INFO] gas - alice deposit gasUsed:  52537
+[2019-12-27T17:01:09.080] [INFO] gas - bob deposit gasUsed:  154699
+[2019-12-27T17:01:09.115] [INFO] gas - openChannel gasUsed:  54961
+[2019-12-27T17:01:09.146] [INFO] gas - alice deposit gasUsed:  52537
+[2019-12-27T17:01:09.193] [INFO] gas - bob deposit gasUsed:  154699
+[2019-12-27T17:01:09.226] [INFO] gas - openChannel gasUsed:  54961
+[2019-12-27T17:01:09.260] [INFO] gas - alice deposit gasUsed:  52537
+[2019-12-27T17:01:09.308] [INFO] gas - bob deposit gasUsed:  154699
+[2019-12-27T17:01:09.345] [INFO] gas - openChannel gasUsed:  54961
+[2019-12-27T17:01:09.375] [INFO] gas - alice deposit gasUsed:  52537
+[2019-12-27T17:01:09.419] [INFO] gas - bob deposit gasUsed:  154699
+[2019-12-27T17:01:09.456] [INFO] gas - openChannel gasUsed:  54961
+[2019-12-27T17:01:09.483] [INFO] gas - alice deposit gasUsed:  52537
+[2019-12-27T17:01:09.528] [INFO] gas - bob deposit gasUsed:  154699
+[2019-12-27T17:01:09.561] [INFO] gas - openChannel gasUsed:  54961
+[2019-12-27T17:01:09.589] [INFO] gas - alice deposit gasUsed:  52537
+[2019-12-27T17:01:09.635] [INFO] gas - bob deposit gasUsed:  154699
+[2019-12-27T17:01:09.669] [INFO] gas - openChannel gasUsed:  54961
+[2019-12-27T17:01:09.702] [INFO] gas - alice deposit gasUsed:  52537
+[2019-12-27T17:01:09.748] [INFO] gas - bob deposit gasUsed:  154699
+[2019-12-27T17:01:09.781] [INFO] gas - openChannel gasUsed:  54897
+[2019-12-27T17:01:09.811] [INFO] gas - alice deposit gasUsed:  52473
+[2019-12-27T17:01:09.855] [INFO] gas - bob deposit gasUsed:  154635
+[2019-12-27T17:01:09.890] [INFO] gas - openChannel gasUsed:  54961
+[2019-12-27T17:01:09.920] [INFO] gas - alice deposit gasUsed:  52537
+[2019-12-27T17:01:09.966] [INFO] gas - bob deposit gasUsed:  154699
+[2019-12-27T17:01:10.002] [INFO] gas - openChannel gasUsed:  54961
+[2019-12-27T17:01:10.031] [INFO] gas - alice deposit gasUsed:  52537
+[2019-12-27T17:01:10.086] [INFO] gas - bob deposit gasUsed:  154699
+[2019-12-27T17:01:10.119] [INFO] gas - openChannel gasUsed:  54961
+[2019-12-27T17:01:10.153] [INFO] gas - alice deposit gasUsed:  52537
+[2019-12-27T17:01:10.207] [INFO] gas - bob deposit gasUsed:  154699
+[2019-12-27T17:01:10.243] [INFO] gas - openChannel gasUsed:  54961
+[2019-12-27T17:01:10.273] [INFO] gas - alice deposit gasUsed:  52537
+[2019-12-27T17:01:10.324] [INFO] gas - bob deposit gasUsed:  154699
+[2019-12-27T17:01:10.361] [INFO] gas - openChannel gasUsed:  54961
+[2019-12-27T17:01:10.389] [INFO] gas - alice deposit gasUsed:  52537
+[2019-12-27T17:01:10.435] [INFO] gas - bob deposit gasUsed:  154699
+[2019-12-27T17:01:10.470] [INFO] gas - openChannel gasUsed:  54961
+[2019-12-27T17:01:10.499] [INFO] gas - alice deposit gasUsed:  52537
+[2019-12-27T17:01:10.545] [INFO] gas - bob deposit gasUsed:  154699
+[2019-12-27T17:01:10.585] [INFO] gas - openChannel gasUsed:  54961
+[2019-12-27T17:01:10.617] [INFO] gas - alice deposit gasUsed:  52537
+[2019-12-27T17:01:10.663] [INFO] gas - bob deposit gasUsed:  154699
+[2019-12-27T17:01:10.702] [INFO] gas - openChannel gasUsed:  54961
+[2019-12-27T17:01:10.732] [INFO] gas - alice deposit gasUsed:  52537
+[2019-12-27T17:01:10.781] [INFO] gas - bob deposit gasUsed:  154699
+[2019-12-27T17:01:10.817] [INFO] gas - openChannel gasUsed:  54897
+[2019-12-27T17:01:10.849] [INFO] gas - alice deposit gasUsed:  52473
+[2019-12-27T17:01:10.896] [INFO] gas - bob deposit gasUsed:  154635
+[2019-12-27T17:01:10.930] [INFO] gas - openChannel gasUsed:  54961
+[2019-12-27T17:01:10.976] [INFO] gas - alice deposit gasUsed:  52537
+[2019-12-27T17:01:11.021] [INFO] gas - bob deposit gasUsed:  154699
+[2019-12-27T17:01:11.054] [INFO] gas - openChannel gasUsed:  54961
+[2019-12-27T17:01:11.084] [INFO] gas - alice deposit gasUsed:  52537
+[2019-12-27T17:01:11.126] [INFO] gas - bob deposit gasUsed:  154699
+[2019-12-27T17:01:11.161] [INFO] gas - openChannel gasUsed:  54961
+[2019-12-27T17:01:11.192] [INFO] gas - alice deposit gasUsed:  52537
+[2019-12-27T17:01:11.234] [INFO] gas - bob deposit gasUsed:  154699
+[2019-12-27T17:01:11.268] [INFO] gas - openChannel gasUsed:  54961
+[2019-12-27T17:01:11.297] [INFO] gas - alice deposit gasUsed:  52537
+[2019-12-27T17:01:11.346] [INFO] gas - bob deposit gasUsed:  154699
+[2019-12-27T17:01:11.376] [INFO] gas - openChannel gasUsed:  54961
+[2019-12-27T17:01:11.406] [INFO] gas - alice deposit gasUsed:  52537
+[2019-12-27T17:01:11.448] [INFO] gas - bob deposit gasUsed:  154699
+[2019-12-27T17:01:11.483] [INFO] gas - openChannel gasUsed:  54961
+[2019-12-27T17:01:11.510] [INFO] gas - alice deposit gasUsed:  52537
+[2019-12-27T17:01:11.552] [INFO] gas - bob deposit gasUsed:  154699
+[2019-12-27T17:01:11.588] [INFO] gas - openChannel gasUsed:  54961
+[2019-12-27T17:01:11.618] [INFO] gas - alice deposit gasUsed:  52537
+[2019-12-27T17:01:11.662] [INFO] gas - bob deposit gasUsed:  154699
+[2019-12-27T17:01:11.699] [INFO] gas - openChannel gasUsed:  54961
+[2019-12-27T17:01:11.729] [INFO] gas - alice deposit gasUsed:  52537
+[2019-12-27T17:01:11.772] [INFO] gas - bob deposit gasUsed:  154699
+[2019-12-27T17:01:11.803] [INFO] gas - openChannel gasUsed:  54961
+[2019-12-27T17:01:11.833] [INFO] gas - alice deposit gasUsed:  52537
+[2019-12-27T17:01:11.875] [INFO] gas - bob deposit gasUsed:  154699
+[2019-12-27T17:01:11.909] [INFO] gas - openChannel gasUsed:  54961
+[2019-12-27T17:01:11.938] [INFO] gas - alice deposit gasUsed:  52537
+[2019-12-27T17:01:11.983] [INFO] gas - bob deposit gasUsed:  154699
+[2019-12-27T17:01:12.017] [INFO] gas - openChannel gasUsed:  54961
+[2019-12-27T17:01:12.045] [INFO] gas - alice deposit gasUsed:  52537
+[2019-12-27T17:01:12.094] [INFO] gas - bob deposit gasUsed:  154699
+[2019-12-27T17:01:12.130] [INFO] gas - openChannel gasUsed:  54961
+[2019-12-27T17:01:12.156] [INFO] gas - alice deposit gasUsed:  52537
+[2019-12-27T17:01:12.204] [INFO] gas - bob deposit gasUsed:  154699
+[2019-12-27T17:01:12.240] [INFO] gas - openChannel gasUsed:  54961
+[2019-12-27T17:01:12.269] [INFO] gas - alice deposit gasUsed:  52537
+[2019-12-27T17:01:12.311] [INFO] gas - bob deposit gasUsed:  154699
+[2019-12-27T17:01:12.345] [INFO] gas - openChannel gasUsed:  54961
+[2019-12-27T17:01:12.375] [INFO] gas - alice deposit gasUsed:  52537
+[2019-12-27T17:01:12.420] [INFO] gas - bob deposit gasUsed:  154699
+[2019-12-27T17:01:12.455] [INFO] gas - openChannel gasUsed:  54961
+[2019-12-27T17:01:12.484] [INFO] gas - alice deposit gasUsed:  52537
+[2019-12-27T17:01:12.530] [INFO] gas - bob deposit gasUsed:  154699
+[2019-12-27T17:01:12.564] [INFO] gas - openChannel gasUsed:  54961
+[2019-12-27T17:01:12.594] [INFO] gas - alice deposit gasUsed:  52537
+[2019-12-27T17:01:12.639] [INFO] gas - bob deposit gasUsed:  154699
+[2019-12-27T17:01:12.670] [INFO] gas - openChannel gasUsed:  54961
+[2019-12-27T17:01:12.701] [INFO] gas - alice deposit gasUsed:  52537
+[2019-12-27T17:01:12.746] [INFO] gas - bob deposit gasUsed:  154699
+[2019-12-27T17:01:12.778] [INFO] gas - openChannel gasUsed:  54897
+[2019-12-27T17:01:12.808] [INFO] gas - alice deposit gasUsed:  52473
+[2019-12-27T17:01:12.853] [INFO] gas - bob deposit gasUsed:  154635
+[2019-12-27T17:01:12.885] [INFO] gas - openChannel gasUsed:  54897
+[2019-12-27T17:01:12.914] [INFO] gas - alice deposit gasUsed:  52473
+[2019-12-27T17:01:12.959] [INFO] gas - bob deposit gasUsed:  154635
+[2019-12-27T17:01:12.993] [INFO] gas - openChannel gasUsed:  54961
+[2019-12-27T17:01:13.023] [INFO] gas - alice deposit gasUsed:  52537
+[2019-12-27T17:01:13.065] [INFO] gas - bob deposit gasUsed:  154699
+[2019-12-27T17:01:13.097] [INFO] gas - openChannel gasUsed:  54961
+[2019-12-27T17:01:13.127] [INFO] gas - alice deposit gasUsed:  52537
+[2019-12-27T17:01:13.176] [INFO] gas - bob deposit gasUsed:  154699
+[2019-12-27T17:01:13.215] [INFO] gas - openChannel gasUsed:  54961
+[2019-12-27T17:01:13.244] [INFO] gas - alice deposit gasUsed:  52537
+[2019-12-27T17:01:13.296] [INFO] gas - bob deposit gasUsed:  154699
+[2019-12-27T17:01:13.330] [INFO] gas - openChannel gasUsed:  54961
+[2019-12-27T17:01:13.360] [INFO] gas - alice deposit gasUsed:  52537
+[2019-12-27T17:01:13.410] [INFO] gas - bob deposit gasUsed:  154699
+[2019-12-27T17:01:13.444] [INFO] gas - openChannel gasUsed:  54961
+[2019-12-27T17:01:13.477] [INFO] gas - alice deposit gasUsed:  52537
+[2019-12-27T17:01:13.527] [INFO] gas - bob deposit gasUsed:  154699
+[2019-12-27T17:01:13.561] [INFO] gas - openChannel gasUsed:  54961
+[2019-12-27T17:01:13.592] [INFO] gas - alice deposit gasUsed:  52537
+[2019-12-27T17:01:13.636] [INFO] gas - bob deposit gasUsed:  154699
+[2019-12-27T17:01:13.670] [INFO] gas - openChannel gasUsed:  54961
+[2019-12-27T17:01:13.701] [INFO] gas - alice deposit gasUsed:  52537
+[2019-12-27T17:01:13.745] [INFO] gas - bob deposit gasUsed:  154699
+[2019-12-27T17:01:13.777] [INFO] gas - openChannel gasUsed:  54961
+[2019-12-27T17:01:13.806] [INFO] gas - alice deposit gasUsed:  52537
+[2019-12-27T17:01:13.850] [INFO] gas - bob deposit gasUsed:  154699
+[2019-12-27T17:01:13.881] [INFO] gas - openChannel gasUsed:  54961
+[2019-12-27T17:01:13.917] [INFO] gas - alice deposit gasUsed:  52537
+[2019-12-27T17:01:13.975] [INFO] gas - bob deposit gasUsed:  154699
+[2019-12-27T17:01:14.011] [INFO] gas - openChannel gasUsed:  54961
+[2019-12-27T17:01:14.047] [INFO] gas - alice deposit gasUsed:  52537
+[2019-12-27T17:01:14.096] [INFO] gas - bob deposit gasUsed:  154699
+[2019-12-27T17:01:14.131] [INFO] gas - openChannel gasUsed:  54961
+[2019-12-27T17:01:14.159] [INFO] gas - alice deposit gasUsed:  52537
+[2019-12-27T17:01:14.207] [INFO] gas - bob deposit gasUsed:  154699
+[2019-12-27T17:01:14.246] [INFO] gas - openChannel gasUsed:  54961
+[2019-12-27T17:01:14.279] [INFO] gas - alice deposit gasUsed:  52537
+[2019-12-27T17:01:14.326] [INFO] gas - bob deposit gasUsed:  154699
+[2019-12-27T17:01:14.361] [INFO] gas - openChannel gasUsed:  54961
+[2019-12-27T17:01:14.392] [INFO] gas - alice deposit gasUsed:  52537
+[2019-12-27T17:01:14.435] [INFO] gas - bob deposit gasUsed:  154699
+[2019-12-27T17:01:14.471] [INFO] gas - openChannel gasUsed:  54961
+[2019-12-27T17:01:14.501] [INFO] gas - alice deposit gasUsed:  52537
+[2019-12-27T17:01:14.549] [INFO] gas - bob deposit gasUsed:  154699
+[2019-12-27T17:01:14.584] [INFO] gas - openChannel gasUsed:  54961
+[2019-12-27T17:01:14.617] [INFO] gas - alice deposit gasUsed:  52537
+[2019-12-27T17:01:14.662] [INFO] gas - bob deposit gasUsed:  154699
+[2019-12-27T17:01:14.698] [INFO] gas - openChannel gasUsed:  54961
+[2019-12-27T17:01:14.730] [INFO] gas - alice deposit gasUsed:  52537
+[2019-12-27T17:01:14.775] [INFO] gas - bob deposit gasUsed:  154699
+[2019-12-27T17:01:14.812] [INFO] gas - openChannel gasUsed:  54961
+[2019-12-27T17:01:14.841] [INFO] gas - alice deposit gasUsed:  52537
+[2019-12-27T17:01:14.885] [INFO] gas - bob deposit gasUsed:  154699
+[2019-12-27T17:01:14.919] [INFO] gas - openChannel gasUsed:  54961
+[2019-12-27T17:01:14.951] [INFO] gas - alice deposit gasUsed:  52537
+[2019-12-27T17:01:14.994] [INFO] gas - bob deposit gasUsed:  154699
+[2019-12-27T17:01:15.027] [INFO] gas - openChannel gasUsed:  54897
+[2019-12-27T17:01:15.057] [INFO] gas - alice deposit gasUsed:  52473
+[2019-12-27T17:01:15.100] [INFO] gas - bob deposit gasUsed:  154635
+[2019-12-27T17:01:15.132] [INFO] gas - openChannel gasUsed:  54961
+[2019-12-27T17:01:15.162] [INFO] gas - alice deposit gasUsed:  52537
+[2019-12-27T17:01:15.206] [INFO] gas - bob deposit gasUsed:  154699
+[2019-12-27T17:01:15.241] [INFO] gas - openChannel gasUsed:  54961
+[2019-12-27T17:01:15.270] [INFO] gas - alice deposit gasUsed:  52537
+[2019-12-27T17:01:15.313] [INFO] gas - bob deposit gasUsed:  154699
+[2019-12-27T17:01:15.345] [INFO] gas - openChannel gasUsed:  54961
+[2019-12-27T17:01:15.375] [INFO] gas - alice deposit gasUsed:  52537
+[2019-12-27T17:01:15.419] [INFO] gas - bob deposit gasUsed:  154699
+[2019-12-27T17:01:15.452] [INFO] gas - openChannel gasUsed:  54961
+[2019-12-27T17:01:15.482] [INFO] gas - alice deposit gasUsed:  52537
+[2019-12-27T17:01:15.526] [INFO] gas - bob deposit gasUsed:  154699
+[2019-12-27T17:01:15.558] [INFO] gas - openChannel gasUsed:  54961
+[2019-12-27T17:01:15.588] [INFO] gas - alice deposit gasUsed:  52537
+[2019-12-27T17:01:15.631] [INFO] gas - bob deposit gasUsed:  154699
+[2019-12-27T17:01:15.664] [INFO] gas - openChannel gasUsed:  54961
+[2019-12-27T17:01:15.692] [INFO] gas - alice deposit gasUsed:  52537
+[2019-12-27T17:01:15.734] [INFO] gas - bob deposit gasUsed:  154699
+[2019-12-27T17:01:15.769] [INFO] gas - openChannel gasUsed:  54961
+[2019-12-27T17:01:15.797] [INFO] gas - alice deposit gasUsed:  52537
+[2019-12-27T17:01:15.840] [INFO] gas - bob deposit gasUsed:  154699
+[2019-12-27T17:01:15.876] [INFO] gas - openChannel gasUsed:  54961
+[2019-12-27T17:01:15.907] [INFO] gas - alice deposit gasUsed:  52537
+[2019-12-27T17:01:15.950] [INFO] gas - bob deposit gasUsed:  154699
+[2019-12-27T17:01:15.980] [INFO] gas - openChannel gasUsed:  54961
+[2019-12-27T17:01:16.008] [INFO] gas - alice deposit gasUsed:  52537
+[2019-12-27T17:01:16.050] [INFO] gas - bob deposit gasUsed:  154699
+[2019-12-27T17:01:16.084] [INFO] gas - openChannel gasUsed:  54961
+[2019-12-27T17:01:16.112] [INFO] gas - alice deposit gasUsed:  52537
+[2019-12-27T17:01:16.158] [INFO] gas - bob deposit gasUsed:  154699
+[2019-12-27T17:01:16.199] [INFO] gas - openChannel gasUsed:  54961
+[2019-12-27T17:01:16.228] [INFO] gas - alice deposit gasUsed:  52537
+[2019-12-27T17:01:16.272] [INFO] gas - bob deposit gasUsed:  154699
+[2019-12-27T17:01:16.304] [INFO] gas - openChannel gasUsed:  54961
+[2019-12-27T17:01:16.333] [INFO] gas - alice deposit gasUsed:  52537
+[2019-12-27T17:01:16.374] [INFO] gas - bob deposit gasUsed:  154699
+[2019-12-27T17:01:16.409] [INFO] gas - openChannel gasUsed:  54961
+[2019-12-27T17:01:16.439] [INFO] gas - alice deposit gasUsed:  52537
+[2019-12-27T17:01:16.482] [INFO] gas - bob deposit gasUsed:  154699
+[2019-12-27T17:01:16.516] [INFO] gas - openChannel gasUsed:  54897
+[2019-12-27T17:01:16.543] [INFO] gas - alice deposit gasUsed:  52473
+[2019-12-27T17:01:16.589] [INFO] gas - bob deposit gasUsed:  154635
+[2019-12-27T17:01:16.621] [INFO] gas - openChannel gasUsed:  54961
+[2019-12-27T17:01:16.650] [INFO] gas - alice deposit gasUsed:  52537
+[2019-12-27T17:01:16.695] [INFO] gas - bob deposit gasUsed:  154699
+[2019-12-27T17:01:16.727] [INFO] gas - openChannel gasUsed:  54961
+[2019-12-27T17:01:16.759] [INFO] gas - alice deposit gasUsed:  52537
+[2019-12-27T17:01:16.804] [INFO] gas - bob deposit gasUsed:  154699
+[2019-12-27T17:01:16.836] [INFO] gas - openChannel gasUsed:  54897
+[2019-12-27T17:01:16.863] [INFO] gas - alice deposit gasUsed:  52473
+[2019-12-27T17:01:16.906] [INFO] gas - bob deposit gasUsed:  154635
+[2019-12-27T17:01:16.938] [INFO] gas - openChannel gasUsed:  54897
+[2019-12-27T17:01:16.968] [INFO] gas - alice deposit gasUsed:  52473
+[2019-12-27T17:01:17.013] [INFO] gas - bob deposit gasUsed:  154635
+[2019-12-27T17:01:17.044] [INFO] gas - openChannel gasUsed:  54961
+[2019-12-27T17:01:17.073] [INFO] gas - alice deposit gasUsed:  52537
+[2019-12-27T17:01:17.120] [INFO] gas - bob deposit gasUsed:  154699
+[2019-12-27T17:01:17.154] [INFO] gas - openChannel gasUsed:  54961
+[2019-12-27T17:01:17.183] [INFO] gas - alice deposit gasUsed:  52537
+[2019-12-27T17:01:17.223] [INFO] gas - bob deposit gasUsed:  154699
+[2019-12-27T17:01:17.258] [INFO] gas - openChannel gasUsed:  54961
+[2019-12-27T17:01:17.286] [INFO] gas - alice deposit gasUsed:  52537
+[2019-12-27T17:01:17.333] [INFO] gas - bob deposit gasUsed:  154699
+[2019-12-27T17:01:17.366] [INFO] gas - openChannel gasUsed:  54961
+[2019-12-27T17:01:17.394] [INFO] gas - alice deposit gasUsed:  52537
+[2019-12-27T17:01:17.438] [INFO] gas - bob deposit gasUsed:  154699
+[2019-12-27T17:01:17.470] [INFO] gas - openChannel gasUsed:  54961
+[2019-12-27T17:01:17.501] [INFO] gas - alice deposit gasUsed:  52537
+[2019-12-27T17:01:17.542] [INFO] gas - bob deposit gasUsed:  154699
+[2019-12-27T17:01:17.575] [INFO] gas - openChannel gasUsed:  54961
+[2019-12-27T17:01:17.628] [INFO] gas - alice deposit gasUsed:  52537
+[2019-12-27T17:01:17.669] [INFO] gas - bob deposit gasUsed:  154699
+[2019-12-27T17:01:17.702] [INFO] gas - openChannel gasUsed:  54961
+[2019-12-27T17:01:17.730] [INFO] gas - alice deposit gasUsed:  52537
+[2019-12-27T17:01:17.770] [INFO] gas - bob deposit gasUsed:  154699
+[2019-12-27T17:01:17.803] [INFO] gas - openChannel gasUsed:  54961
+[2019-12-27T17:01:17.831] [INFO] gas - alice deposit gasUsed:  52537
+[2019-12-27T17:01:17.873] [INFO] gas - bob deposit gasUsed:  154699
+[2019-12-27T17:01:17.906] [INFO] gas - openChannel gasUsed:  54961
+[2019-12-27T17:01:17.936] [INFO] gas - alice deposit gasUsed:  52537
+[2019-12-27T17:01:17.978] [INFO] gas - bob deposit gasUsed:  154699
+[2019-12-27T17:01:18.011] [INFO] gas - openChannel gasUsed:  54961
+[2019-12-27T17:01:18.040] [INFO] gas - alice deposit gasUsed:  52537
+[2019-12-27T17:01:18.081] [INFO] gas - bob deposit gasUsed:  154699
+[2019-12-27T17:01:18.116] [INFO] gas - openChannel gasUsed:  54961
+[2019-12-27T17:01:18.146] [INFO] gas - alice deposit gasUsed:  52537
+[2019-12-27T17:01:18.193] [INFO] gas - bob deposit gasUsed:  154699
+[2019-12-27T17:01:18.227] [INFO] gas - openChannel gasUsed:  54961
+[2019-12-27T17:01:18.255] [INFO] gas - alice deposit gasUsed:  52537
+[2019-12-27T17:01:18.300] [INFO] gas - bob deposit gasUsed:  154699
+[2019-12-27T17:01:18.330] [INFO] gas - openChannel gasUsed:  54961
+[2019-12-27T17:01:18.358] [INFO] gas - alice deposit gasUsed:  52537
+[2019-12-27T17:01:18.399] [INFO] gas - bob deposit gasUsed:  154699
+[2019-12-27T17:01:18.431] [INFO] gas - openChannel gasUsed:  54961
+[2019-12-27T17:01:18.459] [INFO] gas - alice deposit gasUsed:  52537
+[2019-12-27T17:01:18.499] [INFO] gas - bob deposit gasUsed:  154699
+[2019-12-27T17:01:18.532] [INFO] gas - openChannel gasUsed:  54897
+[2019-12-27T17:01:18.559] [INFO] gas - alice deposit gasUsed:  52473
+[2019-12-27T17:01:18.601] [INFO] gas - bob deposit gasUsed:  154635
+[2019-12-27T17:01:18.635] [INFO] gas - openChannel gasUsed:  54961
+[2019-12-27T17:01:18.663] [INFO] gas - alice deposit gasUsed:  52537
+[2019-12-27T17:01:18.709] [INFO] gas - bob deposit gasUsed:  154699
+[2019-12-27T17:01:18.741] [INFO] gas - openChannel gasUsed:  54961
+[2019-12-27T17:01:18.770] [INFO] gas - alice deposit gasUsed:  52537
+[2019-12-27T17:01:18.818] [INFO] gas - bob deposit gasUsed:  154699
+[2019-12-27T17:01:18.852] [INFO] gas - openChannel gasUsed:  54961
+[2019-12-27T17:01:18.880] [INFO] gas - alice deposit gasUsed:  52537
+[2019-12-27T17:01:18.923] [INFO] gas - bob deposit gasUsed:  154699
+[2019-12-27T17:01:18.956] [INFO] gas - openChannel gasUsed:  54961
+[2019-12-27T17:01:18.983] [INFO] gas - alice deposit gasUsed:  52537
+[2019-12-27T17:01:19.024] [INFO] gas - bob deposit gasUsed:  154699
+[2019-12-27T17:01:19.054] [INFO] gas - openChannel gasUsed:  54961
+[2019-12-27T17:01:19.083] [INFO] gas - alice deposit gasUsed:  52537
+[2019-12-27T17:01:19.123] [INFO] gas - bob deposit gasUsed:  154699
+[2019-12-27T17:01:19.154] [INFO] gas - openChannel gasUsed:  54961
+[2019-12-27T17:01:19.185] [INFO] gas - alice deposit gasUsed:  52537
+[2019-12-27T17:01:19.229] [INFO] gas - bob deposit gasUsed:  154699
+[2019-12-27T17:01:19.262] [INFO] gas - openChannel gasUsed:  54961
+[2019-12-27T17:01:19.290] [INFO] gas - alice deposit gasUsed:  52537
+[2019-12-27T17:01:19.332] [INFO] gas - bob deposit gasUsed:  154699
+[2019-12-27T17:01:19.364] [INFO] gas - openChannel gasUsed:  54961
+[2019-12-27T17:01:19.392] [INFO] gas - alice deposit gasUsed:  52537
+[2019-12-27T17:01:19.439] [INFO] gas - bob deposit gasUsed:  154699
+[2019-12-27T17:01:19.469] [INFO] gas - openChannel gasUsed:  54961
+[2019-12-27T17:01:19.498] [INFO] gas - alice deposit gasUsed:  52537
+[2019-12-27T17:01:19.540] [INFO] gas - bob deposit gasUsed:  154699
+[2019-12-27T17:01:19.572] [INFO] gas - openChannel gasUsed:  54961
+[2019-12-27T17:01:19.597] [INFO] gas - alice deposit gasUsed:  52537
+[2019-12-27T17:01:19.648] [INFO] gas - bob deposit gasUsed:  154699
+[2019-12-27T17:01:19.681] [INFO] gas - openChannel gasUsed:  54961
+[2019-12-27T17:01:19.711] [INFO] gas - alice deposit gasUsed:  52537
+[2019-12-27T17:01:19.753] [INFO] gas - bob deposit gasUsed:  154699
+[2019-12-27T17:01:19.784] [INFO] gas - openChannel gasUsed:  54961
+[2019-12-27T17:01:19.813] [INFO] gas - alice deposit gasUsed:  52537
+[2019-12-27T17:01:19.855] [INFO] gas - bob deposit gasUsed:  154699
+[2019-12-27T17:01:19.885] [INFO] gas - openChannel gasUsed:  54961
+[2019-12-27T17:01:19.915] [INFO] gas - alice deposit gasUsed:  52537
+[2019-12-27T17:01:19.957] [INFO] gas - bob deposit gasUsed:  154699
+[2019-12-27T17:01:19.987] [INFO] gas - openChannel gasUsed:  54897
+[2019-12-27T17:01:20.016] [INFO] gas - alice deposit gasUsed:  52473
+[2019-12-27T17:01:20.057] [INFO] gas - bob deposit gasUsed:  154635
+[2019-12-27T17:01:20.088] [INFO] gas - openChannel gasUsed:  54961
+[2019-12-27T17:01:20.116] [INFO] gas - alice deposit gasUsed:  52537
+[2019-12-27T17:01:20.159] [INFO] gas - bob deposit gasUsed:  154699
+[2019-12-27T17:01:20.191] [INFO] gas - openChannel gasUsed:  54961
+[2019-12-27T17:01:20.220] [INFO] gas - alice deposit gasUsed:  52537
+[2019-12-27T17:01:20.262] [INFO] gas - bob deposit gasUsed:  154699
+[2019-12-27T17:01:20.295] [INFO] gas - openChannel gasUsed:  54961
+[2019-12-27T17:01:20.325] [INFO] gas - alice deposit gasUsed:  52537
+[2019-12-27T17:01:20.367] [INFO] gas - bob deposit gasUsed:  154699
+[2019-12-27T17:01:20.399] [INFO] gas - openChannel gasUsed:  54961
+[2019-12-27T17:01:20.427] [INFO] gas - alice deposit gasUsed:  52537
+[2019-12-27T17:01:20.469] [INFO] gas - bob deposit gasUsed:  154699
+[2019-12-27T17:01:20.501] [INFO] gas - openChannel gasUsed:  54961
+[2019-12-27T17:01:20.530] [INFO] gas - alice deposit gasUsed:  52537
+[2019-12-27T17:01:20.573] [INFO] gas - bob deposit gasUsed:  154699
+[2019-12-27T17:01:20.602] [INFO] gas - openChannel gasUsed:  54897
+[2019-12-27T17:01:20.633] [INFO] gas - alice deposit gasUsed:  52473
+[2019-12-27T17:01:20.670] [INFO] gas - bob deposit gasUsed:  154635
+[2019-12-27T17:01:20.704] [INFO] gas - openChannel gasUsed:  54961
+[2019-12-27T17:01:20.732] [INFO] gas - alice deposit gasUsed:  52537
+[2019-12-27T17:01:20.773] [INFO] gas - bob deposit gasUsed:  154699
+[2019-12-27T17:01:20.805] [INFO] gas - openChannel gasUsed:  54897
+[2019-12-27T17:01:20.834] [INFO] gas - alice deposit gasUsed:  52473
+[2019-12-27T17:01:20.875] [INFO] gas - bob deposit gasUsed:  154635
+[2019-12-27T17:01:20.905] [INFO] gas - openChannel gasUsed:  54961
+[2019-12-27T17:01:20.935] [INFO] gas - alice deposit gasUsed:  52537
+[2019-12-27T17:01:20.992] [INFO] gas - bob deposit gasUsed:  154699
+[2019-12-27T17:01:21.047] [INFO] gas - openChannel gasUsed:  54961
+[2019-12-27T17:01:21.078] [INFO] gas - alice deposit gasUsed:  52537
+[2019-12-27T17:01:21.139] [INFO] gas - bob deposit gasUsed:  154699
+[2019-12-27T17:01:21.181] [INFO] gas - openChannel gasUsed:  54961
+[2019-12-27T17:01:21.218] [INFO] gas - alice deposit gasUsed:  52537
+[2019-12-27T17:01:21.263] [INFO] gas - bob deposit gasUsed:  154699
+[2019-12-27T17:01:21.301] [INFO] gas - openChannel gasUsed:  54961
+[2019-12-27T17:01:21.331] [INFO] gas - alice deposit gasUsed:  52537
+[2019-12-27T17:01:21.376] [INFO] gas - bob deposit gasUsed:  154699
+[2019-12-27T17:01:21.410] [INFO] gas - openChannel gasUsed:  54961
+[2019-12-27T17:01:21.441] [INFO] gas - alice deposit gasUsed:  52537
+[2019-12-27T17:01:21.485] [INFO] gas - bob deposit gasUsed:  154699
+[2019-12-27T17:01:21.521] [INFO] gas - openChannel gasUsed:  54961
+[2019-12-27T17:01:21.550] [INFO] gas - alice deposit gasUsed:  52537
+[2019-12-27T17:01:21.598] [INFO] gas - bob deposit gasUsed:  154699
+[2019-12-27T17:01:21.692] [INFO] gas - openChannel gasUsed:  54961
+[2019-12-27T17:01:21.730] [INFO] gas - alice deposit gasUsed:  52537
+[2019-12-27T17:01:21.793] [INFO] gas - bob deposit gasUsed:  154699
+[2019-12-27T17:01:21.823] [INFO] gas - openChannel gasUsed:  54897
+[2019-12-27T17:01:21.852] [INFO] gas - alice deposit gasUsed:  52473
+[2019-12-27T17:01:21.896] [INFO] gas - bob deposit gasUsed:  154635
+[2019-12-27T17:01:21.927] [INFO] gas - openChannel gasUsed:  54961
+[2019-12-27T17:01:21.958] [INFO] gas - alice deposit gasUsed:  52537
+[2019-12-27T17:01:22.004] [INFO] gas - bob deposit gasUsed:  154699
+[2019-12-27T17:01:22.037] [INFO] gas - openChannel gasUsed:  54961
+[2019-12-27T17:01:22.066] [INFO] gas - alice deposit gasUsed:  52537
+[2019-12-27T17:01:22.108] [INFO] gas - bob deposit gasUsed:  154699
+[2019-12-27T17:01:22.140] [INFO] gas - openChannel gasUsed:  54961
+[2019-12-27T17:01:22.168] [INFO] gas - alice deposit gasUsed:  52537
+[2019-12-27T17:01:22.212] [INFO] gas - bob deposit gasUsed:  154699
+[2019-12-27T17:01:22.251] [INFO] gas - openChannel gasUsed:  54897
+[2019-12-27T17:01:22.280] [INFO] gas - alice deposit gasUsed:  52473
+[2019-12-27T17:01:22.322] [INFO] gas - bob deposit gasUsed:  154635
+[2019-12-27T17:01:22.353] [INFO] gas - openChannel gasUsed:  54961
+[2019-12-27T17:01:22.382] [INFO] gas - alice deposit gasUsed:  52537
+[2019-12-27T17:01:22.426] [INFO] gas - bob deposit gasUsed:  154699
+[2019-12-27T17:01:22.458] [INFO] gas - openChannel gasUsed:  54961
+[2019-12-27T17:01:22.486] [INFO] gas - alice deposit gasUsed:  52537
+[2019-12-27T17:01:22.529] [INFO] gas - bob deposit gasUsed:  154699
+[2019-12-27T17:01:22.560] [INFO] gas - openChannel gasUsed:  54961
+[2019-12-27T17:01:22.591] [INFO] gas - alice deposit gasUsed:  52537
+[2019-12-27T17:01:22.636] [INFO] gas - bob deposit gasUsed:  154699
+[2019-12-27T17:01:22.670] [INFO] gas - openChannel gasUsed:  54961
+[2019-12-27T17:01:22.705] [INFO] gas - alice deposit gasUsed:  52537
+[2019-12-27T17:01:22.750] [INFO] gas - bob deposit gasUsed:  154699
+[2019-12-27T17:01:22.787] [INFO] gas - openChannel gasUsed:  54961
+[2019-12-27T17:01:22.816] [INFO] gas - alice deposit gasUsed:  52537
+[2019-12-27T17:01:22.864] [INFO] gas - bob deposit gasUsed:  154699
+[2019-12-27T17:01:22.901] [INFO] gas - openChannel gasUsed:  54897
+[2019-12-27T17:01:22.933] [INFO] gas - alice deposit gasUsed:  52473
+[2019-12-27T17:01:22.980] [INFO] gas - bob deposit gasUsed:  154635
+[2019-12-27T17:01:23.014] [INFO] gas - openChannel gasUsed:  54961
+[2019-12-27T17:01:23.045] [INFO] gas - alice deposit gasUsed:  52537
+[2019-12-27T17:01:23.092] [INFO] gas - bob deposit gasUsed:  154699
+[2019-12-27T17:01:23.127] [INFO] gas - openChannel gasUsed:  54961
+[2019-12-27T17:01:23.157] [INFO] gas - alice deposit gasUsed:  52537
+[2019-12-27T17:01:23.208] [INFO] gas - bob deposit gasUsed:  154699
+[2019-12-27T17:01:23.242] [INFO] gas - openChannel gasUsed:  54961
+[2019-12-27T17:01:23.271] [INFO] gas - alice deposit gasUsed:  52537
+[2019-12-27T17:01:23.314] [INFO] gas - bob deposit gasUsed:  154699
+[2019-12-27T17:01:23.349] [INFO] gas - openChannel gasUsed:  54897
+[2019-12-27T17:01:23.378] [INFO] gas - alice deposit gasUsed:  52473
+[2019-12-27T17:01:23.424] [INFO] gas - bob deposit gasUsed:  154635
+[2019-12-27T17:01:23.455] [INFO] gas - openChannel gasUsed:  54961
+[2019-12-27T17:01:23.485] [INFO] gas - alice deposit gasUsed:  52537
+[2019-12-27T17:01:23.528] [INFO] gas - bob deposit gasUsed:  154699
+[2019-12-27T17:01:23.558] [INFO] gas - openChannel gasUsed:  54961
+[2019-12-27T17:01:23.586] [INFO] gas - alice deposit gasUsed:  52537
+[2019-12-27T17:01:23.632] [INFO] gas - bob deposit gasUsed:  154699
+[2019-12-27T17:01:23.666] [INFO] gas - openChannel gasUsed:  54961
+[2019-12-27T17:01:23.697] [INFO] gas - alice deposit gasUsed:  52537
+[2019-12-27T17:01:23.742] [INFO] gas - bob deposit gasUsed:  154699
+[2019-12-27T17:01:23.775] [INFO] gas - openChannel gasUsed:  54961
+[2019-12-27T17:01:23.801] [INFO] gas - alice deposit gasUsed:  52537
+[2019-12-27T17:01:23.847] [INFO] gas - bob deposit gasUsed:  154699
+[2019-12-27T17:01:23.880] [INFO] gas - openChannel gasUsed:  54961
+[2019-12-27T17:01:23.909] [INFO] gas - alice deposit gasUsed:  52537
+[2019-12-27T17:01:23.951] [INFO] gas - bob deposit gasUsed:  154699
+[2019-12-27T17:01:23.989] [INFO] gas - openChannel gasUsed:  54961
+[2019-12-27T17:01:24.018] [INFO] gas - alice deposit gasUsed:  52537
+[2019-12-27T17:01:24.060] [INFO] gas - bob deposit gasUsed:  154699
+[2019-12-27T17:01:24.092] [INFO] gas - openChannel gasUsed:  54961
+[2019-12-27T17:01:24.122] [INFO] gas - alice deposit gasUsed:  52537
+[2019-12-27T17:01:24.167] [INFO] gas - bob deposit gasUsed:  154699
+[2019-12-27T17:01:24.201] [INFO] gas - openChannel gasUsed:  54961
+[2019-12-27T17:01:24.228] [INFO] gas - alice deposit gasUsed:  52537
+[2019-12-27T17:01:24.272] [INFO] gas - bob deposit gasUsed:  154699
+[2019-12-27T17:01:24.304] [INFO] gas - openChannel gasUsed:  54897
+[2019-12-27T17:01:24.332] [INFO] gas - alice deposit gasUsed:  52473
+[2019-12-27T17:01:24.375] [INFO] gas - bob deposit gasUsed:  154635
+[2019-12-27T17:01:24.407] [INFO] gas - openChannel gasUsed:  54961
+[2019-12-27T17:01:24.435] [INFO] gas - alice deposit gasUsed:  52537
+[2019-12-27T17:01:24.479] [INFO] gas - bob deposit gasUsed:  154699
+[2019-12-27T17:01:24.511] [INFO] gas - openChannel gasUsed:  54961
+[2019-12-27T17:01:24.540] [INFO] gas - alice deposit gasUsed:  52537
+[2019-12-27T17:01:24.582] [INFO] gas - bob deposit gasUsed:  154699
+[2019-12-27T17:01:24.616] [INFO] gas - openChannel gasUsed:  54897
+[2019-12-27T17:01:24.645] [INFO] gas - alice deposit gasUsed:  52473
+[2019-12-27T17:01:24.690] [INFO] gas - bob deposit gasUsed:  154635
+[2019-12-27T17:01:24.722] [INFO] gas - openChannel gasUsed:  54961
+[2019-12-27T17:01:24.752] [INFO] gas - alice deposit gasUsed:  52537
+[2019-12-27T17:01:24.794] [INFO] gas - bob deposit gasUsed:  154699
+[2019-12-27T17:01:24.824] [INFO] gas - openChannel gasUsed:  54897
+[2019-12-27T17:01:24.852] [INFO] gas - alice deposit gasUsed:  52473
+[2019-12-27T17:01:24.894] [INFO] gas - bob deposit gasUsed:  154635
+[2019-12-27T17:01:24.924] [INFO] gas - openChannel gasUsed:  54961
+[2019-12-27T17:01:24.952] [INFO] gas - alice deposit gasUsed:  52537
+[2019-12-27T17:01:24.994] [INFO] gas - bob deposit gasUsed:  154699
+[2019-12-27T17:01:25.025] [INFO] gas - openChannel gasUsed:  54961
+[2019-12-27T17:01:25.053] [INFO] gas - alice deposit gasUsed:  52537
+[2019-12-27T17:01:25.095] [INFO] gas - bob deposit gasUsed:  154699
+[2019-12-27T17:01:25.127] [INFO] gas - openChannel gasUsed:  54961
+[2019-12-27T17:01:25.155] [INFO] gas - alice deposit gasUsed:  52537
+[2019-12-27T17:01:25.199] [INFO] gas - bob deposit gasUsed:  154699
+[2019-12-27T17:01:25.234] [INFO] gas - openChannel gasUsed:  54961
+[2019-12-27T17:01:25.264] [INFO] gas - alice deposit gasUsed:  52537
+[2019-12-27T17:01:25.312] [INFO] gas - bob deposit gasUsed:  154699
+[2019-12-27T17:01:25.344] [INFO] gas - openChannel gasUsed:  54961
+[2019-12-27T17:01:25.375] [INFO] gas - alice deposit gasUsed:  52537
+[2019-12-27T17:01:25.463] [INFO] gas - bob deposit gasUsed:  154699
+[2019-12-27T17:01:25.496] [INFO] gas - openChannel gasUsed:  54961
+[2019-12-27T17:01:25.526] [INFO] gas - alice deposit gasUsed:  52537
+[2019-12-27T17:01:25.572] [INFO] gas - bob deposit gasUsed:  154699
+[2019-12-27T17:01:25.609] [INFO] gas - openChannel gasUsed:  54961
+[2019-12-27T17:01:25.640] [INFO] gas - alice deposit gasUsed:  52537
+[2019-12-27T17:01:25.688] [INFO] gas - bob deposit gasUsed:  154699
+[2019-12-27T17:01:25.723] [INFO] gas - openChannel gasUsed:  54961
+[2019-12-27T17:01:25.755] [INFO] gas - alice deposit gasUsed:  52537
+[2019-12-27T17:01:25.804] [INFO] gas - bob deposit gasUsed:  154699
+[2019-12-27T17:01:25.842] [INFO] gas - openChannel gasUsed:  54897
+[2019-12-27T17:01:25.871] [INFO] gas - alice deposit gasUsed:  52473
+[2019-12-27T17:01:25.914] [INFO] gas - bob deposit gasUsed:  154635
+[2019-12-27T17:01:25.949] [INFO] gas - openChannel gasUsed:  54961
+[2019-12-27T17:01:25.979] [INFO] gas - alice deposit gasUsed:  52537
+[2019-12-27T17:01:26.022] [INFO] gas - bob deposit gasUsed:  154699
+[2019-12-27T17:01:26.052] [INFO] gas - openChannel gasUsed:  54961
+[2019-12-27T17:01:26.080] [INFO] gas - alice deposit gasUsed:  52537
+[2019-12-27T17:01:26.126] [INFO] gas - bob deposit gasUsed:  154699
+[2019-12-27T17:01:26.157] [INFO] gas - openChannel gasUsed:  54961
+[2019-12-27T17:01:26.185] [INFO] gas - alice deposit gasUsed:  52537
+[2019-12-27T17:01:26.227] [INFO] gas - bob deposit gasUsed:  154699
+[2019-12-27T17:01:26.258] [INFO] gas - openChannel gasUsed:  54897
+[2019-12-27T17:01:26.287] [INFO] gas - alice deposit gasUsed:  52473
+[2019-12-27T17:01:26.328] [INFO] gas - bob deposit gasUsed:  154635
+[2019-12-27T17:01:26.357] [INFO] gas - openChannel gasUsed:  54961
+[2019-12-27T17:01:26.388] [INFO] gas - alice deposit gasUsed:  52537
+[2019-12-27T17:01:26.429] [INFO] gas - bob deposit gasUsed:  154699
+[2019-12-27T17:01:26.460] [INFO] gas - openChannel gasUsed:  54961
+[2019-12-27T17:01:26.487] [INFO] gas - alice deposit gasUsed:  52537
+[2019-12-27T17:01:26.531] [INFO] gas - bob deposit gasUsed:  154699
+[2019-12-27T17:01:26.567] [INFO] gas - openChannel gasUsed:  54961
+[2019-12-27T17:01:26.596] [INFO] gas - alice deposit gasUsed:  52537
+[2019-12-27T17:01:26.639] [INFO] gas - bob deposit gasUsed:  154699
+[2019-12-27T17:01:26.673] [INFO] gas - openChannel gasUsed:  54961
+[2019-12-27T17:01:26.704] [INFO] gas - alice deposit gasUsed:  52537
+[2019-12-27T17:01:26.748] [INFO] gas - bob deposit gasUsed:  154699

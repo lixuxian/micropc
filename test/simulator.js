@@ -5,6 +5,7 @@ var TPC = require('./TPC');
 var MPC = require('./MPC');
 var logger = require('./logger');
 var Graph = require('./topo');
+var jsnx = require('jsnetworkx'); // in Node
 
 var gasLogger = logger.gasLogger;
 var channelLogger = logger.channelLogger;
@@ -28,90 +29,164 @@ const mpc_contract = new web3.eth.Contract(mpc_contract_abi, mpc_address);
 var TPC_OBJ = new TPC(tpc_contract, web3);
 var MPC_OBJ = new MPC(mpc_contract, web3);
 
+
 async function createTopo(accounts) {
-    var edges = Graph.edges();
+    var channels_id = new Array();
+    var edges = Graph.edges(); 
     for (var id in edges) {
         var edge = edges[id];
-        // console.log("edge: ", edge[0], " vs", edge[1]);
+        console.log("edge: ", edge[0], " vs", edge[1]);
         var alice = accounts[edge[0]];
         var bob   = accounts[edge[1]];
-        var channel_id = await TPC_OBJ.createChannel(alice, bob, '10', '10');
+        var channel_id = await TPC_OBJ.createChannel(alice, bob, '1000', '1000');
         Graph.adj.get(edge[0]).get(edge[1]).channel_id = channel_id;
-        channelLogger.info("edge", edge[0], edge[1]);
+        channels_id.push(channel_id);
+        channelLogger.info('createChannel: ', edge[0], ' <--> ', edge[1]);
     }
+    return channels_id;
+}
+
+async function createMPC(tpc_address, parties, channels_id) {
+    channelLogger.info("createMPC start...");
+    await MPC_OBJ.createMPC(tpc_address, parties, channels_id);
+    channelLogger.info("createMPC end...");
+}
+
+function genTx(transaction, accounts) {
+    var txs = new Array();
+    for (var i in transaction) {
+        var t = transaction[i];
+        var src = t[0];
+        var dst = t[1];
+        var weis = web3.utils.toWei(t[2], 'ether');
+        txs.push({
+            "channel_id": Graph.adj.get(src).get(dst).channel_id,
+            "src": accounts[src],
+            "dst": accounts[dst],
+            "weis": weis
+        });
+    }
+    return txs;
+}
+
+function reviseTransactions(transactions) {
+    var revised = new Array();
+    for (var i in transactions) {
+        var t = transactions[i];
+        var src = t[0];
+        var dst = t[1];
+        var ether = t[2];
+        var path = jsnx.shortestPath(Graph, {
+            "source": src,
+            "target": dst
+        });
+        if (path.length == 2) {
+            if (src > dst) {
+                t = [dst, src, '-' + ether];
+            }
+            revised.push(t);
+        }
+        else if (path.length >= 3) { // long path, need route
+            for (var i = 0; i < path.length - 1; i++) {
+                var new_src = path[i];
+                var new_dst = path[i+1];
+                if (new_src > new_dst) {
+                    revised.push([new_dst, new_src, '-' + ether]);
+                } else {
+                    revised.push([new_src, new_dst, ether]);
+                }
+            }
+        }
+    }
+    console.log("revides: ", revised);
+    revised.sort();
+    console.log("revide sorted: ", revised);
+
+    var merged = new Array();
+    // merge the same src and dst
+    for (var i = 0; i < revised.length; i++) {
+        var ti = revised[i];
+        for (var j = i + 1; j < revised.length; j++) {
+            var tj = revised[j];
+            if (ti[0] != tj[0] || ti[1] != tj[1]) {
+                break;
+            }
+        }
+        var sum = 0;
+        for (var index = i ; index < j; index++) {
+            sum += parseInt(revised[index][2])
+        }
+        if (sum > 0 ) {
+            merged.push([ti[0], ti[1], sum.toString()]);
+        } else if (sum < 0) {
+            sum = -sum;
+            merged.push([ti[1], ti[0], sum.toString()]);
+        } else { // sum == 0
+            console.log("a zero transaction");
+        }
+        i = j - 1;
+    }
+    console.log("merged: ", merged);
+    return merged;
+}
+
+// game generateTransactions
+function generateTransactions(accounts) {
+    var transactions = new Array()
+    var count = Graph.nodes().length;
+
+    var winner = Math.floor(Math.random() * count);
+    var ether = Math.round((Math.random() + 0.5) * 5);
+
+    for (var i = 0; i < count; i++) {
+        if (i != winner) {
+            transactions.push([i, winner, ether.toString()]);
+        }
+    }
+    channelLogger.info("generate transactions: ", transactions);
+    revisedTxs = reviseTransactions(transactions);
+    channelLogger.info("revised transactions: ", revisedTxs);
+    var txs = genTx(revisedTxs, accounts);
+    return txs;
+}
+
+async function executeTx(txs, parties, version) {
+    await MPC_OBJ.updateMPC(0, parties, txs, version);
 }
 
 async function simulation() {
-    channelLogger.info("simulation begin...");
+    console.log("simulation begin...");
     var accounts = await web3.eth.getAccounts();
-    await createTopo(accounts);
-    // console.log("accounts", accounts);
-    // alice = accounts[1];
-    // bob = accounts[2];
-    // carol = accounts[3];
+
+    var parties = new Array();
+    for (var i = 0; i < Graph.nodes().length; i++) {
+        parties.push(accounts[i]);
+    }
+
+    var channels_id = await createTopo(parties);
+    console.log("channels_id = ", channels_id);
+
     
-    // // create two simple payment channels of alice, bob and carol
-    // console.log("alice: ", alice, " bob: ", bob, " carol: ", carol);
-    // var ab_channel_id = await TPC_OBJ.createChannel(alice, bob, '10', '10');
-    // console.log("alice <-> bob channel_id = ", ab_channel_id);
-
-    // var bc_channel_id = await TPC_OBJ.createChannel(bob, carol, '10', '10');
-    // console.log("bob <-> carol channel_id = ", bc_channel_id);
-
     // // create mpc
-    // var parties = new Array(alice, bob, carol);
-    // var channels_id = new Array(ab_channel_id, bc_channel_id);
-    // await MPC_OBJ.createMPC(tpc_address, parties, channels_id);
+    await createMPC(tpc_address, parties, channels_id);
 
-    channelLogger.info("simulation end...");
+    // for (var i = 0; i < 10; i++) {
+    //     var txs = genM2MTx(accounts);
+    //     console.log("round ", i, "...");
+    //     console.log("txs = ", txs);
+    //     await executeTx(txs, accounts);
+    // }
+    var version = 1;
+    for (var i = 0; i < 10; i++) {
+        var t = generateTransactions(parties);
+        await executeTx(t, parties, version);
+        version += 1;
+    }
 
-    // // update test 1
-    // var one_weis = web3.utils.toWei('1', 'ether');
-    // var two_weis = web3.utils.toWei('2', 'ether');
-    // var txs1 = [
-    //     {
-    //         "channel_id": ab_channel_id,
-    //         "src": alice,
-    //         "dst": bob,
-    //         "weis": one_weis
-    //     },
-    //     {
-    //         "channel_id": bc_channel_id,
-    //         "src": bob,
-    //         "dst": carol,
-    //         "weis": two_weis
-    //     }
-    // ]
-
-    // await MPC_OBJ.updateMPC(0, parties, txs1, 1);
-
-    // // update test 2
-    // var txs2 = [
-    //     {
-    //         "channel_id": ab_channel_id,
-    //         "src": alice,
-    //         "dst": bob,
-    //         "weis": one_weis
-    //     },
-    //     {
-    //         "channel_id": bc_channel_id,
-    //         "src": bob,
-    //         "dst": carol,
-    //         "weis": one_weis
-    //     },
-    //     {
-    //         "channel_id": bc_channel_id,
-    //         "src": bob,
-    //         "dst": carol,
-    //         "weis": one_weis
-    //     }
-    // ]
-    // await MPC_OBJ.updateMPC(0, parties, txs2, 2);
-
-    // // check channel balance
-    // await TPC_OBJ.getChannel(ab_channel_id);
-    // await TPC_OBJ.getChannel(bc_channel_id);
-    wsProvider.disconnect();
+    console.log("simulation end...");
 }
 
-simulation();
+(async function run(){
+   await simulation();
+   wsProvider.disconnect();
+ })();

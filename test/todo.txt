@@ -1,6 +1,0 @@
-create a topology
-create tpc according to the topology
-generate MPC
-generate transactions
-updateMPC according to the transactions
-log the gas cost

@@ -1,6 +1,6 @@
 var logger = require('./logger');
 var gasLogger = logger.gasLogger;
-// var chanenlLogger = logger.chanenlLogger;
+var channelLogger = logger.channelLogger;
 // two-party channel
 module.exports = class TPC {
     constructor(contract, web3) {
@@ -15,7 +15,6 @@ module.exports = class TPC {
         // console.log("va = ", va, ", vb = ", vb);
         await this.tpc_contract.methods.openChannel(alice, bob, va, vb).send({from: alice})
         .on('receipt', function(receipt){
-            // console.log("openChannel recipt : ", receipt.gasUsed);
             gasLogger.info('openChannel gasUsed: ', receipt.gasUsed);
         })
         .on('error', function(error) {
@@ -26,6 +25,9 @@ module.exports = class TPC {
             from: alice,
             value: va.toString(),
             gas: 400000
+        })
+        .on('receipt', function(receipt){
+            gasLogger.info('alice deposit gasUsed: ', receipt.gasUsed);
         })
         .on('error', function(error) {
             console.log("deposit error: ", error);
@@ -39,8 +41,7 @@ module.exports = class TPC {
         }) 
         .on('receipt', function(receipt){
             channel_id = receipt.events.OpenSuccess.returnValues["id"];
-            // console.log("createChannel recipt: ", receipt.gasUsed);
-            gasLogger.info('createChannel gasUsed: ', receipt.gasUsed);
+            gasLogger.info('bob deposit gasUsed: ', receipt.gasUsed);
         })
         .on('error', function(error) {
             console.log("createChannel error: ", error);

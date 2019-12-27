@@ -1,5 +1,6 @@
 var logger = require('./logger');
 var gasLogger = logger.gasLogger;
+var channelLogger = logger.channelLogger;
 // multi-party channel
 module.exports = class MPC {
     constructor (contract, web3) {
@@ -17,14 +18,14 @@ module.exports = class MPC {
             var sig = await this.generateSignatures(msgHash, addr);
             sigs.push(sig);
         }
-        this.mpc_contract.methods.createMPC(tpc_address, parties, sigs, channels_id)
+        await this.mpc_contract.methods.createMPC(tpc_address, parties, sigs, channels_id)
         .send( {
             from: parties[0],
-            gas: 1000000
+            gas: 6721975
         })
         .on('receipt', function(receipt){
             var mpc_id = receipt.events.CreateMPCSuccess.returnValues["id"];
-            console.log("mpc_id = ", mpc_id);
+            channelLogger.info("createMPC mpc_id: ", mpc_id);
             gasLogger.info("createMPC gasUsed: ", receipt.gasUsed);
         })
         .on('error', function(error) {     
@@ -46,15 +47,14 @@ module.exports = class MPC {
             sigs.push(sig);
         }
     
-        this.mpc_contract.methods.updateMPC(mpc_id, txs, msgstr, version, sigs)
+        await this.mpc_contract.methods.updateMPC(mpc_id, txs, msgstr, version, sigs)
         .send(
             {
                 from: parties[0],
-                gas: 1000000
+                gas: 6721975
             }
         )
         .on('receipt', function(receipt){
-            console.log("updateMPC recipt: ", receipt.gasUsed);
             gasLogger.info("updateMPC gasUsed: ", receipt.gasUsed);
         })
         .on('error', function(error) {     
