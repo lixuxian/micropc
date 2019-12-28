@@ -11,7 +11,7 @@ var gasLogger = logger.gasLogger;
 var channelLogger = logger.channelLogger;
 // 通过web3连接私有链。 (web3通过geth连接区块链中的结点)
 wsProvider = new Web3.providers.WebsocketProvider("ws://localhost:8549");
-var web3 = new Web3(wsProvider);  // 通过geth连接私有链中的结点。 
+var web3 = new Web3(wsProvider);  // 通过geth连接私有链中的结点
  
  
 var tpc_contract_abi = JSON.parse(fs.readFileSync("./build/contracts_SimplePaymentChannel_sol_SimplePaymentChannel.abi"));  // 读取编译合约的abi文件。
