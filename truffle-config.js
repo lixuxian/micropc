@@ -48,6 +48,7 @@ module.exports = {
      network_id: "*",       // Any network (default: none)
      accounts: 50,
      defaultEtherBalance: 50000,
+    //  blockTime: 
     },
 
     // Another network with more advanced options...

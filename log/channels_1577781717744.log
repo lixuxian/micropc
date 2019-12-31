@@ -1,0 +1,11 @@
+[2019-12-31T16:41:58.038] [INFO] channel - createChannel:  0  <-->  1
+[2019-12-31T16:41:58.169] [INFO] channel - createChannel:  1  <-->  2
+[2019-12-31T16:41:58.293] [INFO] channel - createChannel:  1  <-->  3
+[2019-12-31T16:41:58.403] [INFO] channel - createChannel:  2  <-->  4
+[2019-12-31T16:41:58.404] [INFO] channel - createMPC start...
+[2019-12-31T16:41:58.610] [INFO] channel - createMPC mpc_id:  0
+[2019-12-31T16:41:58.610] [INFO] channel - createMPC end...
+[2019-12-31T16:41:58.611] [INFO] channel - generate transactions:  [ [ 0, 2, '19' ], [ 1, 2, '19' ], [ 3, 2, '19' ], [ 4, 2, '19' ] ]
+[2019-12-31T16:41:58.612] [INFO] channel - revised transactions:  [ [ 0, 1, '19' ], [ 1, 2, '57' ], [ 3, 1, '19' ], [ 4, 2, '19' ] ]
+[2019-12-31T16:41:59.197] [INFO] channel - generate transactions:  [ [ 0, 4, '19' ], [ 1, 4, '19' ], [ 2, 4, '19' ], [ 3, 4, '19' ] ]
+[2019-12-31T16:41:59.198] [INFO] channel - revised transactions:  [ [ 0, 1, '19' ], [ 1, 2, '57' ], [ 3, 1, '19' ], [ 2, 4, '76' ] ]

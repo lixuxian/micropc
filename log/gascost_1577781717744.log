@@ -1,0 +1,30 @@
+[2019-12-31T16:41:57.937] [INFO] gas - openChannel gasUsed:  54961
+[2019-12-31T16:41:57.968] [INFO] gas - alice deposit gasUsed:  52537
+[2019-12-31T16:41:58.038] [INFO] gas - bob deposit gasUsed:  154699
+[2019-12-31T16:41:58.087] [INFO] gas - openChannel gasUsed:  54961
+[2019-12-31T16:41:58.120] [INFO] gas - alice deposit gasUsed:  52537
+[2019-12-31T16:41:58.168] [INFO] gas - bob deposit gasUsed:  154699
+[2019-12-31T16:41:58.211] [INFO] gas - openChannel gasUsed:  54961
+[2019-12-31T16:41:58.243] [INFO] gas - alice deposit gasUsed:  52537
+[2019-12-31T16:41:58.293] [INFO] gas - bob deposit gasUsed:  154699
+[2019-12-31T16:41:58.327] [INFO] gas - openChannel gasUsed:  54961
+[2019-12-31T16:41:58.358] [INFO] gas - alice deposit gasUsed:  52537
+[2019-12-31T16:41:58.403] [INFO] gas - bob deposit gasUsed:  154699
+[2019-12-31T16:41:58.610] [INFO] gas - createMPC gasUsed:  200291
+[2019-12-31T16:41:58.696] [INFO] gas - updateBalance gasUsed:  90723
+[2019-12-31T16:41:58.766] [INFO] gas - updateBalance gasUsed:  90639
+[2019-12-31T16:41:58.831] [INFO] gas - updateBalance gasUsed:  75723
+[2019-12-31T16:41:58.887] [INFO] gas - updateBalance gasUsed:  90575
+[2019-12-31T16:41:58.951] [INFO] gas - updateBalance gasUsed:  75807
+[2019-12-31T16:41:59.024] [INFO] gas - updateBalance gasUsed:  90723
+[2019-12-31T16:41:59.196] [INFO] gas - updateMPC gasUsed:  276386
+[2019-12-31T16:41:59.278] [INFO] gas - updateBalance gasUsed:  75723
+[2019-12-31T16:41:59.335] [INFO] gas - updateBalance gasUsed:  75575
+[2019-12-31T16:41:59.399] [INFO] gas - updateBalance gasUsed:  75807
+[2019-12-31T16:41:59.470] [INFO] gas - updateBalance gasUsed:  75595
+[2019-12-31T16:41:59.534] [INFO] gas - updateBalance gasUsed:  75679
+[2019-12-31T16:41:59.610] [INFO] gas - updateBalance gasUsed:  75659
+[2019-12-31T16:41:59.705] [INFO] gas - updateBalance gasUsed:  75807
+[2019-12-31T16:41:59.770] [INFO] gas - updateBalance gasUsed:  75723
+[2019-12-31T16:41:59.830] [INFO] gas - updateBalance gasUsed:  75639
+[2019-12-31T16:42:00.025] [INFO] gas - updateMPC gasUsed:  260882

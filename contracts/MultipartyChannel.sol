@@ -75,6 +75,7 @@ contract MultipartyChannel {
             }
             spc.updateBalanceInternal(txs[i].channel_id, new_ab, new_bb);
         }
+        mpc.version_num += 1;
         emit UpdateMPCSuccess();
     }
 

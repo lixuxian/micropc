@@ -109,7 +109,7 @@ contract SimplePaymentChannel {
     {
         tpc_map[id].alice_balance = new_ab;
         tpc_map[id].bob_balance = new_bb;
-        tpc_map[id].version_num += 1;
+        // tpc_map[id].version_num += 1;
     }
 
     function closeChannel(uint256 id, address payable alice, address payable bob)

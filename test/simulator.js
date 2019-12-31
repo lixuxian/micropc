@@ -6,6 +6,7 @@ var MPC = require('./MPC');
 var logger = require('./logger');
 var Graph = require('./topo');
 var jsnx = require('jsnetworkx'); // in Node
+var DirectedPay = require('./DP');
 
 var gasLogger = logger.gasLogger;
 var channelLogger = logger.channelLogger;
@@ -40,6 +41,11 @@ async function createTopo(accounts) {
         var bob   = accounts[edge[1]];
         var channel_id = await TPC_OBJ.createChannel(alice, bob, '1000', '1000');
         Graph.adj.get(edge[0]).get(edge[1]).channel_id = channel_id;
+        Graph.adj.get(edge[0]).get(edge[1]).version = 0;
+        Graph.adj.get(edge[0]).get(edge[1]).alice = edge[0];
+        Graph.adj.get(edge[0]).get(edge[1]).bob = edge[1];
+        Graph.adj.get(edge[0]).get(edge[1]).alice_balance = 1000;
+        Graph.adj.get(edge[0]).get(edge[1]).bob_balance = 1000;
         channels_id.push(channel_id);
         channelLogger.info('createChannel: ', edge[0], ' <--> ', edge[1]);
     }
@@ -136,7 +142,7 @@ function generateTransactions(accounts) {
     var count = Graph.nodes().length;
 
     var winner = Math.floor(Math.random() * count);
-    var ether = Math.round((Math.random() + 0.5) * 5);
+    var ether = Math.round((Math.random() + 1) * 10);
 
     for (var i = 0; i < count; i++) {
         if (i != winner) {
@@ -146,12 +152,90 @@ function generateTransactions(accounts) {
     channelLogger.info("generate transactions: ", transactions);
     revisedTxs = reviseTransactions(transactions);
     channelLogger.info("revised transactions: ", revisedTxs);
-    var txs = genTx(revisedTxs, accounts);
-    return txs;
+    // var txs = genTx(revisedTxs, accounts);
+    return {
+        "transactions": transactions,
+        "revisedTxs": revisedTxs
+    }
 }
 
-async function executeTx(txs, parties, version) {
+async function executeTx_MPC(transactions, txs, parties, version) {
     await MPC_OBJ.updateMPC(0, parties, txs, version);
+    for (var i in transactions) {
+        var tx = transactions[i];
+        var s = tx[0];
+        var t = tx[1];
+        var ether = parseInt(tx[2]);
+
+        Graph.adj.get(s).get(t).version += 1;
+        var version = Graph.adj.get(s).get(t).version;
+        var new_ab = 0;
+        var new_ba = 0;
+        var alice = Graph.adj.get(s).get(t).alice;
+        var bob = Graph.adj.get(s).get(t).bob;
+        if (alice == s) {
+            new_ab = Graph.adj.get(s).get(t).alice_balance - ether;
+            new_ba = Graph.adj.get(s).get(t).bob_balance + ether;
+        } else if (bob == s) {
+            new_ab = Graph.adj.get(s).get(t).alice_balance + ether;
+            new_ba = Graph.adj.get(s).get(t).bob_balance - ether;
+        } else {
+            console.log("channel error!!!");
+        }
+        updateEdgeInGraph(s, t, version, new_ab, new_ba);
+    }
+}
+
+async function updateChannel(s, t, ether, parties) {
+    console.log("updateChannel : ", s, t, ether, parties);
+    Graph.adj.get(s).get(t).version += 1;
+    var version = Graph.adj.get(s).get(t).version;
+    var channel_id = Graph.adj.get(s).get(t).channel_id;
+    var new_ab = 0;
+    var new_ba = 0;
+    var alice = Graph.adj.get(s).get(t).alice;
+    var bob = Graph.adj.get(s).get(t).bob;
+    if (alice == s) {
+        new_ab = Graph.adj.get(s).get(t).alice_balance - ether;
+        new_ba = Graph.adj.get(s).get(t).bob_balance + ether;
+    } else if (bob == s) {
+        new_ab = Graph.adj.get(s).get(t).alice_balance + ether;
+        new_ba = Graph.adj.get(s).get(t).bob_balance - ether;
+    } else {
+        console.log("channel error!!!");
+    }
+    console.log("Graph.adj.get(s).get(t).alice_balance = ", Graph.adj.get(s).get(t).alice_balance);
+    console.log("Graph.adj.get(s).get(t).bob_balance = ", Graph.adj.get(s).get(t).bob_balance);
+    console.log("new_ab = ", new_ab);
+    console.log("new_ba = ", new_ba);
+    await TPC_OBJ.updateChannel(channel_id, parties[alice], parties[bob], new_ab.toString(), new_ba.toString(), version);
+    updateEdgeInGraph(s, t, version, new_ab, new_ba);
+}
+
+function updateEdgeInGraph(s, t, version, new_ab, new_ba) {
+    Graph.adj.get(s).get(t).version = version;
+    Graph.adj.get(s).get(t).alice_balance = new_ab;
+    Graph.adj.get(s).get(t).bob_balance = new_ba;
+    console.log("udpate alice_balance = ", Graph.adj.get(s).get(t).alice_balance);
+    console.log("udpate bob_balance = ", Graph.adj.get(s).get(t).bob_balance);
+}
+
+async function executeTx_TPC(transactions, parties) {
+    for (var i in transactions) {
+        var t = transactions[i];
+        var src = t[0];
+        var dst = t[1];
+        var ether = parseInt(t[2]);
+        var path = jsnx.shortestPath(Graph, {
+            "source": src,
+            "target": dst
+        });
+        for (var j = 0; j < path.length - 1; j++) {
+            var s = path[j];
+            var t = path[j + 1];
+            await updateChannel(s, t, ether, parties);
+        }
+    }
 }
 
 async function simulation() {
@@ -166,25 +250,28 @@ async function simulation() {
     var channels_id = await createTopo(parties);
     console.log("channels_id = ", channels_id);
 
-    
     // // create mpc
     await createMPC(tpc_address, parties, channels_id);
 
-    // for (var i = 0; i < 10; i++) {
-    //     var txs = genM2MTx(accounts);
-    //     console.log("round ", i, "...");
-    //     console.log("txs = ", txs);
-    //     await executeTx(txs, accounts);
-    // }
+    var DP = new DirectedPay(parties, web3);
+    
     var version = 1;
-    for (var i = 0; i < 10; i++) {
+    for (var i = 0; i < 2; i++) {
         var t = generateTransactions(parties);
-        await executeTx(t, parties, version);
+         // payment through n-TPC
+        await executeTx_TPC(t.transactions, parties);
+        // payment through MPC
+        await executeTx_MPC(t.revisedTxs, genTx(t.revisedTxs, accounts), parties, version);
         version += 1;
+        // payment through Ethererum
+        // await DP.run(t.transactions);
+       
     }
 
     console.log("simulation end...");
 }
+
+
 
 (async function run(){
    await simulation();

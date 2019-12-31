@@ -10,8 +10,8 @@ module.exports = class TPC {
     }
 
     async createChannel(alice, bob, ab, bb) {
-        var va = this.web3.utils.toWei(ab, 'ether')
-        var vb = this.web3.utils.toWei(bb, 'ether')
+        var va = this.web3.utils.toWei(ab, 'ether');
+        var vb = this.web3.utils.toWei(bb, 'ether');
         // console.log("va = ", va, ", vb = ", vb);
         await this.tpc_contract.methods.openChannel(alice, bob, va, vb).send({from: alice})
         .on('receipt', function(receipt){
@@ -62,13 +62,14 @@ module.exports = class TPC {
             {t: 'uint256', v: version}
         );
     
-        aliceSig = await this.generateSignatures(msgHash, alice);
-        bobSig = await this.generateSignatures(msgHash, bob);
+        var aliceSig = await this.generateSignatures(msgHash, alice);
+        var bobSig = await this.generateSignatures(msgHash, bob);
         console.log("sigs.alice = ", aliceSig);
         console.log("sigs.bob = ", bobSig);
             this.tpc_contract.methods.updateBalance(channel_id, alice, bob, new_ab_wei, new_ba_wei, version, aliceSig, bobSig)
             .send({
-                from: alice
+                from: alice,
+                gas: 6721975
             }) 
             .on('receipt', function(receipt){
                 console.log("updateBalance recipt: ", receipt.gasUsed);
