@@ -7,6 +7,7 @@ var logger = require('./logger');
 var Graph = require('./topo');
 var jsnx = require('jsnetworkx'); // in Node
 var DirectedPay = require('./DP');
+var sleep = require('sleep');
 
 var gasLogger = logger.gasLogger;
 var channelLogger = logger.channelLogger;
@@ -64,12 +65,32 @@ function genTx(transaction, accounts) {
         var t = transaction[i];
         var src = t[0];
         var dst = t[1];
-        var weis = web3.utils.toWei(t[2], 'ether');
+        var ether = t[2];
+        // var weis = web3.utils.toWei(t[2], 'ether');
+        // txs.push({
+        //     "channel_id": Graph.adj.get(src).get(dst).channel_id,
+        //     "src": accounts[src],
+        //     "dst": accounts[dst],
+        //     "weis": weis
+        // });
+        if (Graph.adj.get(src).get(dst).alice == src) {
+            new_ab = Graph.adj.get(src).get(dst).alice_balance - parseInt(ether);
+            new_ba = Graph.adj.get(src).get(dst).bob_balance + parseInt(ether);
+        } else if (Graph.adj.get(src).get(dst).bob == src) {
+            new_ab = Graph.adj.get(src).get(dst).alice_balance + parseInt(ether);
+            new_ba = Graph.adj.get(src).get(dst).bob_balance - parseInt(ether);
+        } else {
+            console.log("genTx error!!!");
+            process.exit();
+        }
+        var new_ab_wei = web3.utils.toWei(new_ab.toString(), 'ether');
+        var new_ba_wei = web3.utils.toWei(new_ba.toString(), 'ether');
         txs.push({
             "channel_id": Graph.adj.get(src).get(dst).channel_id,
             "src": accounts[src],
             "dst": accounts[dst],
-            "weis": weis
+            "new_ab": new_ab_wei,
+            "new_ba": new_ba_wei
         });
     }
     return txs;
@@ -158,9 +179,9 @@ function generateTransactions(accounts) {
         "revisedTxs": revisedTxs
     }
 }
-
+var mpc_tx_count = 0;
+var num_to_update_mpc = 2; 
 async function executeTx_MPC(transactions, txs, parties, version) {
-    await MPC_OBJ.updateMPC(0, parties, txs, version);
     for (var i in transactions) {
         var tx = transactions[i];
         var s = tx[0];
@@ -184,10 +205,16 @@ async function executeTx_MPC(transactions, txs, parties, version) {
         }
         updateEdgeInGraph(s, t, version, new_ab, new_ba);
     }
+    mpc_tx_count++;
+    if (mpc_tx_count % 2 == 0) {
+        await MPC_OBJ.updateMPC(0, parties, txs, version);
+    }
 }
+var tpc_tx_count = 0;
+var num_to_update_tpc = 10;  // ten tx, one update call
 
-async function updateChannel(s, t, ether, parties) {
-    console.log("updateChannel : ", s, t, ether, parties);
+async function updateTPChannel(s, t, ether, parties) {
+    // console.log("updateChannel : ", s, t, ether, parties);
     Graph.adj.get(s).get(t).version += 1;
     var version = Graph.adj.get(s).get(t).version;
     var channel_id = Graph.adj.get(s).get(t).channel_id;
@@ -204,11 +231,15 @@ async function updateChannel(s, t, ether, parties) {
     } else {
         console.log("channel error!!!");
     }
-    console.log("Graph.adj.get(s).get(t).alice_balance = ", Graph.adj.get(s).get(t).alice_balance);
-    console.log("Graph.adj.get(s).get(t).bob_balance = ", Graph.adj.get(s).get(t).bob_balance);
-    console.log("new_ab = ", new_ab);
-    console.log("new_ba = ", new_ba);
-    await TPC_OBJ.updateChannel(channel_id, parties[alice], parties[bob], new_ab.toString(), new_ba.toString(), version);
+    tpc_tx_count++;
+    if (tpc_tx_count % num_to_update_tpc == 0) {
+        // console.log("Graph.adj.get(s).get(t).alice_balance = ", Graph.adj.get(s).get(t).alice_balance);
+        // console.log("Graph.adj.get(s).get(t).bob_balance = ", Graph.adj.get(s).get(t).bob_balance);
+        // console.log("new_ab = ", new_ab);
+        // console.log("new_ba = ", new_ba);
+        console.log("tpc_tx_count = ", tpc_tx_count);
+        await TPC_OBJ.updateChannel(channel_id, parties[alice], parties[bob], new_ab.toString(), new_ba.toString(), version);
+    }
     updateEdgeInGraph(s, t, version, new_ab, new_ba);
 }
 
@@ -216,8 +247,8 @@ function updateEdgeInGraph(s, t, version, new_ab, new_ba) {
     Graph.adj.get(s).get(t).version = version;
     Graph.adj.get(s).get(t).alice_balance = new_ab;
     Graph.adj.get(s).get(t).bob_balance = new_ba;
-    console.log("udpate alice_balance = ", Graph.adj.get(s).get(t).alice_balance);
-    console.log("udpate bob_balance = ", Graph.adj.get(s).get(t).bob_balance);
+    // console.log("udpate alice_balance = ", Graph.adj.get(s).get(t).alice_balance);
+    // console.log("udpate bob_balance = ", Graph.adj.get(s).get(t).bob_balance);
 }
 
 async function executeTx_TPC(transactions, parties) {
@@ -233,7 +264,7 @@ async function executeTx_TPC(transactions, parties) {
         for (var j = 0; j < path.length - 1; j++) {
             var s = path[j];
             var t = path[j + 1];
-            await updateChannel(s, t, ether, parties);
+            await updateTPChannel(s, t, ether, parties);
         }
     }
 }
@@ -259,7 +290,7 @@ async function simulation() {
     for (var i = 0; i < 2; i++) {
         var t = generateTransactions(parties);
          // payment through n-TPC
-        await executeTx_TPC(t.transactions, parties);
+        // await executeTx_TPC(t.transactions, parties);
         // payment through MPC
         await executeTx_MPC(t.revisedTxs, genTx(t.revisedTxs, accounts), parties, version);
         version += 1;
@@ -267,7 +298,14 @@ async function simulation() {
         // await DP.run(t.transactions);
        
     }
-
+    var id_01 = Graph.adj.get(0).get(1).channel_id;
+    var id_12 = Graph.adj.get(1).get(2).channel_id;
+    var id_13 = Graph.adj.get(1).get(3).channel_id;
+    var id_24 = Graph.adj.get(2).get(4).channel_id;
+    await TPC_OBJ.getChannel(id_01);
+    await TPC_OBJ.getChannel(id_12);
+    await TPC_OBJ.getChannel(id_13);
+    await TPC_OBJ.getChannel(id_24);
     console.log("simulation end...");
 }
 
@@ -275,5 +313,6 @@ async function simulation() {
 
 (async function run(){
    await simulation();
-   wsProvider.disconnect();
+//    sleep.sleep(5);
+//    wsProvider.disconnect();
  })();

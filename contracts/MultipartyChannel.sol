@@ -19,7 +19,8 @@ contract MultipartyChannel {
         uint256 channel_id;
         address src;
         address dst;
-        uint256 weis;
+        uint256 new_ab;
+        uint256 new_ba;
     }
 
     LibSig libSig = new LibSig();
@@ -61,19 +62,19 @@ contract MultipartyChannel {
         }
         // execute txs
         for (uint i = 0; i < txs.length; i++) {
-            uint256 new_ab = 0;
-            uint256 new_bb = 0;
-            SimplePaymentChannel.TPC memory tpc = spc.getTPC(txs[i].channel_id);
-            if (txs[i].src == tpc.alice) {
-                new_ab = tpc.alice_balance - txs[i].weis;
-                new_bb = tpc.bob_balance + txs[i].weis;
-            } else if (txs[i].src == tpc.bob) {
-                new_ab = tpc.alice_balance + txs[i].weis;
-                new_bb = tpc.bob_balance - txs[i].weis;
-            } else {
-                emit TransactionError(txs[i]);
-            }
-            spc.updateBalanceInternal(txs[i].channel_id, new_ab, new_bb);
+            // uint256 new_ab = txs[i].new_ab;
+            // uint256 new_ba = txs[i].new_ba;
+            // SimplePaymentChannel.TPC memory tpc = spc.getTPC(txs[i].channel_id);
+            // if (txs[i].src == tpc.alice) {
+            //     new_ab = tpc.alice_balance - txs[i].weis;
+            //     new_bb = tpc.bob_balance + txs[i].weis;
+            // } else if (txs[i].src == tpc.bob) {
+            //     new_ab = tpc.alice_balance + txs[i].weis;
+            //     new_bb = tpc.bob_balance - txs[i].weis;
+            // } else {
+            //     emit TransactionError(txs[i]);
+            // }
+            spc.updateBalanceInternal(txs[i].channel_id, txs[i].new_ab, txs[i].new_ba);
         }
         mpc.version_num += 1;
         emit UpdateMPCSuccess();
@@ -82,6 +83,8 @@ contract MultipartyChannel {
     function closeMPC(uint256 mpc_id)
         external
     {
-        // TODO
+        require(mpc_id == mpc.id, "error: wrong mpc_id");
+        delete mpc;
+        delete spc;
     }
 }

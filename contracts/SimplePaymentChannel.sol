@@ -13,7 +13,7 @@ contract SimplePaymentChannel {
     struct TPC {
         address payable alice;
         address payable bob;
-        uint256 alice_balance;
+        uint256 alice_balance; // wei
         uint256 bob_balance;
         uint256 version_num;
         bool alice_deposited;

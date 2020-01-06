@@ -64,15 +64,15 @@ module.exports = class TPC {
     
         var aliceSig = await this.generateSignatures(msgHash, alice);
         var bobSig = await this.generateSignatures(msgHash, bob);
-        console.log("sigs.alice = ", aliceSig);
-        console.log("sigs.bob = ", bobSig);
+        // console.log("sigs.alice = ", aliceSig);
+        // console.log("sigs.bob = ", bobSig);
             this.tpc_contract.methods.updateBalance(channel_id, alice, bob, new_ab_wei, new_ba_wei, version, aliceSig, bobSig)
             .send({
                 from: alice,
                 gas: 6721975
             }) 
             .on('receipt', function(receipt){
-                console.log("updateBalance recipt: ", receipt.gasUsed);
+                // console.log("updateBalance recipt: ", receipt.gasUsed);
                 gasLogger.info('updateBalance gasUsed: ', receipt.gasUsed);
             })
             .on('error', function(error) {
