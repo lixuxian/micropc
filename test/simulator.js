@@ -180,7 +180,7 @@ function generateTransactions(accounts) {
     }
 }
 var mpc_tx_count = 0;
-var num_to_update_mpc = 2; 
+var num_to_update_mpc = 20; 
 async function executeTx_MPC(transactions, txs, parties, version) {
     for (var i in transactions) {
         var tx = transactions[i];
@@ -206,7 +206,7 @@ async function executeTx_MPC(transactions, txs, parties, version) {
         updateEdgeInGraph(s, t, version, new_ab, new_ba);
     }
     mpc_tx_count++;
-    if (mpc_tx_count % 2 == 0) {
+    if (mpc_tx_count % num_to_update_mpc == 0) {
         await MPC_OBJ.updateMPC(0, parties, txs, version);
     }
 }
@@ -233,10 +233,6 @@ async function updateTPChannel(s, t, ether, parties) {
     }
     tpc_tx_count++;
     if (tpc_tx_count % num_to_update_tpc == 0) {
-        // console.log("Graph.adj.get(s).get(t).alice_balance = ", Graph.adj.get(s).get(t).alice_balance);
-        // console.log("Graph.adj.get(s).get(t).bob_balance = ", Graph.adj.get(s).get(t).bob_balance);
-        // console.log("new_ab = ", new_ab);
-        // console.log("new_ba = ", new_ba);
         console.log("tpc_tx_count = ", tpc_tx_count);
         await TPC_OBJ.updateChannel(channel_id, parties[alice], parties[bob], new_ab.toString(), new_ba.toString(), version);
     }
@@ -247,8 +243,6 @@ function updateEdgeInGraph(s, t, version, new_ab, new_ba) {
     Graph.adj.get(s).get(t).version = version;
     Graph.adj.get(s).get(t).alice_balance = new_ab;
     Graph.adj.get(s).get(t).bob_balance = new_ba;
-    // console.log("udpate alice_balance = ", Graph.adj.get(s).get(t).alice_balance);
-    // console.log("udpate bob_balance = ", Graph.adj.get(s).get(t).bob_balance);
 }
 
 async function executeTx_TPC(transactions, parties) {
@@ -287,7 +281,8 @@ async function simulation() {
     var DP = new DirectedPay(parties, web3);
     
     var version = 1;
-    for (var i = 0; i < 2; i++) {
+    var transaction_count = 100;
+    for (var i = 0; i < transaction_count; i++) {
         var t = generateTransactions(parties);
          // payment through n-TPC
         // await executeTx_TPC(t.transactions, parties);
@@ -296,16 +291,17 @@ async function simulation() {
         version += 1;
         // payment through Ethererum
         // await DP.run(t.transactions);
-       
     }
-    var id_01 = Graph.adj.get(0).get(1).channel_id;
-    var id_12 = Graph.adj.get(1).get(2).channel_id;
-    var id_13 = Graph.adj.get(1).get(3).channel_id;
-    var id_24 = Graph.adj.get(2).get(4).channel_id;
-    await TPC_OBJ.getChannel(id_01);
-    await TPC_OBJ.getChannel(id_12);
-    await TPC_OBJ.getChannel(id_13);
-    await TPC_OBJ.getChannel(id_24);
+
+    // balance test
+    // var id_01 = Graph.adj.get(0).get(1).channel_id;
+    // var id_12 = Graph.adj.get(1).get(2).channel_id;
+    // var id_13 = Graph.adj.get(1).get(3).channel_id;
+    // var id_24 = Graph.adj.get(2).get(4).channel_id;
+    // await TPC_OBJ.getChannel(id_01);
+    // await TPC_OBJ.getChannel(id_12);
+    // await TPC_OBJ.getChannel(id_13);
+    // await TPC_OBJ.getChannel(id_24);
     console.log("simulation end...");
 }
 
