@@ -8382,12 +8382,12 @@
         }
       },
       "links": {},
-      "address": "0x95050CA71d80A4e39ee529812C4d73cC255333fE",
-      "transactionHash": "0x789617cb4903f491cab0eb34ba816fe83356ab3714bbb8fe4814e53f5414ba0d"
+      "address": "0xDb24Fe71382B96f2c32Ae470250Ee80C2aC33027",
+      "transactionHash": "0xb73a9446bd6e6bb3e7f041d1c6484049a6835515280c8710aeb91c1158ef67ba"
     }
   },
   "schemaVersion": "3.0.20",
-  "updatedAt": "2020-01-06T08:09:26.356Z",
+  "updatedAt": "2020-01-15T11:16:26.236Z",
   "networkType": "ethereum",
   "devdoc": {
     "methods": {}

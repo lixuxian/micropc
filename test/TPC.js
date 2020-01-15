@@ -24,7 +24,7 @@ module.exports = class TPC {
         await this.tpc_contract.methods.deposit(alice, bob).send({
             from: alice,
             value: va.toString(),
-            gas: 400000
+            gas: 6721975
         })
         .on('receipt', function(receipt){
             gasLogger.info('alice deposit gasUsed: ', receipt.gasUsed);
@@ -37,7 +37,7 @@ module.exports = class TPC {
         await this.tpc_contract.methods.deposit(alice, bob).send({
             from: bob,
             value: vb.toString(),
-            gas: 400000
+            gas: 6721975
         }) 
         .on('receipt', function(receipt){
             channel_id = receipt.events.OpenSuccess.returnValues["id"];
@@ -69,7 +69,7 @@ module.exports = class TPC {
             this.tpc_contract.methods.updateBalance(channel_id, alice, bob, new_ab_wei, new_ba_wei, version, aliceSig, bobSig)
             .send({
                 from: alice,
-                gas: 6721975
+                gas: 672197500
             }) 
             .on('receipt', function(receipt){
                 // console.log("updateBalance recipt: ", receipt.gasUsed);

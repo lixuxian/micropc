@@ -12,9 +12,15 @@ var sleep = require('sleep');
 var gasLogger = logger.gasLogger;
 var channelLogger = logger.channelLogger;
 // 通过web3连接私有链。 (web3通过geth连接区块链中的结点)
-wsProvider = new Web3.providers.WebsocketProvider("ws://localhost:8549");
+var opt = { timeout: 3600000 };
+wsProvider = new Web3.providers.WebsocketProvider("ws://localhost:8549", opt);
 var web3 = new Web3(wsProvider);  // 通过geth连接私有链中的结点
  
+var transaction_count = 10;
+var mpc_tx_count = 0;
+var num_to_update_mpc = 10; 
+var tpc_tx_count = 0;
+var num_to_update_tpc = 10;  
  
 var tpc_contract_abi = JSON.parse(fs.readFileSync("./build/contracts_SimplePaymentChannel_sol_SimplePaymentChannel.abi"));  // 读取编译合约的abi文件。
 // var spc_bytecode = fs.readFileSync("./build/contracts_SimplePaymentChannel_sol_SimplePaymentChannel.bin");  // 读取编译合约的二进制文件。
@@ -22,8 +28,8 @@ var tpc_contract_abi = JSON.parse(fs.readFileSync("./build/contracts_SimplePayme
 var mpc_contract_abi = JSON.parse(fs.readFileSync("./build/contracts_MultipartyChannel_sol_MultipartyChannel.abi"));  // 读取编译合约的abi文件。
 // var spc_bytecode = fs.readFileSync("./build/contracts_MultipartyChannel_sol_MultipartyChannel.bin");  // 读取编译合约的二进制文件。
 
-const tpc_address = '0xd500493C86664900F34CF9A6dEc23b86b5313688';
-const mpc_address = '0x95050CA71d80A4e39ee529812C4d73cC255333fE';
+const tpc_address = '0x93B9B41cA16896325A64e49eeb90EEaF07D35E16';
+const mpc_address = '0xDb24Fe71382B96f2c32Ae470250Ee80C2aC33027';
 
 const tpc_contract = new web3.eth.Contract(tpc_contract_abi, tpc_address);
 const mpc_contract = new web3.eth.Contract(mpc_contract_abi, mpc_address);
@@ -31,6 +37,7 @@ const mpc_contract = new web3.eth.Contract(mpc_contract_abi, mpc_address);
 var TPC_OBJ = new TPC(tpc_contract, web3);
 var MPC_OBJ = new MPC(mpc_contract, web3);
 
+var init_balance_str = '100000';
 
 async function createTopo(accounts) {
     var channels_id = new Array();
@@ -40,13 +47,13 @@ async function createTopo(accounts) {
         console.log("edge: ", edge[0], " vs", edge[1]);
         var alice = accounts[edge[0]];
         var bob   = accounts[edge[1]];
-        var channel_id = await TPC_OBJ.createChannel(alice, bob, '1000', '1000');
+        var channel_id = await TPC_OBJ.createChannel(alice, bob, init_balance_str, init_balance_str);
         Graph.adj.get(edge[0]).get(edge[1]).channel_id = channel_id;
         Graph.adj.get(edge[0]).get(edge[1]).version = 0;
         Graph.adj.get(edge[0]).get(edge[1]).alice = edge[0];
         Graph.adj.get(edge[0]).get(edge[1]).bob = edge[1];
-        Graph.adj.get(edge[0]).get(edge[1]).alice_balance = 1000;
-        Graph.adj.get(edge[0]).get(edge[1]).bob_balance = 1000;
+        Graph.adj.get(edge[0]).get(edge[1]).alice_balance = parseInt(init_balance_str);
+        Graph.adj.get(edge[0]).get(edge[1]).bob_balance = parseInt(init_balance_str);
         channels_id.push(channel_id);
         channelLogger.info('createChannel: ', edge[0], ' <--> ', edge[1]);
     }
@@ -66,13 +73,7 @@ function genTx(transaction, accounts) {
         var src = t[0];
         var dst = t[1];
         var ether = t[2];
-        // var weis = web3.utils.toWei(t[2], 'ether');
-        // txs.push({
-        //     "channel_id": Graph.adj.get(src).get(dst).channel_id,
-        //     "src": accounts[src],
-        //     "dst": accounts[dst],
-        //     "weis": weis
-        // });
+
         if (Graph.adj.get(src).get(dst).alice == src) {
             new_ab = Graph.adj.get(src).get(dst).alice_balance - parseInt(ether);
             new_ba = Graph.adj.get(src).get(dst).bob_balance + parseInt(ether);
@@ -96,17 +97,47 @@ function genTx(transaction, accounts) {
     return txs;
 }
 
-function reviseTransactions(transactions) {
+async function getPath(parties, src, dst) {
+    var path = [];
+    try {
+        path = jsnx.shortestPath(Graph, {
+            "source": src,
+            "target": dst
+        });
+    } catch (error) {
+        if (error instanceof jsnx.exceptions.JSNetworkXNoPath) {
+            var alice = parties[src];
+            var bob   = parties[dst];
+            Graph.addEdgesFrom([[src, dst]]);
+            var channel_id = await TPC_OBJ.createChannel(alice, bob, init_balance_str, init_balance_str);
+            Graph.adj.get(src).get(dst).channel_id = channel_id;
+            Graph.adj.get(src).get(dst).version = 0;
+            Graph.adj.get(src).get(dst).alice = src;
+            Graph.adj.get(src).get(dst).bob = dst;
+            Graph.adj.get(src).get(dst).alice_balance = parseInt(init_balance_str);
+            Graph.adj.get(src).get(dst).bob_balance = parseInt(init_balance_str);
+            channels_id.push(channel_id);
+            channelLogger.info('create missed edge: ', src, ' <--> ', dst);
+            path = [src, dst];
+        } else {
+            throw error;
+        }
+    }
+    return path;
+}
+
+async function reviseTransactions(transactions, parties) {
     var revised = new Array();
     for (var i in transactions) {
         var t = transactions[i];
         var src = t[0];
         var dst = t[1];
         var ether = t[2];
-        var path = jsnx.shortestPath(Graph, {
-            "source": src,
-            "target": dst
-        });
+        // var path = jsnx.shortestPath(Graph, {
+        //     "source": src,
+        //     "target": dst
+        // });
+        var path = await getPath(parties, src, dst);
         if (path.length == 2) {
             if (src > dst) {
                 t = [dst, src, '-' + ether];
@@ -158,8 +189,8 @@ function reviseTransactions(transactions) {
 }
 
 // game generateTransactions
-function generateTransactions(accounts) {
-    var transactions = new Array()
+async function generateTransactions(parties) {
+    var transactions = new Array();
     var count = Graph.nodes().length;
 
     var winner = Math.floor(Math.random() * count);
@@ -171,7 +202,7 @@ function generateTransactions(accounts) {
         }
     }
     channelLogger.info("generate transactions: ", transactions);
-    revisedTxs = reviseTransactions(transactions);
+    revisedTxs = await reviseTransactions(transactions, parties);
     channelLogger.info("revised transactions: ", revisedTxs);
     // var txs = genTx(revisedTxs, accounts);
     return {
@@ -179,8 +210,7 @@ function generateTransactions(accounts) {
         "revisedTxs": revisedTxs
     }
 }
-var mpc_tx_count = 0;
-var num_to_update_mpc = 20; 
+
 async function executeTx_MPC(transactions, txs, parties, version) {
     for (var i in transactions) {
         var tx = transactions[i];
@@ -210,8 +240,7 @@ async function executeTx_MPC(transactions, txs, parties, version) {
         await MPC_OBJ.updateMPC(0, parties, txs, version);
     }
 }
-var tpc_tx_count = 0;
-var num_to_update_tpc = 10;  // ten tx, one update call
+
 
 async function updateTPChannel(s, t, ether, parties) {
     // console.log("updateChannel : ", s, t, ether, parties);
@@ -251,10 +280,7 @@ async function executeTx_TPC(transactions, parties) {
         var src = t[0];
         var dst = t[1];
         var ether = parseInt(t[2]);
-        var path = jsnx.shortestPath(Graph, {
-            "source": src,
-            "target": dst
-        });
+        var path = await getPath(parties, src, dst);
         for (var j = 0; j < path.length - 1; j++) {
             var s = path[j];
             var t = path[j + 1];
@@ -281,13 +307,12 @@ async function simulation() {
     var DP = new DirectedPay(parties, web3);
     
     var version = 1;
-    var transaction_count = 100;
     for (var i = 0; i < transaction_count; i++) {
-        var t = generateTransactions(parties);
+        var t = await generateTransactions(parties);
          // payment through n-TPC
-        // await executeTx_TPC(t.transactions, parties);
+        await executeTx_TPC(t.transactions, parties);
         // payment through MPC
-        await executeTx_MPC(t.revisedTxs, genTx(t.revisedTxs, accounts), parties, version);
+        // await executeTx_MPC(t.revisedTxs, genTx(t.revisedTxs, accounts), parties, version);
         version += 1;
         // payment through Ethererum
         // await DP.run(t.transactions);
@@ -308,7 +333,9 @@ async function simulation() {
 
 
 (async function run(){
-   await simulation();
-//    sleep.sleep(5);
-//    wsProvider.disconnect();
+    await simulation();
+    // sleep.sleep(3);
+    // if (wsProvider.connected) {
+    //     wsProvider.disconnect();
+    // }
  })();

@@ -21,7 +21,7 @@ module.exports = class MPC {
         await this.mpc_contract.methods.createMPC(tpc_address, parties, sigs, channels_id)
         .send( {
             from: parties[0],
-            gas: 6721975
+            gas: 672197500
         })
         .on('receipt', function(receipt){
             var mpc_id = receipt.events.CreateMPCSuccess.returnValues["id"];
@@ -51,7 +51,7 @@ module.exports = class MPC {
         .send(
             {
                 from: parties[0],
-                gas: 6721975
+                gas: 672197500
             }
         )
         .on('receipt', function(receipt){
