@@ -304,15 +304,21 @@ async function simulation() {
     // // create mpc
     await createMPC(tpc_address, parties, channels_id);
 
-    var DP = new DirectedPay(parties, web3);
-    
+    // var DP = new DirectedPay(parties, web3);
+
+    if (!wsProvider.connected) {
+        wsProvider = new Web3.providers.WebsocketProvider("ws://localhost:8549", opt);
+        web3 = new Web3(wsProvider);  // 通过geth连接私有链中的结点
+        TPC_OBJ.web3 = web3;
+        MPC_OBJ.web3 = web3;
+    }
     var version = 1;
     for (var i = 0; i < transaction_count; i++) {
         var t = await generateTransactions(parties);
          // payment through n-TPC
-        await executeTx_TPC(t.transactions, parties);
+        // await executeTx_TPC(t.transactions, parties);
         // payment through MPC
-        // await executeTx_MPC(t.revisedTxs, genTx(t.revisedTxs, accounts), parties, version);
+        await executeTx_MPC(t.revisedTxs, genTx(t.revisedTxs, accounts), parties, version);
         version += 1;
         // payment through Ethererum
         // await DP.run(t.transactions);

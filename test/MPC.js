@@ -34,7 +34,7 @@ module.exports = class MPC {
     }
     
     async updateMPC(mpc_id, parties, txs, version) {
-        var msgstr = JSON.stringify(txs);
+        var msgstr = this.web3.utils.sha3(JSON.stringify(txs));
         var sigs = new Array();
         for (var id in parties) {
             var addr = parties[id];

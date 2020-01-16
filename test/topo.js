@@ -23,5 +23,5 @@ if (load_from_file) {
     G.addEdgesFrom([[0, 1], [1, 2]]);
 }
 console.log("G.nodes(): ", G.nodes());
-console.log("G.edges(): ", G.edges());
+// console.log("G.edges(): ", G.edges());
 module.exports = G;
