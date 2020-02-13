@@ -6,7 +6,8 @@ var G = new jsnx.Graph();
 
 var load_from_file = true;
 // var load_from_file = false;
-var filepath = "./data/node-900.csv";
+// var filepath = "./data/node-900.csv";
+var filepath = "./random/random-600.csv";
 
 if (load_from_file) {
     var data = fs.readFileSync(filepath, "utf-8");

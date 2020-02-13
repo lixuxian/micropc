@@ -1409,11 +1409,11 @@
       "events": {},
       "links": {},
       "address": "0x5e08dd7837E40C13Aa8BdE8F3d76704e62628aF4",
-      "transactionHash": "0x334b34c67b745c4961736d0929b5cfa55cb01eba85758273337fd58d4957c672"
+      "transactionHash": "0xa86156392b2137b329ffe46a2fd34e47d54aabaaa509f7aa0ef0b489f350c6b1"
     }
   },
-  "schemaVersion": "3.0.20",
-  "updatedAt": "2020-01-15T11:16:26.223Z",
+  "schemaVersion": "3.0.23",
+  "updatedAt": "2020-02-13T11:29:38.477Z",
   "networkType": "ethereum",
   "devdoc": {
     "methods": {}

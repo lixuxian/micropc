@@ -8293,15 +8293,13 @@
             }
           ],
           "name": "CreateMPCSuccess",
-          "type": "event",
-          "signature": "0x3378f9c0b988e08bd618cb56c9d3f4cc62293e1103a512c7ec9918bcf831760c"
+          "type": "event"
         },
         "0xfdf1c129b40abdea50317454aee5cec556b92df34aa577f2ba6e813e858990e7": {
           "anonymous": false,
           "inputs": [],
           "name": "UpdateMPCSuccess",
-          "type": "event",
-          "signature": "0xfdf1c129b40abdea50317454aee5cec556b92df34aa577f2ba6e813e858990e7"
+          "type": "event"
         },
         "0x4b6f22e2457300280901b4e83672919fcb94e237a635a442f45ef7e13489cca3": {
           "anonymous": false,
@@ -8336,8 +8334,7 @@
             }
           ],
           "name": "TransactionError",
-          "type": "event",
-          "signature": "0x4b6f22e2457300280901b4e83672919fcb94e237a635a442f45ef7e13489cca3"
+          "type": "event"
         },
         "0xef7e4dbc18c740ccf9d17cb8bd66424cb5c403f78a326e579526d52e18e1c245": {
           "anonymous": false,
@@ -8377,17 +8374,16 @@
             }
           ],
           "name": "TransactionError",
-          "type": "event",
-          "signature": "0xef7e4dbc18c740ccf9d17cb8bd66424cb5c403f78a326e579526d52e18e1c245"
+          "type": "event"
         }
       },
       "links": {},
       "address": "0xDb24Fe71382B96f2c32Ae470250Ee80C2aC33027",
-      "transactionHash": "0xb73a9446bd6e6bb3e7f041d1c6484049a6835515280c8710aeb91c1158ef67ba"
+      "transactionHash": "0xfef6ec5540666799e1d0af7885ae68c01d2705cd67bc8853680bbcdd953a2b4a"
     }
   },
-  "schemaVersion": "3.0.20",
-  "updatedAt": "2020-01-15T11:16:26.236Z",
+  "schemaVersion": "3.0.23",
+  "updatedAt": "2020-02-13T11:29:38.498Z",
   "networkType": "ethereum",
   "devdoc": {
     "methods": {}

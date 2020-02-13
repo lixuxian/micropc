@@ -14630,8 +14630,7 @@
             }
           ],
           "name": "OpenRequest",
-          "type": "event",
-          "signature": "0x255cf6a019897b9867c4d57e9d0b54de6553703560d9f35f4c94f9a55db67811"
+          "type": "event"
         },
         "0xe8d71f175d559a2399fe33ffff5609e6b6946020742eb8969ffe07eabbf09ab6": {
           "anonymous": false,
@@ -14658,8 +14657,7 @@
             }
           ],
           "name": "OpenSuccess",
-          "type": "event",
-          "signature": "0xe8d71f175d559a2399fe33ffff5609e6b6946020742eb8969ffe07eabbf09ab6"
+          "type": "event"
         },
         "0xb17655e8e13bc245f023fb04f08d94fbf41d60a02d2b4118796d5e76546bff0f": {
           "anonymous": false,
@@ -14686,8 +14684,7 @@
             }
           ],
           "name": "UpdateSuccess",
-          "type": "event",
-          "signature": "0xb17655e8e13bc245f023fb04f08d94fbf41d60a02d2b4118796d5e76546bff0f"
+          "type": "event"
         },
         "0xe31838209dab139a5e2412af152e0c7b460988fac918c6af387177c9607f8a10": {
           "anonymous": false,
@@ -14714,8 +14711,7 @@
             }
           ],
           "name": "SomeDeposit",
-          "type": "event",
-          "signature": "0xe31838209dab139a5e2412af152e0c7b460988fac918c6af387177c9607f8a10"
+          "type": "event"
         },
         "0x009047abb98ee4e692f01ee1d99289f3a7abc70560be13c5d99121479588057f": {
           "anonymous": false,
@@ -14752,8 +14748,7 @@
             }
           ],
           "name": "OpenSuccess",
-          "type": "event",
-          "signature": "0x009047abb98ee4e692f01ee1d99289f3a7abc70560be13c5d99121479588057f"
+          "type": "event"
         },
         "0xc96576286834e9f521831facd26c3753943f1e7ce1ec4d9f2fba01db0b9ebcad": {
           "anonymous": false,
@@ -14790,8 +14785,7 @@
             }
           ],
           "name": "UpdateSuccess",
-          "type": "event",
-          "signature": "0xc96576286834e9f521831facd26c3753943f1e7ce1ec4d9f2fba01db0b9ebcad"
+          "type": "event"
         },
         "0xa3494481445e00f96a965dda2f74a0435adc379bbd159bdc8804e291ec0f2471": {
           "anonymous": false,
@@ -14810,8 +14804,7 @@
             }
           ],
           "name": "SomeDeposit",
-          "type": "event",
-          "signature": "0xa3494481445e00f96a965dda2f74a0435adc379bbd159bdc8804e291ec0f2471"
+          "type": "event"
         },
         "0x3bcae4bc91258e385f1b1980238f547b90b28f652e1ff26b017d9248fc972831": {
           "anonymous": false,
@@ -14836,17 +14829,16 @@
             }
           ],
           "name": "CloseChannel",
-          "type": "event",
-          "signature": "0x3bcae4bc91258e385f1b1980238f547b90b28f652e1ff26b017d9248fc972831"
+          "type": "event"
         }
       },
       "links": {},
       "address": "0x93B9B41cA16896325A64e49eeb90EEaF07D35E16",
-      "transactionHash": "0x766607e155e226be0c8fac690aef24ef5a8290f18fed1d4a57ab0891f59161b6"
+      "transactionHash": "0x6e2399efc7edbd5dc798743080cd4b93a11a7881c2de6297f5304ea471bae55a"
     }
   },
-  "schemaVersion": "3.0.20",
-  "updatedAt": "2020-01-15T11:16:26.228Z",
+  "schemaVersion": "3.0.23",
+  "updatedAt": "2020-02-13T11:29:38.491Z",
   "networkType": "ethereum",
   "devdoc": {
     "methods": {}

@@ -16,7 +16,7 @@ var opt = { timeout: 3600000 };
 wsProvider = new Web3.providers.WebsocketProvider("ws://localhost:8549", opt);
 var web3 = new Web3(wsProvider);  // 通过geth连接私有链中的结点
  
-var transaction_count = 10;
+var transaction_count = 100;
 var mpc_tx_count = 0;
 var num_to_update_mpc = 10; 
 var tpc_tx_count = 0;
@@ -316,7 +316,7 @@ async function simulation() {
     for (var i = 0; i < transaction_count; i++) {
         var t = await generateTransactions(parties);
          // payment through n-TPC
-        // await executeTx_TPC(t.transactions, parties);
+        await executeTx_TPC(t.transactions, parties);
         // payment through MPC
         await executeTx_MPC(t.revisedTxs, genTx(t.revisedTxs, accounts), parties, version);
         version += 1;
