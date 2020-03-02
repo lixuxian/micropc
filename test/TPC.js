@@ -13,12 +13,12 @@ module.exports = class TPC {
         var va = this.web3.utils.toWei(ab, 'ether');
         var vb = this.web3.utils.toWei(bb, 'ether');
         // console.log("va = ", va, ", vb = ", vb);
-        await this.tpc_contract.methods.openChannel(alice, bob, va, vb).send({from: alice})
+        await this.tpc_contract.methods.createTPC(alice, bob, va, vb).send({from: alice})
         .on('receipt', function(receipt){
-            gasLogger.info('openChannel gasUsed: ', receipt.gasUsed);
+            gasLogger.info('createTPC gasUsed: ', receipt.gasUsed);
         })
         .on('error', function(error) {
-            console.log("openChannel error: ", error);
+            console.log("createTPC error: ", error);
         });
     
         await this.tpc_contract.methods.deposit(alice, bob).send({
@@ -30,7 +30,7 @@ module.exports = class TPC {
             gasLogger.info('alice deposit gasUsed: ', receipt.gasUsed);
         })
         .on('error', function(error) {
-            console.log("deposit error: ", error);
+            console.log("alice deposit error: ", error);
         });
     
         var channel_id = 0;
@@ -40,16 +40,16 @@ module.exports = class TPC {
             gas: 6721975
         }) 
         .on('receipt', function(receipt){
-            channel_id = receipt.events.OpenSuccess.returnValues["id"];
+            channel_id = receipt.events.TPCOpenSuccess.returnValues["id"];
             gasLogger.info('bob deposit gasUsed: ', receipt.gasUsed);
         })
         .on('error', function(error) {
-            console.log("createChannel error: ", error);
+            console.log("createTPC error: ", error);
         });
         return channel_id;
     }
     
-    async updateChannel(channel_id, alice, bob, new_ab, new_ba, version) {
+    async updateTPCChannel(channel_id, alice, bob, new_ab, new_ba, version) {
         var new_ab_wei = this.web3.utils.toWei(new_ab, 'ether');
         var new_ba_wei = this.web3.utils.toWei(new_ba, 'ether');
     
@@ -66,18 +66,40 @@ module.exports = class TPC {
         var bobSig = await this.generateSignatures(msgHash, bob);
         // console.log("sigs.alice = ", aliceSig);
         // console.log("sigs.bob = ", bobSig);
-            this.tpc_contract.methods.updateBalance(channel_id, alice, bob, new_ab_wei, new_ba_wei, version, aliceSig, bobSig)
-            .send({
-                from: alice,
-                gas: 672197500
-            }) 
-            .on('receipt', function(receipt){
-                // console.log("updateBalance recipt: ", receipt.gasUsed);
-                gasLogger.info('updateBalance gasUsed: ', receipt.gasUsed);
-            })
-            .on('error', function(error) {
-                console.log("updateBalance error: ", error);
-            });
+        await this.tpc_contract.methods.updateTPC(channel_id, alice, bob, new_ab_wei, new_ba_wei, version, aliceSig, bobSig)
+        .send({
+            from: alice,
+            gas: 672197500
+        }) 
+        .on('receipt', function(receipt){
+            // console.log("updateBalance recipt: ", receipt.gasUsed);
+            gasLogger.info('updateTPC gasUsed: ', receipt.gasUsed);
+        })
+        .on('error', function(error) {
+            console.log("updateTPC error: ", error);
+        });
+    }
+
+    async closeTPC(channel_id, alice, bob, version) {
+        const prefix = "close the TPC";
+        const msgHash = this.web3.utils.soliditySha3(
+            {t: 'string', v: prefix},
+            {t: 'uint256', v: channel_id},
+            {t: 'uint256', v: version}
+        );
+        var aliceSig = await this.generateSignatures(msgHash, alice);
+        var bobSig = await this.generateSignatures(msgHash, bob);
+        await this.tpc_contract.methods.closeTPC(channel_id, version, aliceSig, bobSig)
+        .send({
+            from: alice,
+            gas: 672197500
+        }) 
+        .on('receipt', function(receipt){
+            gasLogger.info('closeTPC gasUsed: ', receipt.gasUsed);
+        })
+        .on('error', function(error) {
+            console.log("closeTPC error: ", error);
+        });
     }
 
     async getChannel(channel_id) {

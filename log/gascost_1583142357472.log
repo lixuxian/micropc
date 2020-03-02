@@ -1,0 +1,9 @@
+[2020-03-02T17:45:57.912] [INFO] gas - createTPC gasUsed:  73537
+[2020-03-02T17:45:57.972] [INFO] gas - alice deposit gasUsed:  67071
+[2020-03-02T17:45:58.074] [INFO] gas - bob deposit gasUsed:  165248
+[2020-03-02T17:45:58.140] [INFO] gas - createTPC gasUsed:  43537
+[2020-03-02T17:45:58.207] [INFO] gas - alice deposit gasUsed:  47871
+[2020-03-02T17:45:58.332] [INFO] gas - bob deposit gasUsed:  146048
+[2020-03-02T17:45:58.528] [INFO] gas - createMPC gasUsed:  454122
+[2020-03-02T17:45:58.735] [INFO] gas - updateMPC gasUsed:  131500
+[2020-03-02T17:45:58.855] [INFO] gas - closeMPC gasUsed:  57331

@@ -8,7 +8,7 @@ module.exports = class MPC {
         this.web3 = web3;
     }
 
-    async createMPC(tpc_address, parties, channels_id) {
+    async createMPC(parties, channels_id) {
         var sigs = new Array();
         for (var id in parties) {
             var addr = parties[id];
@@ -18,19 +18,21 @@ module.exports = class MPC {
             var sig = await this.generateSignatures(msgHash, addr);
             sigs.push(sig);
         }
-        await this.mpc_contract.methods.createMPC(tpc_address, parties, sigs, channels_id)
+        var mpc_id = 0;
+        await this.mpc_contract.methods.createMPC(parties, sigs, channels_id)
         .send( {
             from: parties[0],
             gas: 672197500
         })
         .on('receipt', function(receipt){
-            var mpc_id = receipt.events.CreateMPCSuccess.returnValues["id"];
+            mpc_id = receipt.events.MPCCreateSuccess.returnValues["id"];
             channelLogger.info("createMPC mpc_id: ", mpc_id);
             gasLogger.info("createMPC gasUsed: ", receipt.gasUsed);
         })
         .on('error', function(error) {     
             console.log("createMPC error: ", error);
         });
+        return mpc_id;
     }
     
     async updateMPC(mpc_id, parties, txs, version) {
@@ -65,5 +67,34 @@ module.exports = class MPC {
     async generateSignatures(msgHash, addr) {
         const sig = await this.web3.eth.sign(msgHash, addr);
         return sig;
+    }
+
+    async closeMPC(mpc_id, parties, version) {
+        const prefix = "close the MPC";
+        const msgHash = this.web3.utils.soliditySha3(
+            {t: 'string', v: prefix},
+            {t: 'uint256', v: mpc_id},
+            {t: 'uint256', v: version}
+        );
+        var sigs = new Array();
+        for (var id in parties) {
+            var addr = parties[id];
+            var sig = await this.generateSignatures(msgHash, addr);
+            sigs.push(sig);
+        }
+
+        await this.mpc_contract.methods.closeMPC(mpc_id, version, sigs)
+        .send(
+            {
+                from: parties[0],
+                gas: 672197500
+            }
+        )
+        .on('receipt', function(receipt){
+            gasLogger.info("closeMPC gasUsed: ", receipt.gasUsed);
+        })
+        .on('error', function(error) {     
+            console.log("closeMPC error: ", error);
+        });
     }
 }

@@ -14,27 +14,29 @@ var channelLogger = logger.channelLogger;
 // 通过web3连接私有链。 (web3通过geth连接区块链中的结点)
 var opt = { timeout: 3600000 };
 wsProvider = new Web3.providers.WebsocketProvider("ws://localhost:8549", opt);
-var web3 = new Web3(wsProvider);  // 通过geth连接私有链中的结点
+var web3 = new Web3(wsProvider);  // s通过geth连接私有链中的结点
  
-var transaction_count = 100;
+var transaction_count = 1;
 var mpc_tx_count = 0;
-var num_to_update_mpc = 10; 
+var num_to_update_mpc = 1; 
 var tpc_tx_count = 0;
-var num_to_update_tpc = 10;  
+var num_to_update_tpc = 1;  
  
-var tpc_contract_abi = JSON.parse(fs.readFileSync("./build/contracts_SimplePaymentChannel_sol_SimplePaymentChannel.abi"));  // 读取编译合约的abi文件。
+// var tpc_contract_abi = JSON.parse(fs.readFileSync("./build/contracts_SimplePaymentChannel_sol_SimplePaymentChannel.abi"));  // 读取编译合约的abi文件。
 // var spc_bytecode = fs.readFileSync("./build/contracts_SimplePaymentChannel_sol_SimplePaymentChannel.bin");  // 读取编译合约的二进制文件。
 
 var mpc_contract_abi = JSON.parse(fs.readFileSync("./build/contracts_MultipartyChannel_sol_MultipartyChannel.abi"));  // 读取编译合约的abi文件。
 // var spc_bytecode = fs.readFileSync("./build/contracts_MultipartyChannel_sol_MultipartyChannel.bin");  // 读取编译合约的二进制文件。
 
-const tpc_address = '0x93B9B41cA16896325A64e49eeb90EEaF07D35E16';
-const mpc_address = '0xDb24Fe71382B96f2c32Ae470250Ee80C2aC33027';
+// const tpc_address = '0x93B9B41cA16896325A64e49eeb90EEaF07D35E16';
+// const mpc_address = '0xDb24Fe71382B96f2c32Ae470250Ee80C2aC33027';
+const mpc_address = '0x93B9B41cA16896325A64e49eeb90EEaF07D35E16';
 
-const tpc_contract = new web3.eth.Contract(tpc_contract_abi, tpc_address);
+// const tpc_contract = new web3.eth.Contract(tpc_contract_abi, tpc_address);
 const mpc_contract = new web3.eth.Contract(mpc_contract_abi, mpc_address);
 
-var TPC_OBJ = new TPC(tpc_contract, web3);
+// var TPC_OBJ = new TPC(tpc_contract, web3);
+var TPC_OBJ = new TPC(mpc_contract, web3);
 var MPC_OBJ = new MPC(mpc_contract, web3);
 
 var init_balance_str = '100000';
@@ -60,10 +62,12 @@ async function createTopo(accounts) {
     return channels_id;
 }
 
-async function createMPC(tpc_address, parties, channels_id) {
+async function createMPC(parties, channels_id) {
     channelLogger.info("createMPC start...");
-    await MPC_OBJ.createMPC(tpc_address, parties, channels_id);
+    // await MPC_OBJ.createMPC(tpc_address, parties, channels_id);
+    var mpc_id = await MPC_OBJ.createMPC(parties, channels_id);
     channelLogger.info("createMPC end...");
+    return mpc_id;
 }
 
 function genTx(transaction, accounts) {
@@ -211,7 +215,7 @@ async function generateTransactions(parties) {
     }
 }
 
-async function executeTx_MPC(transactions, txs, parties, version) {
+async function executeTx_MPC(mpc_id, transactions, txs, parties, version) {
     for (var i in transactions) {
         var tx = transactions[i];
         var s = tx[0];
@@ -237,7 +241,8 @@ async function executeTx_MPC(transactions, txs, parties, version) {
     }
     mpc_tx_count++;
     if (mpc_tx_count % num_to_update_mpc == 0) {
-        await MPC_OBJ.updateMPC(0, parties, txs, version);
+        console.log("Update MPC");
+        await MPC_OBJ.updateMPC(mpc_id, parties, txs, version);
     }
 }
 
@@ -263,7 +268,7 @@ async function updateTPChannel(s, t, ether, parties) {
     tpc_tx_count++;
     if (tpc_tx_count % num_to_update_tpc == 0) {
         console.log("tpc_tx_count = ", tpc_tx_count);
-        await TPC_OBJ.updateChannel(channel_id, parties[alice], parties[bob], new_ab.toString(), new_ba.toString(), version);
+        await TPC_OBJ.updateTPCChannel(channel_id, parties[alice], parties[bob], new_ab.toString(), new_ba.toString(), version);
     }
     updateEdgeInGraph(s, t, version, new_ab, new_ba);
 }
@@ -298,31 +303,50 @@ async function simulation() {
         parties.push(accounts[i]);
     }
 
+    // 创建所有的双方通道，构成拓扑
     var channels_id = await createTopo(parties);
     console.log("channels_id = ", channels_id);
 
     // // create mpc
-    await createMPC(tpc_address, parties, channels_id);
+    var mpc_id = await createMPC(parties, channels_id);
 
     // var DP = new DirectedPay(parties, web3);
 
-    if (!wsProvider.connected) {
-        wsProvider = new Web3.providers.WebsocketProvider("ws://localhost:8549", opt);
-        web3 = new Web3(wsProvider);  // 通过geth连接私有链中的结点
-        TPC_OBJ.web3 = web3;
-        MPC_OBJ.web3 = web3;
-    }
-    var version = 1;
+    // if (!wsProvider.connected) {
+    //     wsProvider = new Web3.providers.WebsocketProvider("ws://localhost:8549", opt);
+    //     web3 = new Web3(wsProvider);  // 通过geth连接私有链中的结点
+    //     TPC_OBJ.web3 = web3;
+    //     MPC_OBJ.web3 = web3;
+    // }
+    var mpc_version = 0;
     for (var i = 0; i < transaction_count; i++) {
+        mpc_version += 1;
         var t = await generateTransactions(parties);
          // payment through n-TPC
-        await executeTx_TPC(t.transactions, parties);
+        // await executeTx_TPC(t.transactions, parties);
         // payment through MPC
-        await executeTx_MPC(t.revisedTxs, genTx(t.revisedTxs, accounts), parties, version);
-        version += 1;
+        await executeTx_MPC(mpc_id, t.revisedTxs, genTx(t.revisedTxs, accounts), parties, mpc_version);
         // payment through Ethererum
         // await DP.run(t.transactions);
     }
+    
+    // ***test closeTPC()***
+    // var edges = Graph.edges(); 
+    // for (var id in edges) {
+    //     var edge = edges[id];
+    //     var a = edge[0];
+    //     var b = edge[1];
+    //     console.log("a = ", a, " b = ", b);
+    //     var channel_id = Graph.adj.get(a).get(b).channel_id;
+    //     var alice = parties[Graph.adj.get(a).get(b).alice];
+    //     var bob = parties[Graph.adj.get(a).get(b).bob];
+    //     var v = Graph.adj.get(a).get(b).version; 
+    //     console.log(channel_id, alice, bob, v);
+    // }
+    // await TPC_OBJ.closeTPC(channel_id, alice, bob, v);
+
+    // ***test closeMPC()***
+    await MPC_OBJ.closeMPC(mpc_id, parties, mpc_version);
 
     // balance test
     // var id_01 = Graph.adj.get(0).get(1).channel_id;
@@ -340,8 +364,8 @@ async function simulation() {
 
 (async function run(){
     await simulation();
-    // sleep.sleep(3);
-    // if (wsProvider.connected) {
-    //     wsProvider.disconnect();
-    // }
+    sleep.sleep(3);
+    if (wsProvider.connected) {
+        wsProvider.disconnect();
+    }
  })();
