@@ -308,24 +308,18 @@ async function simulation() {
     console.log("channels_id = ", channels_id);
 
     // // create mpc
-    var mpc_id = await createMPC(parties, channels_id);
+    // var mpc_id = await createMPC(parties, channels_id);
 
     // var DP = new DirectedPay(parties, web3);
 
-    // if (!wsProvider.connected) {
-    //     wsProvider = new Web3.providers.WebsocketProvider("ws://localhost:8549", opt);
-    //     web3 = new Web3(wsProvider);  // 通过geth连接私有链中的结点
-    //     TPC_OBJ.web3 = web3;
-    //     MPC_OBJ.web3 = web3;
-    // }
     var mpc_version = 0;
     for (var i = 0; i < transaction_count; i++) {
         mpc_version += 1;
         var t = await generateTransactions(parties);
          // payment through n-TPC
-        // await executeTx_TPC(t.transactions, parties);
+        await executeTx_TPC(t.transactions, parties);
         // payment through MPC
-        await executeTx_MPC(mpc_id, t.revisedTxs, genTx(t.revisedTxs, accounts), parties, mpc_version);
+        // await executeTx_MPC(mpc_id, t.revisedTxs, genTx(t.revisedTxs, accounts), parties, mpc_version);
         // payment through Ethererum
         // await DP.run(t.transactions);
     }
@@ -346,7 +340,7 @@ async function simulation() {
     // await TPC_OBJ.closeTPC(channel_id, alice, bob, v);
 
     // ***test closeMPC()***
-    await MPC_OBJ.closeMPC(mpc_id, parties, mpc_version);
+    // await MPC_OBJ.closeMPC(mpc_id, parties, mpc_version);
 
     // balance test
     // var id_01 = Graph.adj.get(0).get(1).channel_id;

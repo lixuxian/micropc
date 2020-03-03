@@ -1,7 +1,0 @@
-[2020-03-02T17:45:58.074] [INFO] channel - createChannel:  0  <-->  1
-[2020-03-02T17:45:58.332] [INFO] channel - createChannel:  1  <-->  2
-[2020-03-02T17:45:58.332] [INFO] channel - createMPC start...
-[2020-03-02T17:45:58.528] [INFO] channel - createMPC mpc_id:  1
-[2020-03-02T17:45:58.528] [INFO] channel - createMPC end...
-[2020-03-02T17:45:58.529] [INFO] channel - generate transactions:  [ [ 0, 1, '12' ], [ 2, 1, '12' ] ]
-[2020-03-02T17:45:58.531] [INFO] channel - revised transactions:  [ [ 0, 1, '12' ], [ 2, 1, '12' ] ]

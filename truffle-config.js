@@ -46,7 +46,7 @@ module.exports = {
      host: "127.0.0.1",     // Localhost (default: none)
      port: 8549,            // Standard Ethereum port (default: none)
      network_id: "*",       // Any network (default: none)
-     accounts: 100,
+     accounts: 10,
      defaultEtherBalance: 500000000,
      gas: 850000000000
     //  blockTime: 

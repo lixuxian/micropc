@@ -34,10 +34,16 @@ contract SimplePaymentChannel {
 
     TPC tpc_ab;
 
-    function createTPC(address payable alice, address payable bob, uint256 ab, uint256 bb)
+    function createTPC(address payable alice, address payable bob, uint256 ab, uint256 bb,
+        bytes calldata sigA, bytes calldata sigB)
         external
         payable
     {
+        string memory prefix = "create a TPC";
+        bytes32 msgHash = libSig.prefixed(keccak256(abi.encodePacked(prefix, alice, bob, ab, bb)));
+        require(msg.sender == alice || msg.sender == bob, "createTPC: wrong sender");
+        require(libSig.verify(alice, msgHash, sigA) && libSig.verify(bob, msgHash, sigB), "verify failed!");
+
         tpc_ab.alice = alice;
         tpc_ab.bob = bob;
         tpc_ab.version_num = 0;

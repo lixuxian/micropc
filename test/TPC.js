@@ -12,8 +12,23 @@ module.exports = class TPC {
     async createChannel(alice, bob, ab, bb) {
         var va = this.web3.utils.toWei(ab, 'ether');
         var vb = this.web3.utils.toWei(bb, 'ether');
-        // console.log("va = ", va, ", vb = ", vb);
-        await this.tpc_contract.methods.createTPC(alice, bob, va, vb).send({from: alice})
+        
+        const prefix = "create a TPC";
+        const msgHash = this.web3.utils.soliditySha3(
+            {t: 'string', v: prefix},
+            {t: 'address', v: alice},
+            {t: 'address', v: bob},
+            {t: 'uint256', v: va},
+            {t: 'uint256', v: vb}
+        );
+    
+        var aliceSig = await this.generateSignatures(msgHash, alice);
+        var bobSig = await this.generateSignatures(msgHash, bob);
+        
+        await this.tpc_contract.methods.createTPC(alice, bob, va, vb, aliceSig, bobSig).send({
+            from: alice,
+            gas: 6721975
+        })
         .on('receipt', function(receipt){
             gasLogger.info('createTPC gasUsed: ', receipt.gasUsed);
         })
