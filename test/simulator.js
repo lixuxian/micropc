@@ -325,18 +325,19 @@ async function simulation() {
     }
     
     // ***test closeTPC()***
-    // var edges = Graph.edges(); 
-    // for (var id in edges) {
-    //     var edge = edges[id];
-    //     var a = edge[0];
-    //     var b = edge[1];
-    //     console.log("a = ", a, " b = ", b);
-    //     var channel_id = Graph.adj.get(a).get(b).channel_id;
-    //     var alice = parties[Graph.adj.get(a).get(b).alice];
-    //     var bob = parties[Graph.adj.get(a).get(b).bob];
-    //     var v = Graph.adj.get(a).get(b).version; 
-    //     console.log(channel_id, alice, bob, v);
-    // }
+    var edges = Graph.edges(); 
+    for (var id in edges) {
+        var edge = edges[id];
+        var a = edge[0];
+        var b = edge[1];
+        console.log("a = ", a, " b = ", b);
+        var channel_id = Graph.adj.get(a).get(b).channel_id;
+        var alice = parties[Graph.adj.get(a).get(b).alice];
+        var bob = parties[Graph.adj.get(a).get(b).bob];
+        var v = Graph.adj.get(a).get(b).version; 
+        console.log(channel_id, alice, bob, v);
+        await TPC_OBJ.closeTPC(channel_id, alice, bob, v);
+    }
     // await TPC_OBJ.closeTPC(channel_id, alice, bob, v);
 
     // ***test closeMPC()***

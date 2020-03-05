@@ -110,7 +110,7 @@ contract SimplePaymentChannel {
 
         tpc_map[id].alice_balance = new_ab;
         tpc_map[id].bob_balance = new_bb;
-        tpc_map[id].version_num += 1;
+        tpc_map[id].version_num = version;
 
         emit TPCUpdateSuccess(id, alice, bob, new_ab, new_bb);
     }
@@ -134,12 +134,13 @@ contract SimplePaymentChannel {
         string memory prefix = "close the TPC";
         bytes32 msgHash = libSig.prefixed(keccak256(abi.encodePacked(prefix, id, version)));
         require(version == tpc_map[id].version_num, "closeTPC: version not equal");
+        uint256 sc_version = tpc_map[id].version_num;
         require(libSig.verify(channel.alice, msgHash, sigA) && libSig.verify(channel.bob, msgHash, sigB), "verify failed!");
         // withdraw
         channel.alice.transfer(channel.alice_balance);
         channel.bob.transfer(channel.bob_balance);
         delete tpc_map[id];
-        emit TPCCloseChannel(id, channel.alice, channel.bob);
+        emit TPCCloseChannel(sc_version, channel.alice, channel.bob);
     }
 
     function verifyChannel(uint256 id)
