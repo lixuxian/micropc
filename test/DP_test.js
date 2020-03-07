@@ -10,7 +10,7 @@ var opt = { timeout: 3600000 };
 wsProvider = new Web3.providers.WebsocketProvider("ws://localhost:8549", opt);
 var web3 = new Web3(wsProvider);  // s通过geth连接私有链中的结点
 
-var tx_amount = 100;
+var tx_amount = 75;
 var tx_time_sum = 0;
 
 (async function test(){
@@ -27,7 +27,8 @@ var tx_time_sum = 0;
             "value": weis
         })
         .on('receipt', function(receipt){
-            console.log("Traditional transfer gasUsed: ", receipt.gasUsed);
+            // console.log("Traditional transfer gasUsed: ", receipt.gasUsed);
+            console.log("tx ", i);
         })
         .on('error', function(error) {
             console.log("Tradition run error: ", error);

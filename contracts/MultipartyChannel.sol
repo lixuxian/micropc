@@ -8,10 +8,10 @@ pragma experimental ABIEncoderV2;
 import "./ILibSig.sol";
 
 contract SimplePaymentChannel {
-    event TPCOpenRequest(address alice, address bob, uint256 ab, uint256 bb);
+    event TPCOpenRequest(uint256 id, address alice, address bob, uint256 ab, uint256 bb);
     event TPCOpenSuccess(uint256 id, address alice, address bob, uint256 ab, uint256 bb);
     event TPCUpdateSuccess(uint256 id, address alice, address bob, uint256 new_ab, uint256 new_bb);
-    event TPCSomeDeposit(address addr, uint256 token);
+    event TPCSomeDeposit(uint256 id, address addr, uint256 token);
     event TPCCloseChannel(uint256 id, address alice, address bob);
 
     struct TPC {
@@ -32,7 +32,7 @@ contract SimplePaymentChannel {
 
     uint256 count = 1;
 
-    TPC tpc_ab;
+    // TPC tpc_ab;
 
     function createTPC(address payable alice, address payable bob, uint256 ab, uint256 bb,
         bytes calldata sigA, bytes calldata sigB)
@@ -44,14 +44,20 @@ contract SimplePaymentChannel {
         require(msg.sender == alice || msg.sender == bob, "createTPC: wrong sender");
         require(libSig.verify(alice, msgHash, sigA) && libSig.verify(bob, msgHash, sigB), "verify failed!");
 
-        tpc_ab.alice = alice;
-        tpc_ab.bob = bob;
-        tpc_ab.version_num = 0;
-        tpc_ab.alice_deposited = false;
-        tpc_ab.bob_deposited = false;
-        tpc_ab.busy = false;
+        TPC memory tpc;
+        tpc.alice = alice;
+        tpc.bob = bob;
+        tpc.version_num = 0;
+        tpc.alice_deposited = false;
+        tpc.bob_deposited = false;
+        tpc.busy = false;
+        tpc.alice_deposited = false;
+        tpc.bob_deposited = false;
 
-        emit TPCOpenRequest(alice, bob, ab, bb);
+        uint256 id = count;
+        tpc_map[id] = tpc;
+        count += 1;
+        emit TPCOpenRequest(id, alice, bob, ab, bb);
     }
 
     function getChannel(uint256 id)
@@ -62,30 +68,31 @@ contract SimplePaymentChannel {
         return tpc_map[id];
     }
 
-    function deposit(address alice, address bob)
+    function deposit(uint256 id, address alice, address bob)
         external
         payable
         returns (uint256)
     {
-        if (msg.sender == alice)
+        //  TPC memory tpc = tpc_map[id];
+        if (msg.sender == tpc_map[id].alice)
         {
-            tpc_ab.alice_balance = msg.value;
-            tpc_ab.alice_deposited = true;
-            emit TPCSomeDeposit(alice, msg.value);
+            tpc_map[id].alice_balance = msg.value;
+            tpc_map[id].alice_deposited = true;
+            emit TPCSomeDeposit(id, alice, msg.value);
         }
-        else if (msg.sender == bob)
+        else if (msg.sender == tpc_map[id].bob)
         {
-            tpc_ab.bob_balance = msg.value;
-            tpc_ab.bob_deposited = true;
-            emit TPCSomeDeposit(bob, msg.value);
+            tpc_map[id].bob_balance = msg.value;
+            tpc_map[id].bob_deposited = true;
+            emit TPCSomeDeposit(id, bob, msg.value);
         }
-        if (tpc_ab.alice_deposited && tpc_ab.bob_deposited) {
-            uint256 id = count;
-            tpc_map[id] = tpc_ab;
-            count += 1;
-            tpc_ab.alice_deposited = false;
-            tpc_ab.bob_deposited = false;
-            emit TPCOpenSuccess(id, alice, bob, tpc_ab.alice_balance, tpc_ab.bob_balance);
+        if (tpc_map[id].alice_deposited && tpc_map[id].bob_deposited) {
+            // uint256 id = count;
+            // tpc_map[id] = tpc_ab;
+            // count += 1;
+            // tpc_ab.alice_deposited = false;
+            // tpc_ab.bob_deposited = false;
+            emit TPCOpenSuccess(id, alice, bob, tpc_map[id].alice_balance, tpc_map[id].bob_balance);
             return id;
         }
         return 0;
