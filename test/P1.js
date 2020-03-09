@@ -53,7 +53,8 @@ class AB_TPC {
   }
 
   printTPC() {
-    console.log("TPC ", this.channel_id, " : ", this.now_ab, " <--> ", this.now_bb, " version ", this.version); 
+    console.log("TPC ", this.channel_id, " : ", this.now_ab, " <--> ", this.now_bb, " version ", this.version,
+    this.created); 
   }
 }
 
@@ -84,6 +85,179 @@ async function requestCreateTPC(socket, tpc, alice, bob) // p1, p2/p3
   socket.write(msg);
 }
 
+async function requestCreateMPC(socket_12, socket_13, p1, p2, p3) {
+  console.log("requestCreateMPC...");
+  var msg = "create mpc," + p1 + "," + p2 + "," + p3 + ",";
+  const msgHash_1 = await web3.utils.soliditySha3(
+    {t: 'address', v: p1}
+  );
+  var p1Sig = await TPC_OBJ.generateSignatures(msgHash_1, p1);
+  agreeCreateP1Sig = p1Sig;
+  msg += p1Sig;
+  socket_12.write(msg);
+  socket_13.write(msg);
+}
+
+var agreeCreateP2 = false;
+var agreeCreateP3 = false;
+var agreeCreateP1Sig;
+var agreeCreateP2Sig;
+var agreeCreateP3Sig;
+
+var mpc_id = 0;
+
+async function processCreateMPC(p, sig) {
+  if (p == 'p2') {
+    agreeCreateP2 = true;
+    agreeCreateP2Sig = sig;
+  }
+  else if (p == 'p3') {
+    agreeCreateP3 = true;
+    agreeCreateP3Sig = sig;
+  }
+  if (agreeCreateP2 && agreeCreateP3) {
+    // await this.mpc_contract.methods.createMPC(parties, sigs, channels_id)
+    var parties = new Array();
+    parties.push(p1, p2, p3);
+    var sigs = new Array();
+    sigs.push(agreeCreateP1Sig, agreeCreateP2Sig, agreeCreateP3Sig);
+    var channels = new Array();
+    channels.push(tpc_12.channel_id, tpc_13.channel_id);
+
+    await mpc_contract.methods.createMPC(parties, sigs, channels)
+    .send( {
+        from: p1,
+        gas: 672197500
+    })
+    .on('receipt', async function(receipt){
+        mpc_id = receipt.events.MPCCreateSuccess.returnValues["id"];
+        console.log("createMPC gasUsed: ", receipt.gasUsed);
+        var msg = "mpc created," + mpc_id.toString() + "," + agreeCreateP1Sig + "," + agreeCreateP2Sig + "," + agreeCreateP3Sig;
+        socket_12.write(msg);
+        socket_13.write(msg);
+        
+        mpc = new MPTX(tpc_12, tpc_13);
+        mpc.printTPC();
+
+        var tx_1 = new Tx(tpc_12.channel_id, p2, p1, 1);
+        var tx_2 = new Tx(tpc_13.channel_id, p1, p3, 2);
+        var mptx = new Array();
+        mptx.push(tx_1, tx_2);
+        await requestUpdateMPCLocally(mptx);
+        mpc.printTPC();
+    })
+    .on('error', function(error) {     
+        console.log("createMPC error: ", error);
+    });
+  }
+}
+
+
+class Tx {
+  constructor(id, src, dst, ether) {
+    this.id = id;
+    this.src = src; // address
+    this.dst = dst; // address
+    this.ether = ether;
+    this.weis = web3.utils.toWei(ether.toString(), 'ether');
+  }
+}
+
+var mpc;
+
+class MPTX {
+  constructor(tpc_12, tpc_13) {  
+    this.tpc_map = new Map();
+    this.tpc_map.set(tpc_12.channel_id, tpc_12);
+    this.tpc_map.set(tpc_13.channel_id, tpc_13);
+    // this.printTPC();
+  }
+
+  printTPC() {
+    for (var [key, value] of this.tpc_map) {
+      console.log("channel id:", key, " ab: ", value.now_ab, " bb: ", value.now_bb);
+    } 
+  }
+
+  addTx(tx) {
+    // console.log("addTx: tx.id = ", tx.id);
+    var tpc = this.tpc_map.get(tx.id);
+    // console.log("addTx: tpc = ", tpc);
+    if (tx.src == tpc.alice) {
+      tpc.now_ab = (parseInt(tpc.now_ab) - tx.ether).toString();
+      tpc.now_bb = (parseInt(tpc.now_bb) + tx.ether).toString();
+    }
+    else if (tx.src == tpc.bob) {
+      tpc.now_ab = (parseInt(tpc.now_ab) + tx.ether).toString();
+      tpc.now_bb = (parseInt(tpc.now_bb) - tx.ether).toString();
+    }
+    else {
+      console.log("addTx: Error src");
+    }
+  }
+
+  genMptx() {
+    var txs;
+    for (var [key, value] of this.tpc_map) {
+      // console.log("channel id:", value.channel_id, " ab: ", value.now_ab, " bb: ", value.now_bb);
+      var new_ab_wei = web3.utils.toWei(value.now_ab, 'ether');
+      var new_ba_wei = web3.utils.toWei(value.now_bb, 'ether');
+      txs.push({
+        "channel_id": key,
+        "src": value.alice,
+        "dst": value.bob,
+        "new_ab": new_ab_wei,
+        "new_ba": new_ba_wei
+      })
+    } 
+    return txs;
+  }
+
+  genUpdateLocallyMsg() {
+    var msg = "update mpc locally," + this.tpc_map.size + ",";
+    for (var [key, value] of this.tpc_map) {
+        msg += key.toString() + "," + value.now_ab.toString() + "," + value.now_bb.toString() + ",";
+    }
+    return msg;
+  }
+
+  updateLocally() {
+    for (var [key, value] of this.tpc_map) {
+      if (tpc_12.channel_id == key) {
+        tpc_12.now_ab = value.now_ab;
+        tpc_12.now_bb = value.now_bb;
+      }
+      else if (tpc_13.channel_id == key) {
+        tpc_13.now_ab = value.now_ab;
+        tpc_13.now_bb = value.now_bb;
+      }
+    }
+  }
+}
+
+async function requestUpdateMPCLocally(mptx) {
+    console.log("requestUpdateMPCLocally...");
+    for (var i in mptx) {
+      var tx = mptx[i]; 
+      console.log("tx = ", tx);
+      mpc.addTx(tx);
+    }
+    var msg = mpc.genUpdateLocallyMsg();
+    console.log("xxxxxxxxx:");
+    tpc_12.printTPC();
+    tpc_13.printTPC();
+    const msgHash = await web3.utils.soliditySha3(
+      {t: 'string', v: msg}
+    );
+    var p1Sig = await TPC_OBJ.generateSignatures(msgHash, p1);
+    msg += p1Sig;
+    socket_12.write(msg);
+    socket_13.write(msg);
+}
+
+async function requestUpdateMPC() {
+  
+}
 
 async function requestCloseTPC(socket, tpc) 
 {
@@ -102,9 +276,6 @@ async function requestCloseTPC(socket, tpc)
   socket.write(msg);
 }
 
-
-var alice;
-var bob;
 
 async function depositP1(channel_id, socket, tpc, p1, otherparty) { // p1, p2/p3
     console.log("depositP1: ", p1, " <--> ", otherparty);
@@ -139,6 +310,9 @@ async function depositP1(channel_id, socket, tpc, p1, otherparty) { // p1, p2/p3
   .on('error', function(error) {
       console.log("p1 deposit error: ", error);
   });
+  if (tpc_12.channel_id && tpc_13.created) {
+    await requestCreateMPC(socket_12, socket_13, p1, p2, p3);
+  }
 }
 
 
@@ -168,7 +342,7 @@ async function init() {
     tpc_13.version = 0;
 }
 
-async function processMsg(msg) {
+async function processMsg(msg, tpc) {
     console.log( msg.toString() );
     var msg_arr = msg.toString().split(",");
     if (msg_arr[0] == 'agree create tpc') {
@@ -188,9 +362,12 @@ async function processMsg(msg) {
     else if (msg_arr[0] == 'created') {
         var channel_id = msg_arr[1].toString();
         console.log("created, channel id = ", channel_id);
-        tpc_12.created = true;
-        tpc_12.channel_id = channel_id;
-        tpc_12.bobSig = msg_arr[2];
+        tpc.created = true;
+        tpc.channel_id = channel_id;
+        tpc.bobSig = msg_arr[2];
+        if (tpc_12.channel_id && tpc_13.created) {
+          await requestCreateMPC(socket_12, socket_13, p1, p2, p3);
+        }
     }
     else if (msg_arr[0] == 'closed') {
         close_end = processMsg.uptime();
@@ -199,6 +376,15 @@ async function processMsg(msg) {
         var channel_id = parseInt(msg_arr[1]);
         var version = parseInt(msg_arr[2]);
         console.log("closed channel ", channel_id, " version ", version);
+    }
+    else if (msg_arr[0] == 'agree create mpc') {
+        await processCreateMPC(msg_arr[1], msg_arr[2]);
+    }
+    else if (msg_arr[0] == 'agree update mpc locally') {
+      console.log(msg_arr[1] + ' agree update mpc locally');
+      mpc.updateLocally();
+      tpc_12.printTPC();
+      tpc_13.printTPC();
     }
 }
 
@@ -214,9 +400,12 @@ function processError(error) {
         // create p1 <-> p2
         await requestCreateTPC(socket_12, tpc_12, p1, p2);
     });
-    socket_12.on( 'data', processMsg);
-    socket_12.on( 'error', processError);
-    socket_12.on('close',function(){
+    socket_12.on('data', async function(msg) {
+      processMsg(msg, tpc_12);
+    });
+    socket_12.on('error', processError);
+    socket_12.on('close', function(){
+        tpc_12.printTPC();
         console.log('P2下线了');
     });
 
@@ -225,9 +414,12 @@ function processError(error) {
         // create p1 <-> p2
         await requestCreateTPC(socket_13, tpc_13, p1, p3);
     });
-    socket_13.on('data', processMsg);
+    socket_13.on('data', async function(msg) {
+      processMsg(msg, tpc_13);
+    });
     socket_13.on('error', processError);
     socket_13.on('close',function(){
+      tpc_13.printTPC();
         console.log('P3下线了');
     });
     

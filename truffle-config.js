@@ -49,7 +49,7 @@ module.exports = {
      accounts: 10,
      defaultEtherBalance: 500000000,
      gas: 850000000000,
-    //  blockTime: 15
+     blockTime: 2
     },
 
     // Another network with more advanced options...

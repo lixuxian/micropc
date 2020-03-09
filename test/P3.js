@@ -329,17 +329,51 @@ async function processMsg(client, msg) { //接收client发来的信息
       var p1Sig = msg_arr[3];
       await processCloseTPC(client, channel_id, version, p1Sig);
     }
+    else if (msg_arr[0] == 'create mpc') {
+      // const msg = "create mpc," + p1 + "," + p2 + "," + p3 + "," + p1Sig;
+      const msgHash = await web3.utils.soliditySha3(
+        {t: 'address', v: p3}
+      );
+      var p3Sig = await TPC_OBJ.generateSignatures(msgHash, p3);
+      const msg = "agree create mpc,p3," + p3Sig;
+      client.write(msg);
+    }
+    else if (msg_arr[0] == 'mpc created') {
+      console.log("mpc created, id = ", msg_arr[1]);
+    }
+    else if (msg_arr[0] == 'update mpc locally') {
+      var p1Sig = msg_arr[msg_arr.length - 1];
+      var msg = "";
+      for (var i = 0; i < msg_arr.length - 1; i++) {
+        msg += msg_arr[i] + ",";
+      }
+      const msgHash = await web3.utils.soliditySha3(
+        {t: 'string', v: msg}
+      );
+      var p1Sig_check = await TPC_OBJ.generateSignatures(msgHash, p1);
+      if (p1Sig == p1Sig_check) {
+        var p3Sig = await TPC_OBJ.generateSignatures(msgHash, p3);
+        client.write("agree update mpc locally,p3," + p3Sig);
+      }
+      else {
+        console.log("msg = ", msg);
+        console.log("p1Sig_check = ", p1Sig_check);
+        client.write("reject update mpc locally");
+      }
+    }
   }
 
 var p1;
 var p2;
 var p3;
+var thisAddr;
 
 async function init() {
     var accounts = await web3.eth.getAccounts();
     p1 = accounts[1];
     p2 = accounts[2];
     p3 = accounts[3];
+    thisAddr = p3;
     console.log("p1 = ", p1);
     console.log("p2 = ", p2);
     console.log("p3 = ", p3);
