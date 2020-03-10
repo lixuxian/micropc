@@ -53,8 +53,8 @@ const port = 8000;
 const hostname = '127.0.0.1';
 socket.setEncoding = 'UTF-8';
 
-var init_ab = "100";
-var init_bb = "100";
+var init_ab = "200";
+var init_bb = "200";
 var init_va = web3.utils.toWei(init_ab, 'ether');
 var init_vb = web3.utils.toWei(init_bb, 'ether');
 
@@ -159,8 +159,8 @@ async function requestCloseTPC()
 var alice;
 var bob;
 
-async function depositBob() {
-  await mpc_contract.methods.deposit(alice, bob).send({
+async function depositBob(id) {
+  await mpc_contract.methods.deposit(id, alice, bob).send({
     from: bob,
     value: init_va.toString(),
     gas: 6721975
@@ -202,7 +202,7 @@ var update_end;
 
 var update_count = 0;
 var update_time_sum = 0;
-var tx_amount = 75;
+var tx_amount = 200;
 
 (async function clientRun() {
   var accounts = await web3.eth.getAccounts();
@@ -227,7 +227,7 @@ var tx_amount = 75;
     // console.log( msg.toString() );
     var msg_arr = msg.toString().split(",");
     if (msg_arr[0] == 'agree create tpc') {
-      depositBob();
+      depositBob(parseInt(msg_arr[1]));
     }
     else if (msg_arr[0] == 'created') {
       var channel_id = msg_arr[1].toString();

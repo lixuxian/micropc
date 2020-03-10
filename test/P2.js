@@ -3,13 +3,13 @@ var fs = require('fs');    // fs模块读取.sol合约文件
 const abi = require('ethereumjs-abi');
 var TPC = require('./TPC');
 var MPC = require('./MPC');
-var logger = require('./logger');
+// var logger = require('./logger');
 var Graph = require('./topo');
 var jsnx = require('jsnetworkx'); // in Node
 var DirectedPay = require('./DP');
 var sleep = require('sleep');
 
-var gasLogger = logger.gasLogger;
+// var gasLogger = logger.gasLogger;
 // var channelLogger = logger.channelLogger;
 // 通过web3连接私有链。 (web3通过geth连接区块链中的结点)
 var opt = { timeout: 3600000 };
@@ -200,7 +200,7 @@ async function processUpdateTPC(client, channel_id, alice, bob, new_ab, new_bb, 
       .on('receipt', function(receipt){
           var update_channel_id = receipt.events.TPCUpdateSuccess.returnValues["id"];
           console.log("update channel ", update_channel_id);
-          gasLogger.info('updateTPC gasUsed: ', receipt.gasUsed);
+          // gasLogger.info('updateTPC gasUsed: ', receipt.gasUsed);
           console.log('updateTPC gasUsed: ', receipt.gasUsed);
           tpc_12.now_ab = new_ab;
           tpc_12.now_bb = new_bb;
@@ -382,10 +382,40 @@ async function processMsg(client, msg) { //接收client发来的信息
           client.write("agree update mpc,p2," + mpc_id.toString() + "," + p2Sig);
         }
         else {
-          console.log("msg = ", msg);
+          console.log("msg = ", msg.toString());
           console.log("p1Sig_check = ", p1Sig_check);
           client.write("reject update mpc");
         }
+    }
+    else if (msg_arr[0] == 'mpc updated') {
+      console.log("mpc updated," + msg_arr[1] + "," + msg_arr[2]);
+    }
+    else if (msg_arr[0] == 'close mpc') {
+      // var msg = "close mpc," + mpc_id.toString() + "," + mpc.version + "," + p1Sig;
+      var mpc_id = parseInt(msg_arr[1]);
+      var version = parseInt(msg_arr[2]);
+      var p1Sig = msg_arr[3];
+      var prefix = "close the MPC";
+      const msgHash = web3.utils.soliditySha3(
+        {t: 'string', v: prefix},
+        {t: 'uint256', v: mpc_id},
+        {t: 'uint256', v: version}
+      );
+      var p1Sig_check = await TPC_OBJ.generateSignatures(msgHash, p1);
+      if (p1Sig == p1Sig_check) {
+        var p2Sig = await TPC_OBJ.generateSignatures(msgHash, p2);
+        console.log("agree close mpc,p2");
+        client.write("agree close mpc,p2," + mpc_id.toString() + "," + version.toString() + "," + p2Sig);
+      }
+      else {
+        console.log("msg = ", msg.toString());
+        console.log("p1Sig_check = ", p1Sig_check);
+        client.write("reject close mpc");
+      }
+    }
+    else if (msg_arr[0] == 'mpc closed') {
+      console.log("mpc ", msg_arr[1], " is closed");
+      process.exit();
     }
   }
 

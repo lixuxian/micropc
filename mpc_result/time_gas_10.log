@@ -1,0 +1,7 @@
+[2020-03-10T17:10:51.595] [INFO] gas - createMPC gasUsed:  298098
+[2020-03-10T17:10:51.597] [INFO] gas - createMPC time =  15.087999999999997
+[2020-03-10T17:10:51.803] [INFO] gas - updateLocally time for  10  mptx :  0.20400000000000063
+[2020-03-10T17:11:06.713] [INFO] gas - updateMPC time:  14.908999999999999
+[2020-03-10T17:11:06.720] [INFO] gas - updateMPC gasUsed:  131386
+[2020-03-10T17:11:21.796] [INFO] gas - closeMPC time:  15.083000000000006
+[2020-03-10T17:11:21.796] [INFO] gas - closeMPC gasUsed:  57346

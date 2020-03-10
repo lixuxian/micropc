@@ -258,7 +258,7 @@ contract MultipartyChannel is SimplePaymentChannel {
         for (uint i = 0; i < mpc_map[mpc_id].parties.length; i++) {
             require(libSig.verify(mpc_map[mpc_id].parties[i], msgHash, sigs[i]), "closeMPC verify sig failed!!!");
         }
-        delete mpc_map[mpc_id];
         emit MPCClosed(mpc_id);
+        delete mpc_map[mpc_id];
     }
 }

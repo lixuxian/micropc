@@ -1,0 +1,1212 @@
+G.nodes():  [ 0, 1, 2 ]
+requestCreateTPC...
+alice =  0xcb9822bB75cdDf9F7d8f428134C448DCF639682c  bob =  0x46Eae10107ED69f257b4B796Aaf4FA4aebFc38bC
+bob deposit gasUsed:  59417
+bob channel id :  32
+create TPC time:  42.09
+requestUpdateTPCLocally...
+request new balance:  201  <-->  199  version:  1
+end =  42.648
+TPC:  201  <-->  199  version  1
+receive updated locally
+update locally time =  0.014000000000002899
+requestUpdateTPCLocally...
+request new balance:  202  <-->  198  version:  2
+end =  42.66
+TPC:  202  <-->  198  version  2
+receive updated locally
+update locally time =  0.01199999999999335
+requestUpdateTPCLocally...
+request new balance:  203  <-->  197  version:  3
+end =  42.672
+TPC:  203  <-->  197  version  3
+receive updated locally
+update locally time =  0.01099999999999568
+requestUpdateTPCLocally...
+request new balance:  204  <-->  196  version:  4
+end =  42.684
+TPC:  204  <-->  196  version  4
+receive updated locally
+update locally time =  0.012000000000000455
+requestUpdateTPCLocally...
+request new balance:  205  <-->  195  version:  5
+end =  42.695
+TPC:  205  <-->  195  version  5
+receive updated locally
+update locally time =  0.011000000000002785
+requestUpdateTPCLocally...
+request new balance:  206  <-->  194  version:  6
+end =  42.708
+TPC:  206  <-->  194  version  6
+receive updated locally
+update locally time =  0.012000000000000455
+requestUpdateTPCLocally...
+request new balance:  207  <-->  193  version:  7
+end =  42.725
+TPC:  207  <-->  193  version  7
+receive updated locally
+update locally time =  0.015999999999998238
+requestUpdateTPCLocally...
+request new balance:  208  <-->  192  version:  8
+end =  42.739
+TPC:  208  <-->  192  version  8
+receive updated locally
+update locally time =  0.013999999999995794
+requestUpdateTPCLocally...
+request new balance:  209  <-->  191  version:  9
+end =  42.753
+TPC:  209  <-->  191  version  9
+receive updated locally
+update locally time =  0.014000000000002899
+requestUpdateTPCLocally...
+request new balance:  210  <-->  190  version:  10
+end =  42.766
+TPC:  210  <-->  190  version  10
+receive updated locally
+update locally time =  0.012999999999998124
+requestUpdateTPCLocally...
+request new balance:  211  <-->  189  version:  11
+end =  42.778
+TPC:  211  <-->  189  version  11
+receive updated locally
+update locally time =  0.01099999999999568
+requestUpdateTPCLocally...
+request new balance:  212  <-->  188  version:  12
+end =  42.791
+TPC:  212  <-->  188  version  12
+receive updated locally
+update locally time =  0.01199999999999335
+requestUpdateTPCLocally...
+request new balance:  213  <-->  187  version:  13
+end =  42.804
+TPC:  213  <-->  187  version  13
+receive updated locally
+update locally time =  0.01300000000000523
+requestUpdateTPCLocally...
+request new balance:  214  <-->  186  version:  14
+end =  42.814
+TPC:  214  <-->  186  version  14
+receive updated locally
+update locally time =  0.00999999999999801
+requestUpdateTPCLocally...
+request new balance:  215  <-->  185  version:  15
+end =  42.825
+TPC:  215  <-->  185  version  15
+receive updated locally
+update locally time =  0.010000000000005116
+requestUpdateTPCLocally...
+request new balance:  216  <-->  184  version:  16
+end =  42.838
+TPC:  216  <-->  184  version  16
+receive updated locally
+update locally time =  0.012000000000000455
+requestUpdateTPCLocally...
+request new balance:  217  <-->  183  version:  17
+end =  42.85
+TPC:  217  <-->  183  version  17
+receive updated locally
+update locally time =  0.012000000000000455
+requestUpdateTPCLocally...
+request new balance:  218  <-->  182  version:  18
+end =  42.864
+TPC:  218  <-->  182  version  18
+receive updated locally
+update locally time =  0.012999999999998124
+requestUpdateTPCLocally...
+request new balance:  219  <-->  181  version:  19
+end =  42.89
+TPC:  219  <-->  181  version  19
+receive updated locally
+update locally time =  0.026000000000003354
+requestUpdateTPCLocally...
+request new balance:  220  <-->  180  version:  20
+end =  42.901
+TPC:  220  <-->  180  version  20
+receive updated locally
+update locally time =  0.011000000000002785
+requestUpdateTPCLocally...
+request new balance:  221  <-->  179  version:  21
+end =  42.912
+TPC:  221  <-->  179  version  21
+receive updated locally
+update locally time =  0.01099999999999568
+requestUpdateTPCLocally...
+request new balance:  222  <-->  178  version:  22
+end =  42.927
+TPC:  222  <-->  178  version  22
+receive updated locally
+update locally time =  0.014000000000002899
+requestUpdateTPCLocally...
+request new balance:  223  <-->  177  version:  23
+end =  42.94
+TPC:  223  <-->  177  version  23
+receive updated locally
+update locally time =  0.012999999999998124
+requestUpdateTPCLocally...
+request new balance:  224  <-->  176  version:  24
+end =  42.954
+TPC:  224  <-->  176  version  24
+receive updated locally
+update locally time =  0.012999999999998124
+requestUpdateTPCLocally...
+request new balance:  225  <-->  175  version:  25
+end =  42.968
+TPC:  225  <-->  175  version  25
+receive updated locally
+update locally time =  0.014000000000002899
+requestUpdateTPCLocally...
+request new balance:  226  <-->  174  version:  26
+end =  42.98
+TPC:  226  <-->  174  version  26
+receive updated locally
+update locally time =  0.01199999999999335
+requestUpdateTPCLocally...
+request new balance:  227  <-->  173  version:  27
+end =  42.997
+TPC:  227  <-->  173  version  27
+receive updated locally
+update locally time =  0.015999999999998238
+requestUpdateTPCLocally...
+request new balance:  228  <-->  172  version:  28
+end =  43.009
+TPC:  228  <-->  172  version  28
+receive updated locally
+update locally time =  0.012000000000000455
+requestUpdateTPCLocally...
+request new balance:  229  <-->  171  version:  29
+end =  43.021
+TPC:  229  <-->  171  version  29
+receive updated locally
+update locally time =  0.012000000000000455
+requestUpdateTPCLocally...
+request new balance:  230  <-->  170  version:  30
+end =  43.033
+TPC:  230  <-->  170  version  30
+receive updated locally
+update locally time =  0.012000000000000455
+requestUpdateTPCLocally...
+request new balance:  231  <-->  169  version:  31
+end =  43.043
+TPC:  231  <-->  169  version  31
+receive updated locally
+update locally time =  0.00999999999999801
+requestUpdateTPCLocally...
+request new balance:  232  <-->  168  version:  32
+end =  43.053
+TPC:  232  <-->  168  version  32
+receive updated locally
+update locally time =  0.00999999999999801
+requestUpdateTPCLocally...
+request new balance:  233  <-->  167  version:  33
+end =  43.064
+TPC:  233  <-->  167  version  33
+receive updated locally
+update locally time =  0.00999999999999801
+requestUpdateTPCLocally...
+request new balance:  234  <-->  166  version:  34
+end =  43.076
+TPC:  234  <-->  166  version  34
+receive updated locally
+update locally time =  0.011000000000002785
+requestUpdateTPCLocally...
+request new balance:  235  <-->  165  version:  35
+end =  43.088
+TPC:  235  <-->  165  version  35
+receive updated locally
+update locally time =  0.012000000000000455
+requestUpdateTPCLocally...
+request new balance:  236  <-->  164  version:  36
+end =  43.101
+TPC:  236  <-->  164  version  36
+receive updated locally
+update locally time =  0.012999999999998124
+requestUpdateTPCLocally...
+request new balance:  237  <-->  163  version:  37
+end =  43.112
+TPC:  237  <-->  163  version  37
+receive updated locally
+update locally time =  0.011000000000002785
+requestUpdateTPCLocally...
+request new balance:  238  <-->  162  version:  38
+end =  43.122
+TPC:  238  <-->  162  version  38
+receive updated locally
+update locally time =  0.009000000000000341
+requestUpdateTPCLocally...
+request new balance:  239  <-->  161  version:  39
+end =  43.134
+TPC:  239  <-->  161  version  39
+receive updated locally
+update locally time =  0.011000000000002785
+requestUpdateTPCLocally...
+request new balance:  240  <-->  160  version:  40
+end =  43.143
+TPC:  240  <-->  160  version  40
+receive updated locally
+update locally time =  0.009000000000000341
+requestUpdateTPCLocally...
+request new balance:  241  <-->  159  version:  41
+end =  43.156
+TPC:  241  <-->  159  version  41
+receive updated locally
+update locally time =  0.012000000000000455
+requestUpdateTPCLocally...
+request new balance:  242  <-->  158  version:  42
+end =  43.168
+TPC:  242  <-->  158  version  42
+receive updated locally
+update locally time =  0.012000000000000455
+requestUpdateTPCLocally...
+request new balance:  243  <-->  157  version:  43
+end =  43.18
+TPC:  243  <-->  157  version  43
+receive updated locally
+update locally time =  0.012000000000000455
+requestUpdateTPCLocally...
+request new balance:  244  <-->  156  version:  44
+end =  43.193
+TPC:  244  <-->  156  version  44
+receive updated locally
+update locally time =  0.012999999999998124
+requestUpdateTPCLocally...
+request new balance:  245  <-->  155  version:  45
+end =  43.205
+TPC:  245  <-->  155  version  45
+receive updated locally
+update locally time =  0.012000000000000455
+requestUpdateTPCLocally...
+request new balance:  246  <-->  154  version:  46
+end =  43.218
+TPC:  246  <-->  154  version  46
+receive updated locally
+update locally time =  0.012000000000000455
+requestUpdateTPCLocally...
+request new balance:  247  <-->  153  version:  47
+end =  43.23
+TPC:  247  <-->  153  version  47
+receive updated locally
+update locally time =  0.01199999999999335
+requestUpdateTPCLocally...
+request new balance:  248  <-->  152  version:  48
+end =  43.242
+TPC:  248  <-->  152  version  48
+receive updated locally
+update locally time =  0.012000000000000455
+requestUpdateTPCLocally...
+request new balance:  249  <-->  151  version:  49
+end =  43.255
+TPC:  249  <-->  151  version  49
+receive updated locally
+update locally time =  0.01300000000000523
+requestUpdateTPCLocally...
+request new balance:  250  <-->  150  version:  50
+end =  43.268
+TPC:  250  <-->  150  version  50
+receive updated locally
+update locally time =  0.012999999999998124
+requestUpdateTPCLocally...
+request new balance:  251  <-->  149  version:  51
+end =  43.281
+TPC:  251  <-->  149  version  51
+receive updated locally
+update locally time =  0.012999999999998124
+requestUpdateTPCLocally...
+request new balance:  252  <-->  148  version:  52
+end =  43.293
+TPC:  252  <-->  148  version  52
+receive updated locally
+update locally time =  0.012000000000000455
+requestUpdateTPCLocally...
+request new balance:  253  <-->  147  version:  53
+end =  43.306
+TPC:  253  <-->  147  version  53
+receive updated locally
+update locally time =  0.012999999999998124
+requestUpdateTPCLocally...
+request new balance:  254  <-->  146  version:  54
+end =  43.319
+TPC:  254  <-->  146  version  54
+receive updated locally
+update locally time =  0.01300000000000523
+requestUpdateTPCLocally...
+request new balance:  255  <-->  145  version:  55
+end =  43.332
+TPC:  255  <-->  145  version  55
+receive updated locally
+update locally time =  0.012999999999998124
+requestUpdateTPCLocally...
+request new balance:  256  <-->  144  version:  56
+end =  43.345
+TPC:  256  <-->  144  version  56
+receive updated locally
+update locally time =  0.012999999999998124
+requestUpdateTPCLocally...
+request new balance:  257  <-->  143  version:  57
+end =  43.356
+TPC:  257  <-->  143  version  57
+receive updated locally
+update locally time =  0.011000000000002785
+requestUpdateTPCLocally...
+request new balance:  258  <-->  142  version:  58
+end =  43.369
+TPC:  258  <-->  142  version  58
+receive updated locally
+update locally time =  0.012000000000000455
+requestUpdateTPCLocally...
+request new balance:  259  <-->  141  version:  59
+end =  43.383
+TPC:  259  <-->  141  version  59
+receive updated locally
+update locally time =  0.014000000000002899
+requestUpdateTPCLocally...
+request new balance:  260  <-->  140  version:  60
+end =  43.395
+TPC:  260  <-->  140  version  60
+receive updated locally
+update locally time =  0.012000000000000455
+requestUpdateTPCLocally...
+request new balance:  261  <-->  139  version:  61
+end =  43.408
+TPC:  261  <-->  139  version  61
+receive updated locally
+update locally time =  0.012000000000000455
+requestUpdateTPCLocally...
+request new balance:  262  <-->  138  version:  62
+end =  43.43
+TPC:  262  <-->  138  version  62
+receive updated locally
+update locally time =  0.021000000000000796
+requestUpdateTPCLocally...
+request new balance:  263  <-->  137  version:  63
+end =  43.455
+TPC:  263  <-->  137  version  63
+receive updated locally
+update locally time =  0.02499999999999858
+requestUpdateTPCLocally...
+request new balance:  264  <-->  136  version:  64
+end =  43.468
+TPC:  264  <-->  136  version  64
+receive updated locally
+update locally time =  0.01300000000000523
+requestUpdateTPCLocally...
+request new balance:  265  <-->  135  version:  65
+end =  43.482
+TPC:  265  <-->  135  version  65
+receive updated locally
+update locally time =  0.013999999999995794
+requestUpdateTPCLocally...
+request new balance:  266  <-->  134  version:  66
+end =  43.493
+TPC:  266  <-->  134  version  66
+receive updated locally
+update locally time =  0.011000000000002785
+requestUpdateTPCLocally...
+request new balance:  267  <-->  133  version:  67
+end =  43.507
+TPC:  267  <-->  133  version  67
+receive updated locally
+update locally time =  0.012999999999998124
+requestUpdateTPCLocally...
+request new balance:  268  <-->  132  version:  68
+end =  43.52
+TPC:  268  <-->  132  version  68
+receive updated locally
+update locally time =  0.01300000000000523
+requestUpdateTPCLocally...
+request new balance:  269  <-->  131  version:  69
+end =  43.533
+TPC:  269  <-->  131  version  69
+receive updated locally
+update locally time =  0.012999999999998124
+requestUpdateTPCLocally...
+request new balance:  270  <-->  130  version:  70
+end =  43.544
+TPC:  270  <-->  130  version  70
+receive updated locally
+update locally time =  0.01099999999999568
+requestUpdateTPCLocally...
+request new balance:  271  <-->  129  version:  71
+end =  43.557
+TPC:  271  <-->  129  version  71
+receive updated locally
+update locally time =  0.01300000000000523
+requestUpdateTPCLocally...
+request new balance:  272  <-->  128  version:  72
+end =  43.568
+TPC:  272  <-->  128  version  72
+receive updated locally
+update locally time =  0.01099999999999568
+requestUpdateTPCLocally...
+request new balance:  273  <-->  127  version:  73
+end =  43.58
+TPC:  273  <-->  127  version  73
+receive updated locally
+update locally time =  0.01099999999999568
+requestUpdateTPCLocally...
+request new balance:  274  <-->  126  version:  74
+end =  43.591
+TPC:  274  <-->  126  version  74
+receive updated locally
+update locally time =  0.011000000000002785
+requestUpdateTPCLocally...
+request new balance:  275  <-->  125  version:  75
+end =  43.612
+TPC:  275  <-->  125  version  75
+receive updated locally
+update locally time =  0.021000000000000796
+requestUpdateTPCLocally...
+request new balance:  276  <-->  124  version:  76
+end =  43.625
+TPC:  276  <-->  124  version  76
+receive updated locally
+update locally time =  0.012999999999998124
+requestUpdateTPCLocally...
+request new balance:  277  <-->  123  version:  77
+end =  43.64
+TPC:  277  <-->  123  version  77
+receive updated locally
+update locally time =  0.015000000000000568
+requestUpdateTPCLocally...
+request new balance:  278  <-->  122  version:  78
+end =  43.656
+TPC:  278  <-->  122  version  78
+receive updated locally
+update locally time =  0.015999999999998238
+requestUpdateTPCLocally...
+request new balance:  279  <-->  121  version:  79
+end =  43.669
+TPC:  279  <-->  121  version  79
+receive updated locally
+update locally time =  0.012999999999998124
+requestUpdateTPCLocally...
+request new balance:  280  <-->  120  version:  80
+end =  43.683
+TPC:  280  <-->  120  version  80
+receive updated locally
+update locally time =  0.012999999999998124
+requestUpdateTPCLocally...
+request new balance:  281  <-->  119  version:  81
+end =  43.698
+TPC:  281  <-->  119  version  81
+receive updated locally
+update locally time =  0.015000000000000568
+requestUpdateTPCLocally...
+request new balance:  282  <-->  118  version:  82
+end =  43.71
+TPC:  282  <-->  118  version  82
+receive updated locally
+update locally time =  0.012000000000000455
+requestUpdateTPCLocally...
+request new balance:  283  <-->  117  version:  83
+end =  43.721
+TPC:  283  <-->  117  version  83
+receive updated locally
+update locally time =  0.01099999999999568
+requestUpdateTPCLocally...
+request new balance:  284  <-->  116  version:  84
+end =  43.732
+TPC:  284  <-->  116  version  84
+receive updated locally
+update locally time =  0.011000000000002785
+requestUpdateTPCLocally...
+request new balance:  285  <-->  115  version:  85
+end =  43.744
+TPC:  285  <-->  115  version  85
+receive updated locally
+update locally time =  0.011000000000002785
+requestUpdateTPCLocally...
+request new balance:  286  <-->  114  version:  86
+end =  43.755
+TPC:  286  <-->  114  version  86
+receive updated locally
+update locally time =  0.011000000000002785
+requestUpdateTPCLocally...
+request new balance:  287  <-->  113  version:  87
+end =  43.767
+TPC:  287  <-->  113  version  87
+receive updated locally
+update locally time =  0.011000000000002785
+requestUpdateTPCLocally...
+request new balance:  288  <-->  112  version:  88
+end =  43.78
+TPC:  288  <-->  112  version  88
+receive updated locally
+update locally time =  0.012999999999998124
+requestUpdateTPCLocally...
+request new balance:  289  <-->  111  version:  89
+end =  43.791
+TPC:  289  <-->  111  version  89
+receive updated locally
+update locally time =  0.00999999999999801
+requestUpdateTPCLocally...
+request new balance:  290  <-->  110  version:  90
+end =  43.804
+TPC:  290  <-->  110  version  90
+receive updated locally
+update locally time =  0.012000000000000455
+requestUpdateTPCLocally...
+request new balance:  291  <-->  109  version:  91
+end =  43.816
+TPC:  291  <-->  109  version  91
+receive updated locally
+update locally time =  0.012000000000000455
+requestUpdateTPCLocally...
+request new balance:  292  <-->  108  version:  92
+end =  43.83
+TPC:  292  <-->  108  version  92
+receive updated locally
+update locally time =  0.013999999999995794
+requestUpdateTPCLocally...
+request new balance:  293  <-->  107  version:  93
+end =  43.842
+TPC:  293  <-->  107  version  93
+receive updated locally
+update locally time =  0.01099999999999568
+requestUpdateTPCLocally...
+request new balance:  294  <-->  106  version:  94
+end =  43.859
+TPC:  294  <-->  106  version  94
+receive updated locally
+update locally time =  0.01300000000000523
+requestUpdateTPCLocally...
+request new balance:  295  <-->  105  version:  95
+end =  43.873
+TPC:  295  <-->  105  version  95
+receive updated locally
+update locally time =  0.013999999999995794
+requestUpdateTPCLocally...
+request new balance:  296  <-->  104  version:  96
+end =  43.889
+TPC:  296  <-->  104  version  96
+receive updated locally
+update locally time =  0.016000000000005343
+requestUpdateTPCLocally...
+request new balance:  297  <-->  103  version:  97
+end =  43.902
+TPC:  297  <-->  103  version  97
+receive updated locally
+update locally time =  0.012000000000000455
+requestUpdateTPCLocally...
+request new balance:  298  <-->  102  version:  98
+end =  43.914
+TPC:  298  <-->  102  version  98
+receive updated locally
+update locally time =  0.012000000000000455
+requestUpdateTPCLocally...
+request new balance:  299  <-->  101  version:  99
+end =  43.924
+TPC:  299  <-->  101  version  99
+receive updated locally
+update locally time =  0.00999999999999801
+requestUpdateTPCLocally...
+request new balance:  300  <-->  100  version:  100
+end =  43.935
+TPC:  300  <-->  100  version  100
+receive updated locally
+update locally time =  0.010000000000005116
+requestUpdateTPCLocally...
+request new balance:  301  <-->  99  version:  101
+end =  43.946
+TPC:  301  <-->  99  version  101
+receive updated locally
+update locally time =  0.01099999999999568
+requestUpdateTPCLocally...
+request new balance:  302  <-->  98  version:  102
+end =  43.958
+TPC:  302  <-->  98  version  102
+receive updated locally
+update locally time =  0.00999999999999801
+requestUpdateTPCLocally...
+request new balance:  303  <-->  97  version:  103
+end =  43.971
+TPC:  303  <-->  97  version  103
+receive updated locally
+update locally time =  0.01199999999999335
+requestUpdateTPCLocally...
+request new balance:  304  <-->  96  version:  104
+end =  43.982
+TPC:  304  <-->  96  version  104
+receive updated locally
+update locally time =  0.011000000000002785
+requestUpdateTPCLocally...
+request new balance:  305  <-->  95  version:  105
+end =  43.993
+TPC:  305  <-->  95  version  105
+receive updated locally
+update locally time =  0.011000000000002785
+requestUpdateTPCLocally...
+request new balance:  306  <-->  94  version:  106
+end =  44.005
+TPC:  306  <-->  94  version  106
+receive updated locally
+update locally time =  0.012000000000000455
+requestUpdateTPCLocally...
+request new balance:  307  <-->  93  version:  107
+end =  44.016
+TPC:  307  <-->  93  version  107
+receive updated locally
+update locally time =  0.01099999999999568
+requestUpdateTPCLocally...
+request new balance:  308  <-->  92  version:  108
+end =  44.028
+TPC:  308  <-->  92  version  108
+receive updated locally
+update locally time =  0.01099999999999568
+requestUpdateTPCLocally...
+request new balance:  309  <-->  91  version:  109
+end =  44.04
+TPC:  309  <-->  91  version  109
+receive updated locally
+update locally time =  0.012000000000000455
+requestUpdateTPCLocally...
+request new balance:  310  <-->  90  version:  110
+end =  44.051
+TPC:  310  <-->  90  version  110
+receive updated locally
+update locally time =  0.011000000000002785
+requestUpdateTPCLocally...
+request new balance:  311  <-->  89  version:  111
+end =  44.064
+TPC:  311  <-->  89  version  111
+receive updated locally
+update locally time =  0.012999999999998124
+requestUpdateTPCLocally...
+request new balance:  312  <-->  88  version:  112
+end =  44.076
+TPC:  312  <-->  88  version  112
+receive updated locally
+update locally time =  0.012000000000000455
+requestUpdateTPCLocally...
+request new balance:  313  <-->  87  version:  113
+end =  44.088
+TPC:  313  <-->  87  version  113
+receive updated locally
+update locally time =  0.012000000000000455
+requestUpdateTPCLocally...
+request new balance:  314  <-->  86  version:  114
+end =  44.1
+TPC:  314  <-->  86  version  114
+receive updated locally
+update locally time =  0.011000000000002785
+requestUpdateTPCLocally...
+request new balance:  315  <-->  85  version:  115
+end =  44.112
+TPC:  315  <-->  85  version  115
+receive updated locally
+update locally time =  0.012000000000000455
+requestUpdateTPCLocally...
+request new balance:  316  <-->  84  version:  116
+end =  44.126
+TPC:  316  <-->  84  version  116
+receive updated locally
+update locally time =  0.013999999999995794
+requestUpdateTPCLocally...
+request new balance:  317  <-->  83  version:  117
+end =  44.138
+TPC:  317  <-->  83  version  117
+receive updated locally
+update locally time =  0.012000000000000455
+requestUpdateTPCLocally...
+request new balance:  318  <-->  82  version:  118
+end =  44.15
+TPC:  318  <-->  82  version  118
+receive updated locally
+update locally time =  0.012000000000000455
+requestUpdateTPCLocally...
+request new balance:  319  <-->  81  version:  119
+end =  44.161
+TPC:  319  <-->  81  version  119
+receive updated locally
+update locally time =  0.011000000000002785
+requestUpdateTPCLocally...
+request new balance:  320  <-->  80  version:  120
+end =  44.172
+TPC:  320  <-->  80  version  120
+receive updated locally
+update locally time =  0.01099999999999568
+requestUpdateTPCLocally...
+request new balance:  321  <-->  79  version:  121
+end =  44.183
+TPC:  321  <-->  79  version  121
+receive updated locally
+update locally time =  0.011000000000002785
+requestUpdateTPCLocally...
+request new balance:  322  <-->  78  version:  122
+end =  44.196
+TPC:  322  <-->  78  version  122
+receive updated locally
+update locally time =  0.012000000000000455
+requestUpdateTPCLocally...
+request new balance:  323  <-->  77  version:  123
+end =  44.208
+TPC:  323  <-->  77  version  123
+receive updated locally
+update locally time =  0.012000000000000455
+requestUpdateTPCLocally...
+request new balance:  324  <-->  76  version:  124
+end =  44.22
+TPC:  324  <-->  76  version  124
+receive updated locally
+update locally time =  0.012000000000000455
+requestUpdateTPCLocally...
+request new balance:  325  <-->  75  version:  125
+end =  44.231
+TPC:  325  <-->  75  version  125
+receive updated locally
+update locally time =  0.011000000000002785
+requestUpdateTPCLocally...
+request new balance:  326  <-->  74  version:  126
+end =  44.243
+TPC:  326  <-->  74  version  126
+receive updated locally
+update locally time =  0.012000000000000455
+requestUpdateTPCLocally...
+request new balance:  327  <-->  73  version:  127
+end =  44.256
+TPC:  327  <-->  73  version  127
+receive updated locally
+update locally time =  0.012000000000000455
+requestUpdateTPCLocally...
+request new balance:  328  <-->  72  version:  128
+end =  44.268
+TPC:  328  <-->  72  version  128
+receive updated locally
+update locally time =  0.012000000000000455
+requestUpdateTPCLocally...
+request new balance:  329  <-->  71  version:  129
+end =  44.28
+TPC:  329  <-->  71  version  129
+receive updated locally
+update locally time =  0.012000000000000455
+requestUpdateTPCLocally...
+request new balance:  330  <-->  70  version:  130
+end =  44.292
+TPC:  330  <-->  70  version  130
+receive updated locally
+update locally time =  0.012000000000000455
+requestUpdateTPCLocally...
+request new balance:  331  <-->  69  version:  131
+end =  44.304
+TPC:  331  <-->  69  version  131
+receive updated locally
+update locally time =  0.012000000000000455
+requestUpdateTPCLocally...
+request new balance:  332  <-->  68  version:  132
+end =  44.317
+TPC:  332  <-->  68  version  132
+receive updated locally
+update locally time =  0.012000000000000455
+requestUpdateTPCLocally...
+request new balance:  333  <-->  67  version:  133
+end =  44.328
+TPC:  333  <-->  67  version  133
+receive updated locally
+update locally time =  0.011000000000002785
+requestUpdateTPCLocally...
+request new balance:  334  <-->  66  version:  134
+end =  44.339
+TPC:  334  <-->  66  version  134
+receive updated locally
+update locally time =  0.01099999999999568
+requestUpdateTPCLocally...
+request new balance:  335  <-->  65  version:  135
+end =  44.352
+TPC:  335  <-->  65  version  135
+receive updated locally
+update locally time =  0.01199999999999335
+requestUpdateTPCLocally...
+request new balance:  336  <-->  64  version:  136
+end =  44.365
+TPC:  336  <-->  64  version  136
+receive updated locally
+update locally time =  0.01300000000000523
+requestUpdateTPCLocally...
+request new balance:  337  <-->  63  version:  137
+end =  44.376
+TPC:  337  <-->  63  version  137
+receive updated locally
+update locally time =  0.01099999999999568
+requestUpdateTPCLocally...
+request new balance:  338  <-->  62  version:  138
+end =  44.388
+TPC:  338  <-->  62  version  138
+receive updated locally
+update locally time =  0.012000000000000455
+requestUpdateTPCLocally...
+request new balance:  339  <-->  61  version:  139
+end =  44.401
+TPC:  339  <-->  61  version  139
+receive updated locally
+update locally time =  0.012000000000000455
+requestUpdateTPCLocally...
+request new balance:  340  <-->  60  version:  140
+end =  44.413
+TPC:  340  <-->  60  version  140
+receive updated locally
+update locally time =  0.01199999999999335
+requestUpdateTPCLocally...
+request new balance:  341  <-->  59  version:  141
+end =  44.426
+TPC:  341  <-->  59  version  141
+receive updated locally
+update locally time =  0.01300000000000523
+requestUpdateTPCLocally...
+request new balance:  342  <-->  58  version:  142
+end =  44.438
+TPC:  342  <-->  58  version  142
+receive updated locally
+update locally time =  0.011000000000002785
+requestUpdateTPCLocally...
+request new balance:  343  <-->  57  version:  143
+end =  44.451
+TPC:  343  <-->  57  version  143
+receive updated locally
+update locally time =  0.012999999999998124
+requestUpdateTPCLocally...
+request new balance:  344  <-->  56  version:  144
+end =  44.463
+TPC:  344  <-->  56  version  144
+receive updated locally
+update locally time =  0.012000000000000455
+requestUpdateTPCLocally...
+request new balance:  345  <-->  55  version:  145
+end =  44.476
+TPC:  345  <-->  55  version  145
+receive updated locally
+update locally time =  0.012000000000000455
+requestUpdateTPCLocally...
+request new balance:  346  <-->  54  version:  146
+end =  44.488
+TPC:  346  <-->  54  version  146
+receive updated locally
+update locally time =  0.012000000000000455
+requestUpdateTPCLocally...
+request new balance:  347  <-->  53  version:  147
+end =  44.5
+TPC:  347  <-->  53  version  147
+receive updated locally
+update locally time =  0.011000000000002785
+requestUpdateTPCLocally...
+request new balance:  348  <-->  52  version:  148
+end =  44.515
+TPC:  348  <-->  52  version  148
+receive updated locally
+update locally time =  0.014000000000002899
+requestUpdateTPCLocally...
+request new balance:  349  <-->  51  version:  149
+end =  44.527
+TPC:  349  <-->  51  version  149
+receive updated locally
+update locally time =  0.012000000000000455
+requestUpdateTPCLocally...
+request new balance:  350  <-->  50  version:  150
+end =  44.54
+TPC:  350  <-->  50  version  150
+receive updated locally
+update locally time =  0.012000000000000455
+requestUpdateTPCLocally...
+request new balance:  351  <-->  49  version:  151
+end =  44.554
+TPC:  351  <-->  49  version  151
+receive updated locally
+update locally time =  0.01300000000000523
+requestUpdateTPCLocally...
+request new balance:  352  <-->  48  version:  152
+end =  44.566
+TPC:  352  <-->  48  version  152
+receive updated locally
+update locally time =  0.012000000000000455
+requestUpdateTPCLocally...
+request new balance:  353  <-->  47  version:  153
+end =  44.579
+TPC:  353  <-->  47  version  153
+receive updated locally
+update locally time =  0.012000000000000455
+requestUpdateTPCLocally...
+request new balance:  354  <-->  46  version:  154
+end =  44.592
+TPC:  354  <-->  46  version  154
+receive updated locally
+update locally time =  0.012000000000000455
+requestUpdateTPCLocally...
+request new balance:  355  <-->  45  version:  155
+end =  44.606
+TPC:  355  <-->  45  version  155
+receive updated locally
+update locally time =  0.014000000000002899
+requestUpdateTPCLocally...
+request new balance:  356  <-->  44  version:  156
+end =  44.619
+TPC:  356  <-->  44  version  156
+receive updated locally
+update locally time =  0.012999999999998124
+requestUpdateTPCLocally...
+request new balance:  357  <-->  43  version:  157
+end =  44.632
+TPC:  357  <-->  43  version  157
+receive updated locally
+update locally time =  0.012999999999998124
+requestUpdateTPCLocally...
+request new balance:  358  <-->  42  version:  158
+end =  44.644
+TPC:  358  <-->  42  version  158
+receive updated locally
+update locally time =  0.012000000000000455
+requestUpdateTPCLocally...
+request new balance:  359  <-->  41  version:  159
+end =  44.654
+TPC:  359  <-->  41  version  159
+receive updated locally
+update locally time =  0.010000000000005116
+requestUpdateTPCLocally...
+request new balance:  360  <-->  40  version:  160
+end =  44.663
+TPC:  360  <-->  40  version  160
+receive updated locally
+update locally time =  0.008999999999993236
+requestUpdateTPCLocally...
+request new balance:  361  <-->  39  version:  161
+end =  44.675
+TPC:  361  <-->  39  version  161
+receive updated locally
+update locally time =  0.01099999999999568
+requestUpdateTPCLocally...
+request new balance:  362  <-->  38  version:  162
+end =  44.686
+TPC:  362  <-->  38  version  162
+receive updated locally
+update locally time =  0.00999999999999801
+requestUpdateTPCLocally...
+request new balance:  363  <-->  37  version:  163
+end =  44.698
+TPC:  363  <-->  37  version  163
+receive updated locally
+update locally time =  0.012000000000000455
+requestUpdateTPCLocally...
+request new balance:  364  <-->  36  version:  164
+end =  44.71
+TPC:  364  <-->  36  version  164
+receive updated locally
+update locally time =  0.012000000000000455
+requestUpdateTPCLocally...
+request new balance:  365  <-->  35  version:  165
+end =  44.722
+TPC:  365  <-->  35  version  165
+receive updated locally
+update locally time =  0.012000000000000455
+requestUpdateTPCLocally...
+request new balance:  366  <-->  34  version:  166
+end =  44.735
+TPC:  366  <-->  34  version  166
+receive updated locally
+update locally time =  0.012999999999998124
+requestUpdateTPCLocally...
+request new balance:  367  <-->  33  version:  167
+end =  44.749
+TPC:  367  <-->  33  version  167
+receive updated locally
+update locally time =  0.01300000000000523
+requestUpdateTPCLocally...
+request new balance:  368  <-->  32  version:  168
+end =  44.761
+TPC:  368  <-->  32  version  168
+receive updated locally
+update locally time =  0.012000000000000455
+requestUpdateTPCLocally...
+request new balance:  369  <-->  31  version:  169
+end =  44.775
+TPC:  369  <-->  31  version  169
+receive updated locally
+update locally time =  0.013999999999995794
+requestUpdateTPCLocally...
+request new balance:  370  <-->  30  version:  170
+end =  44.786
+TPC:  370  <-->  30  version  170
+receive updated locally
+update locally time =  0.011000000000002785
+requestUpdateTPCLocally...
+request new balance:  371  <-->  29  version:  171
+end =  44.799
+TPC:  371  <-->  29  version  171
+receive updated locally
+update locally time =  0.012000000000000455
+requestUpdateTPCLocally...
+request new balance:  372  <-->  28  version:  172
+end =  44.811
+TPC:  372  <-->  28  version  172
+receive updated locally
+update locally time =  0.012000000000000455
+requestUpdateTPCLocally...
+request new balance:  373  <-->  27  version:  173
+end =  44.823
+TPC:  373  <-->  27  version  173
+receive updated locally
+update locally time =  0.012000000000000455
+requestUpdateTPCLocally...
+request new balance:  374  <-->  26  version:  174
+end =  44.836
+TPC:  374  <-->  26  version  174
+receive updated locally
+update locally time =  0.012000000000000455
+requestUpdateTPCLocally...
+request new balance:  375  <-->  25  version:  175
+end =  44.848
+TPC:  375  <-->  25  version  175
+receive updated locally
+update locally time =  0.012000000000000455
+requestUpdateTPCLocally...
+request new balance:  376  <-->  24  version:  176
+end =  44.861
+TPC:  376  <-->  24  version  176
+receive updated locally
+update locally time =  0.012000000000000455
+requestUpdateTPCLocally...
+request new balance:  377  <-->  23  version:  177
+end =  44.873
+TPC:  377  <-->  23  version  177
+receive updated locally
+update locally time =  0.012000000000000455
+requestUpdateTPCLocally...
+request new balance:  378  <-->  22  version:  178
+end =  44.886
+TPC:  378  <-->  22  version  178
+receive updated locally
+update locally time =  0.012000000000000455
+requestUpdateTPCLocally...
+request new balance:  379  <-->  21  version:  179
+end =  44.899
+TPC:  379  <-->  21  version  179
+receive updated locally
+update locally time =  0.012999999999998124
+requestUpdateTPCLocally...
+request new balance:  380  <-->  20  version:  180
+end =  44.911
+TPC:  380  <-->  20  version  180
+receive updated locally
+update locally time =  0.012000000000000455
+requestUpdateTPCLocally...
+request new balance:  381  <-->  19  version:  181
+end =  44.922
+TPC:  381  <-->  19  version  181
+receive updated locally
+update locally time =  0.00999999999999801
+requestUpdateTPCLocally...
+request new balance:  382  <-->  18  version:  182
+end =  44.932
+TPC:  382  <-->  18  version  182
+receive updated locally
+update locally time =  0.010000000000005116
+requestUpdateTPCLocally...
+request new balance:  383  <-->  17  version:  183
+end =  44.942
+TPC:  383  <-->  17  version  183
+receive updated locally
+update locally time =  0.00999999999999801
+requestUpdateTPCLocally...
+request new balance:  384  <-->  16  version:  184
+end =  44.953
+TPC:  384  <-->  16  version  184
+receive updated locally
+update locally time =  0.011000000000002785
+requestUpdateTPCLocally...
+request new balance:  385  <-->  15  version:  185
+end =  44.963
+TPC:  385  <-->  15  version  185
+receive updated locally
+update locally time =  0.00999999999999801
+requestUpdateTPCLocally...
+request new balance:  386  <-->  14  version:  186
+end =  44.974
+TPC:  386  <-->  14  version  186
+receive updated locally
+update locally time =  0.01099999999999568
+requestUpdateTPCLocally...
+request new balance:  387  <-->  13  version:  187
+end =  44.986
+TPC:  387  <-->  13  version  187
+receive updated locally
+update locally time =  0.012000000000000455
+requestUpdateTPCLocally...
+request new balance:  388  <-->  12  version:  188
+end =  44.997
+TPC:  388  <-->  12  version  188
+receive updated locally
+update locally time =  0.00999999999999801
+requestUpdateTPCLocally...
+request new balance:  389  <-->  11  version:  189
+end =  45.007
+TPC:  389  <-->  11  version  189
+receive updated locally
+update locally time =  0.00999999999999801
+requestUpdateTPCLocally...
+request new balance:  390  <-->  10  version:  190
+end =  45.019
+TPC:  390  <-->  10  version  190
+receive updated locally
+update locally time =  0.012000000000000455
+requestUpdateTPCLocally...
+request new balance:  391  <-->  9  version:  191
+end =  45.032
+TPC:  391  <-->  9  version  191
+receive updated locally
+update locally time =  0.01199999999999335
+requestUpdateTPCLocally...
+request new balance:  392  <-->  8  version:  192
+end =  45.045
+TPC:  392  <-->  8  version  192
+receive updated locally
+update locally time =  0.012000000000000455
+requestUpdateTPCLocally...
+request new balance:  393  <-->  7  version:  193
+end =  45.058
+TPC:  393  <-->  7  version  193
+receive updated locally
+update locally time =  0.012999999999998124
+requestUpdateTPCLocally...
+request new balance:  394  <-->  6  version:  194
+end =  45.072
+TPC:  394  <-->  6  version  194
+receive updated locally
+update locally time =  0.014000000000002899
+requestUpdateTPCLocally...
+request new balance:  395  <-->  5  version:  195
+end =  45.085
+TPC:  395  <-->  5  version  195
+receive updated locally
+update locally time =  0.012999999999998124
+requestUpdateTPCLocally...
+request new balance:  396  <-->  4  version:  196
+end =  45.098
+TPC:  396  <-->  4  version  196
+receive updated locally
+update locally time =  0.012999999999998124
+requestUpdateTPCLocally...
+request new balance:  397  <-->  3  version:  197
+end =  45.111
+TPC:  397  <-->  3  version  197
+receive updated locally
+update locally time =  0.012999999999998124
+requestUpdateTPCLocally...
+request new balance:  398  <-->  2  version:  198
+end =  45.123
+TPC:  398  <-->  2  version  198
+receive updated locally
+update locally time =  0.012000000000000455
+requestUpdateTPCLocally...
+request new balance:  399  <-->  1  version:  199
+end =  45.136
+TPC:  399  <-->  1  version  199
+receive updated locally
+update locally time =  0.01300000000000523
+requestUpdateTPCLocally...
+request new balance:  400  <-->  0  version:  200
+end =  45.148
+TPC:  400  <-->  0  version  200
+receive updated locally
+update locally time =  0.012000000000000455
+total update time for  200  tx:  2.450999999999979
+requestUpdateTPC...
+update_sc_time =  12.649000000000001
+TPC:  400  <-->  0  version  200
+requestCloseTPC...
+服务器端下线了

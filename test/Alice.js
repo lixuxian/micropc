@@ -76,6 +76,7 @@ async function processCreateTPC(client, alice, bob, ab, bb, bobSig) {
   );
   var aliceSig = await TPC_OBJ.generateSignatures(msgHash, alice);
   ab_tpc.aliceSig = aliceSig;
+  var id = 0;
   await mpc_contract.methods.createTPC(alice, bob, va, vb, aliceSig, bobSig).send({
     from: alice,
     gas: 6721975
@@ -83,12 +84,16 @@ async function processCreateTPC(client, alice, bob, ab, bb, bobSig) {
   .on('receipt', function(receipt){
       gasLogger.info('createTPC gasUsed: ', receipt.gasUsed);
       console.log('createTPC gasUsed: ', receipt.gasUsed);
+      if (receipt.events && receipt.events.TPCOpenRequest) {
+        id = receipt.events.TPCOpenRequest.returnValues["id"];
+        console.log("tpc id = ", id);
+      }
   })
   .on('error', function(error) {
       console.log("createTPC error: ", error);
   });
 
-  await mpc_contract.methods.deposit(alice, bob).send({
+  await mpc_contract.methods.deposit(id, alice, bob).send({
     from: alice,
     value: va.toString(),
     gas: 6721975
@@ -128,6 +133,7 @@ async function processCreateTPC(client, alice, bob, ab, bb, bobSig) {
   .on('error', function(error) {
       console.log("alice deposit error: ", error);
   });
+  return id;
 }
 
 async function processUpdateTPCLocally(client, channel_id, alice, bob, new_ab, new_bb, version, bobSig) {
@@ -294,8 +300,8 @@ async function processCloseTPC(client, channel_id, version, bobSig) {
           client.write('reject creat tpc');
         }
         else {
-          client.write("agree create tpc");
-          await processCreateTPC(client, alice, bob, alice_balance, bob_balance, bobSig);
+          var id = await processCreateTPC(client, alice, bob, alice_balance, bob_balance, bobSig);
+          client.write("agree create tpc," + id.toString());
         }
       }
       else if (msg_arr[0] == 'created') {

@@ -319,7 +319,7 @@ async function simulation() {
          // payment through n-TPC
         await executeTx_TPC(t.transactions, parties);
         // payment through MPC
-        // await executeTx_MPC(mpc_id, t.revisedTxs, genTx(t.revisedTxs, accounts), parties, mpc_version);
+        await executeTx_MPC(mpc_id, t.revisedTxs, genTx(t.revisedTxs, accounts), parties, mpc_version);
         // payment through Ethererum
         // await DP.run(t.transactions);
     }
