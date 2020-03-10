@@ -361,6 +361,32 @@ async function processMsg(client, msg) { //接收client发来的信息
         client.write("reject update mpc locally");
       }
     }
+    else if (msg_arr[0] == 'update mpc') {
+      var mpc_id = parseInt(msg_arr[1]);
+      var txstr = msg_arr[2];
+      var version = parseInt(msg_arr[3]);
+      var p1Sig = msg_arr[4];
+      const msgHash = await web3.utils.soliditySha3(
+        {t: 'string', v: txstr},
+        {t: 'address', v: p1},
+        {t: 'uint256', v: version}
+      );
+      var p1Sig_check = await TPC_OBJ.generateSignatures(msgHash, p1);
+      if (p1Sig == p1Sig_check) {
+        const msgHash_3 = await web3.utils.soliditySha3(
+          {t: 'string', v: txstr},
+          {t: 'address', v: p3},
+          {t: 'uint256', v: version}
+        );
+        var p3Sig = await TPC_OBJ.generateSignatures(msgHash_3, p3);
+        client.write("agree update mpc,p3," + mpc_id.toString() + "," + p3Sig);
+      }
+      else {
+        console.log("msg = ", msg);
+        console.log("p1Sig_check = ", p1Sig_check);
+        client.write("reject update mpc");
+      }
+  }
   }
 
 var p1;

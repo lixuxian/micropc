@@ -105,6 +105,7 @@ var agreeCreateP2Sig;
 var agreeCreateP3Sig;
 
 var mpc_id = 0;
+var mptx_count = 10;
 
 async function processCreateMPC(p, sig) {
   if (p == 'p2') {
@@ -139,12 +140,16 @@ async function processCreateMPC(p, sig) {
         mpc = new MPTX(tpc_12, tpc_13);
         mpc.printTPC();
 
-        var tx_1 = new Tx(tpc_12.channel_id, p2, p1, 1);
-        var tx_2 = new Tx(tpc_13.channel_id, p1, p3, 2);
-        var mptx = new Array();
-        mptx.push(tx_1, tx_2);
-        await requestUpdateMPCLocally(mptx);
-        mpc.printTPC();
+        for (var i = 0; i < mptx_count; i++) {
+          var tx_1 = new Tx(tpc_12.channel_id, p2, p1, 1);
+          var tx_2 = new Tx(tpc_13.channel_id, p1, p3, 2);
+          var mptx = new Array();
+          mptx.push(tx_1, tx_2);
+          await requestUpdateMPCLocally(mptx);
+          mpc.version += 1;
+          mpc.printTPC();
+        }
+        await requestUpdateMPC();
     })
     .on('error', function(error) {     
         console.log("createMPC error: ", error);
@@ -171,6 +176,7 @@ class MPTX {
     this.tpc_map.set(tpc_12.channel_id, tpc_12);
     this.tpc_map.set(tpc_13.channel_id, tpc_13);
     // this.printTPC();
+    this.version = 0;
   }
 
   printTPC() {
@@ -197,7 +203,7 @@ class MPTX {
   }
 
   genMptx() {
-    var txs;
+    var txs = new Array();
     for (var [key, value] of this.tpc_map) {
       // console.log("channel id:", value.channel_id, " ab: ", value.now_ab, " bb: ", value.now_bb);
       var new_ab_wei = web3.utils.toWei(value.now_ab, 'ether');
@@ -256,7 +262,58 @@ async function requestUpdateMPCLocally(mptx) {
 }
 
 async function requestUpdateMPC() {
-  
+    console.log("requestUpdateMPC...");
+    var txs = mpc.genMptx();
+    console.log("txs = ", txs);
+    var txstr = web3.utils.sha3(JSON.stringify(txs));
+    const msgHash = await web3.utils.soliditySha3(
+        {t: 'string', v: txstr},
+        {t: 'address', v: p1},
+        {t: 'uint256', v: mpc.version}
+    );
+    var p1Sig = await TPC_OBJ.generateSignatures(msgHash, p1);
+    agreeUpdateP1Sig = p1Sig;
+    var msg = "update mpc," + mpc_id.toString() + "," + txstr + "," + mpc.version + "," + p1Sig;
+    socket_12.write(msg);
+    socket_13.write(msg);
+}
+
+var agreeUpdateP1Sig;
+var agreeUpdateP2Sig;
+var agreeUpdateP3Sig;
+var agreeUpdateP2;
+var agreeUpdateP3;
+
+async function processUpdateMPC() {
+  console.log("processUpdateMPC()...");
+  var txs = mpc.genMptx();
+  console.log("txs = ", txs);
+  var txstr = web3.utils.sha3(JSON.stringify(txs));
+  var sigs = new Array();
+  sigs.push(agreeUpdateP1Sig, agreeUpdateP2Sig, agreeUpdateP3Sig);
+  await mpc_contract.methods.updateMPC(mpc_id, txs, txstr, mpc.version, sigs)
+  .send(
+    {
+        from: p1,
+        gas: 672197500
+    }
+  )
+  .on('receipt', function(receipt){
+      if (receipt.events.MPCUpdateSuccess) {
+        console.log("updateMPC success...");
+        var msg = "updated mpc," + mpc_id.toString() + "," + mpc.version.toString();
+        socket_12.write(msg);
+        socket_13.write(msg);
+      }
+      else {
+        console.log("updateMPC failed...");
+      }
+      console.info("updateMPC gasUsed: ", receipt.gasUsed);
+  })
+  .on('error', function(error) {     
+      console.log("updateMPC error: ", error);
+  });
+
 }
 
 async function requestCloseTPC(socket, tpc) 
@@ -385,6 +442,22 @@ async function processMsg(msg, tpc) {
       mpc.updateLocally();
       tpc_12.printTPC();
       tpc_13.printTPC();
+    }
+    else if (msg_arr[0] == 'agree update mpc') {
+      var p = msg_arr[1];
+      console.log(p + ' agree update mpc');
+      // TODO
+      if (p == 'p2') {
+        agreeUpdateP2 = true;
+        agreeUpdateP2Sig = msg_arr[3];
+      }
+      else if (p == 'p3') {
+        agreeUpdateP3 = true;
+        agreeUpdateP3Sig = msg_arr[3];
+      }
+      if (agreeUpdateP2 && agreeUpdateP3) {
+        await processUpdateMPC();
+      }
     }
 }
 
