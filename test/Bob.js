@@ -202,7 +202,7 @@ var update_end;
 
 var update_count = 0;
 var update_time_sum = 0;
-var tx_amount = 200;
+var tx_amount = 1;
 
 (async function clientRun() {
   var accounts = await web3.eth.getAccounts();

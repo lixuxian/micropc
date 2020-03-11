@@ -58,6 +58,19 @@ contract SimplePaymentChannel {
         tpc_map[id] = tpc;
         count += 1;
         emit TPCOpenRequest(id, alice, bob, ab, bb);
+
+        if (msg.sender == tpc_map[id].alice)
+        {
+            tpc_map[id].alice_balance = msg.value;
+            tpc_map[id].alice_deposited = true;
+            emit TPCSomeDeposit(id, alice, msg.value);
+        }
+        else if (msg.sender == tpc_map[id].bob)
+        {
+            tpc_map[id].bob_balance = msg.value;
+            tpc_map[id].bob_deposited = true;
+            emit TPCSomeDeposit(id, bob, msg.value);
+        }
     }
 
     function getChannel(uint256 id)

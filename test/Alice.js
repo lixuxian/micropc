@@ -79,60 +79,87 @@ async function processCreateTPC(client, alice, bob, ab, bb, bobSig) {
   var id = 0;
   await mpc_contract.methods.createTPC(alice, bob, va, vb, aliceSig, bobSig).send({
     from: alice,
-    gas: 6721975
+    gas: 6721975,
+    value: va.toString(),
   })
   .on('receipt', function(receipt){
-      gasLogger.info('createTPC gasUsed: ', receipt.gasUsed);
-      console.log('createTPC gasUsed: ', receipt.gasUsed);
       if (receipt.events && receipt.events.TPCOpenRequest) {
         id = receipt.events.TPCOpenRequest.returnValues["id"];
         console.log("tpc id = ", id);
+        var channel_id = 0;
+        if (receipt.events.TPCOpenSuccess) {
+          channel_id = receipt.events.TPCOpenSuccess.returnValues["id"];
+        }
+        else if (receipt.events.TPCSomeDeposit) {
+          console.log("alice deposite");
+        }
+        if (channel_id > 0) {
+          console.log("alice channel id : ", channel_id);
+          var msg_created = "created," + channel_id.toString() + "," + aliceSig;
+          ab_tpc.channel_id = channel_id;
+          ab_tpc.alice = alice;
+          ab_tpc.bob = bob;
+          ab_tpc.init_ab = ab;
+          ab_tpc.init_bb = bb;
+          ab_tpc.now_ab = ab;
+          ab_tpc.now_bb = bb;
+          ab_tpc.version = 0;
+          ab_tpc.created = true;
+          ab_tpc.aliceSig = aliceSig;
+          ab_tpc.bobSig = bobSig;
+          ab_tpc.printTPC();
+          client.write(msg_created);
+        }
+        // gasLogger.info('alice deposit gasUsed: ', receipt.gasUsed);
+        // console.log('alice deposit gasUsed: ', receipt.gasUsed);
+        // gasLogger.info('createTPC gasUsed: ', receipt.gasUsed);
+        console.log('alice createTPC and deposit gasUsed: ', receipt.gasUsed);
       }
   })
   .on('error', function(error) {
       console.log("createTPC error: ", error);
   });
 
-  await mpc_contract.methods.deposit(id, alice, bob).send({
-    from: alice,
-    value: va.toString(),
-    gas: 6721975
-  })
-  .on('receipt', function(receipt){
-    if (receipt.events) {
-      var channel_id = 0;
-      if (receipt.events.TPCOpenSuccess) {
-        channel_id = receipt.events.TPCOpenSuccess.returnValues["id"];
-      }
-      else if (receipt.events.TPCOpenSuccess) {
-        console.log("alice deposite");
-      }
-      if (channel_id > 0) {
-        console.log("alice channel id : ", channel_id);
-        var msg_created = "created," + channel_id.toString() + "," + aliceSig;
-        ab_tpc.channel_id = channel_id;
-        ab_tpc.alice = alice;
-        ab_tpc.bob = bob;
-        ab_tpc.init_ab = ab;
-        ab_tpc.init_bb = bb;
-        ab_tpc.now_ab = ab;
-        ab_tpc.now_bb = bb;
-        ab_tpc.version = 0;
-        ab_tpc.created = true;
-        ab_tpc.aliceSig = aliceSig;
-        ab_tpc.bobSig = bobSig;
-        ab_tpc.printTPC();
-        client.write(msg_created);
-      }
-      gasLogger.info('alice deposit gasUsed: ', receipt.gasUsed);
-      console.log('alice deposit gasUsed: ', receipt.gasUsed);
-    } else {
-      console.log("alice deposite no events");
-    }
-  })
-  .on('error', function(error) {
-      console.log("alice deposit error: ", error);
-  });
+  // await mpc_contract.methods.deposit(id, alice, bob).send({
+  //   from: alice,
+  //   value: va.toString(),
+  //   gas: 6721975
+  // })
+  // .on('receipt', function(receipt){
+  //   if (receipt.events) {
+  //     var channel_id = 0;
+  //     if (receipt.events.TPCOpenSuccess) {
+  //       channel_id = receipt.events.TPCOpenSuccess.returnValues["id"];
+  //     }
+  //     else if (receipt.events.TPCOpenSuccess) {
+  //       console.log("alice deposite");
+  //     }
+  //     if (channel_id > 0) {
+  //       console.log("alice channel id : ", channel_id);
+  //       var msg_created = "created," + channel_id.toString() + "," + aliceSig;
+  //       ab_tpc.channel_id = channel_id;
+  //       ab_tpc.alice = alice;
+  //       ab_tpc.bob = bob;
+  //       ab_tpc.init_ab = ab;
+  //       ab_tpc.init_bb = bb;
+  //       ab_tpc.now_ab = ab;
+  //       ab_tpc.now_bb = bb;
+  //       ab_tpc.version = 0;
+  //       ab_tpc.created = true;
+  //       ab_tpc.aliceSig = aliceSig;
+  //       ab_tpc.bobSig = bobSig;
+  //       ab_tpc.printTPC();
+  //       client.write(msg_created);
+  //     }
+  //     gasLogger.info('alice deposit gasUsed: ', receipt.gasUsed);
+  //     console.log('alice deposit gasUsed: ', receipt.gasUsed);
+  //   } else {
+  //     console.log("alice deposite no events");
+  //   }
+  // })
+  // .on('error', function(error) {
+  //     console.log("alice deposit error: ", error);
+  // });
   return id;
 }
 
