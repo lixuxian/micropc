@@ -166,17 +166,15 @@ async function processCreateMPC(p, sig) {
         mpc.printTPC();
 
         updateMPCLocally_start = process.uptime();
-        for (var i = 0; i < mptx_count; i++) {
-          var tx_1 = new Tx(tpc_12.channel_id, p2, p1, 1);
-          var tx_2 = new Tx(tpc_13.channel_id, p1, p3, 2);
-          var mptx = new Array();
-          mptx.push(tx_1, tx_2);
-          await requestUpdateMPCLocally(mptx);
-          mpc.version += 1;
-          mpc.printTPC();
-        }
-        // await requestUpdateMPC();
-        // await requestCloseMPC();
+        // for (var i = 0; i < mptx_count; i++) {
+        var tx_1 = new Tx(tpc_12.channel_id, p2, p1, 1);
+        var tx_2 = new Tx(tpc_13.channel_id, p1, p3, 2);
+        var mptx = new Array();
+        mptx.push(tx_1, tx_2);
+        await requestUpdateMPCLocally(mptx);
+        mpc.version += 1;
+        mpc.printTPC();
+        // }
     })
     .on('error', function(error) {     
         console.log("createMPC error: ", error);
@@ -309,7 +307,16 @@ async function processUpdateMPCLocally(p) {
     tpc_13.printTPC();
     updatedLocallyTime++;
     console.log("updatedLocallyTime = ", updatedLocallyTime);
-    if (updatedLocallyTime == mptx_count) {
+    if (updatedLocallyTime < mptx_count) {
+      var tx_1 = new Tx(tpc_12.channel_id, p2, p1, 1);
+      var tx_2 = new Tx(tpc_13.channel_id, p1, p3, 2);
+      var mptx = new Array();
+      mptx.push(tx_1, tx_2);
+      await requestUpdateMPCLocally(mptx);
+      mpc.version += 1;
+      mpc.printTPC();
+    }
+    else if (updatedLocallyTime == mptx_count) {
       updateMPCLocally_end = process.uptime();
       console.log("updateLocally time for ", mptx_count, " mptx : ", updateMPCLocally_end - updateMPCLocally_start);
       gasLogger.info("updateLocally time for ", mptx_count, " mptx : ", updateMPCLocally_end - updateMPCLocally_start);
@@ -629,6 +636,7 @@ function processError(error) {
         await requestCreateTPC(socket_12, tpc_12, p1, p2);
     });
     socket_12.on('data', async function(msg) {
+      sleep.msleep(50);
       processMsg(msg, tpc_12);
     });
     socket_12.on('error', processError);
@@ -643,6 +651,7 @@ function processError(error) {
         await requestCreateTPC(socket_13, tpc_13, p1, p3);
     });
     socket_13.on('data', async function(msg) {
+      sleep.msleep(50);
       processMsg(msg, tpc_13);
     });
     socket_13.on('error', processError);

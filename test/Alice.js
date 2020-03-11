@@ -302,6 +302,7 @@ async function processCloseTPC(client, channel_id, version, bobSig) {
     client.setEncoding = 'UTF-8';
 
     client.on('data', async function (msg) { //接收client发来的信息
+      sleep.msleep(50);
       console.log(`客户端${client.name}发来一个信息：${msg}`);
       var msg_arr = msg.toString().split(",");
       console.log("msg_arr = ", msg_arr);

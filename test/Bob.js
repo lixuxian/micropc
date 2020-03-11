@@ -202,7 +202,7 @@ var update_end;
 
 var update_count = 0;
 var update_time_sum = 0;
-var tx_amount = 1;
+var tx_amount = 200;
 
 (async function clientRun() {
   var accounts = await web3.eth.getAccounts();
@@ -225,6 +225,7 @@ var tx_amount = 1;
 
   socket.on( 'data', async function ( msg ) {
     // console.log( msg.toString() );
+    sleep.msleep(50);
     var msg_arr = msg.toString().split(",");
     if (msg_arr[0] == 'agree create tpc') {
       depositBob(parseInt(msg_arr[1]));
